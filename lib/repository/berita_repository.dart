@@ -2,16 +2,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
-class LoginRepository {
-  static Future<dynamic> login(
-    String url, String email, String password) async {
-      FormData formData = FormData.fromMap({
-      "email": email,
-      "password": password,
-    });
+class BeritaRepository {
+  static Future<dynamic> getBerita(String url) async {
     Dio dio = Dio();
-    final response = await dio.post(url, data: formData);
-    
+    final response = await dio.get(url);
+
     if (kDebugMode) {
       print("RESPONSE STATUS CODE : ${response.statusCode}");
     }

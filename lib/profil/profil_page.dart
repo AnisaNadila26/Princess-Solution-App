@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:princess_solution/profil/profil_notifier.dart';
 import 'package:provider/provider.dart';
+import 'package:princess_solution/network/network.dart';
 // import 'package:go_router/go_router.dart';
 
 class ProfilPage extends StatelessWidget {
@@ -79,8 +80,7 @@ class ProfilPage extends StatelessWidget {
                                   radius: 60,
                                   backgroundColor: Colors.grey.shade800,
                                   child: ClipOval(
-                                    child: Image.network(
-                                      'assets/profil.jpeg',
+                                    child: Image.network(NetworkURL.getProfil(value.users!.fotoProfil),
                                       width: 120,
                                       height: 120,
                                       fit: BoxFit.cover,
@@ -114,7 +114,35 @@ class ProfilPage extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text('Nama'),
-                                        Text('Anisa Nadila Lase'),
+                                        SizedBox(height: 3),
+                                        Text(value.users!.nama),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Card(
+                            elevation: 2.0,
+                            color: Colors.grey,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Icon(MdiIcons.calendarBlank),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text('Tanggal Lahir'),
+                                        SizedBox(height: 3),
+                                        Text(value.users!.tanggalLahir),
                                       ],
                                     ),
                                   )
@@ -140,7 +168,89 @@ class ProfilPage extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text('Email'),
-                                        Text('anisanadila26010.anl@gmail.com'),
+                                        SizedBox(height: 3),
+                                        Text(value.users!.email),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Card(
+                            elevation: 2.0,
+                            color: Colors.grey,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Icon(MdiIcons.phone),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text('Nomor Telepon'),
+                                        SizedBox(height: 3),
+                                        Text(value.users!.telpon),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Card(
+                            elevation: 2.0,
+                            color: Colors.grey,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Icon(MdiIcons.briefcase),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text('Pekerjaan'),
+                                        SizedBox(height: 3),
+                                        Text(value.users!.pekerjaan),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Card(
+                            elevation: 2.0,
+                            color: Colors.grey,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Icon(MdiIcons.homeAccount),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text('Alamat'),
+                                        SizedBox(height: 3),
+                                        Text(value.users!.alamat),
                                       ],
                                     ),
                                   )
@@ -166,7 +276,8 @@ class ProfilPage extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text('Status'),
-                                        Text('Siswa'),
+                                        SizedBox(height: 3),
+                                        Text(value.users!.status),
                                       ],
                                     ),
                                   )
@@ -183,6 +294,33 @@ class ProfilPage extends StatelessWidget {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
+                                  Icon(MdiIcons.formatListChecks),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 15),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text('Jumlah Kehadiran'),
+                                        SizedBox(height: 3),
+                                        Text(value.users!.kehadiran),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Card(
+                            elevation: 2.0,
+                            color: Colors.green.shade200,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
                                   Icon(MdiIcons.cash),
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
@@ -192,7 +330,8 @@ class ProfilPage extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text('Tagihan'),
-                                        Text('0'),
+                                        SizedBox(height: 3),
+                                        Text(value.users!.sisaPembayaran),
                                       ],
                                     ),
                                   )

@@ -10,6 +10,7 @@ class Preference {
   static String telpon = "telpon";
   static String pekerjaan = "pekerjaan";
   static String alamat = "alamat";
+  static String fotoProfil = "foto_profil";
   static String jenisKendaraan = "jenis_kendaraan";
   static String kodeKendaraan = "kode_kendaraan";
   static String instruktur = "instruktur";
@@ -26,13 +27,15 @@ class Preference {
 
   setUsers(Data users) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setInt(Preference.noRegistrasi, users.noRegistrasi);
+    // pref.setInt(Preference.noRegistrasi, users.noRegistrasi);
+    pref.setString(Preference.noRegistrasi, users.noRegistrasi);
     pref.setString(Preference.nama, users.nama);
     pref.setString(Preference.tanggalLahir, users.tanggalLahir);
     pref.setString(Preference.email, users.email);
     pref.setString(Preference.telpon, users.telpon);
     pref.setString(Preference.pekerjaan, users.pekerjaan);
     pref.setString(Preference.alamat, users.alamat);
+    pref.setString(Preference.fotoProfil, users.fotoProfil);
     pref.setString(Preference.jenisKendaraan, users.jenisKendaraan);
     pref.setString(Preference.kodeKendaraan, users.kodeKendaraan);
     pref.setString(Preference.instruktur, users.instruktur);
@@ -51,13 +54,15 @@ class Preference {
   Future<Data> getUsers() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     Data users = Data(
-      noRegistrasi: pref.getInt(Preference.noRegistrasi) ?? 0,
+      // noRegistrasi: pref.getInt(Preference.noRegistrasi) ?? 0,
+      noRegistrasi: pref.getString(Preference.noRegistrasi) ?? "",
       nama: pref.getString(Preference.nama) ?? "",
       tanggalLahir: pref.getString(Preference.tanggalLahir) ?? "",
       email: pref.getString(Preference.email) ?? "",
       telpon: pref.getString(Preference.telpon) ?? "",
       pekerjaan: pref.getString(Preference.pekerjaan) ?? "",
       alamat: pref.getString(Preference.alamat) ?? "",
+      fotoProfil: pref.getString(Preference.fotoProfil) ?? "",
       jenisKendaraan: pref.getString(Preference.jenisKendaraan) ?? "",
       kodeKendaraan: pref.getString(Preference.kodeKendaraan) ?? "",
       instruktur: pref.getString(Preference.instruktur) ?? "",
@@ -85,6 +90,7 @@ class Preference {
     pref.remove(Preference.telpon);
     pref.remove(Preference.pekerjaan);
     pref.remove(Preference.alamat);
+    pref.remove(Preference.fotoProfil);
     pref.remove(Preference.jenisKendaraan);
     pref.remove(Preference.kodeKendaraan);
     pref.remove(Preference.instruktur);

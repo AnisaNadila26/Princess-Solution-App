@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:princess_solution/isi_berita.dart';
 import 'package:princess_solution/berita/berita_detail_page.dart';
 import 'package:princess_solution/berita/berita_notifier.dart';
+import 'package:princess_solution/network/network.dart';
 import 'package:provider/provider.dart';
 
 class BeritaPage extends StatefulWidget {
@@ -59,18 +60,21 @@ class _BeritaPageState extends State<BeritaPage> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        IsiBerita.info[index].judul,
+                                        // IsiBerita.info[index].judul,
+                                        "${value.listBerita[index].judul}",
                                         overflow: TextOverflow.ellipsis,
                                         maxLines: 2,
                                       ),
                                       Text(
-                                       IsiBerita.info[index].tanggal,
+                                        // IsiBerita.info[index].tanggal,
+                                        "${value.listBerita[index].tanggal}",
                                         overflow: TextOverflow.ellipsis,
                                         maxLines: 2,
                                       ),
                                       SizedBox(height: 5),
                                       Text(
-                                        IsiBerita.info[index].isi,
+                                        // IsiBerita.info[index].isi,
+                                        "${value.listBerita[index].isi}",
                                         overflow: TextOverflow.ellipsis,
                                         maxLines: 2,
                                       ),
@@ -79,12 +83,16 @@ class _BeritaPageState extends State<BeritaPage> {
                                 ),
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
-                                  child: Image(
-                                    image: AssetImage(
-                                      IsiBerita.info[index].imageUrl,
-                                    ),
-                                    width: 100,
-                                  ),
+                                  child: 
+                                  // Image(
+                                  //   image: AssetImage(
+                                  //     IsiBerita.info[index].imageUrl,
+                                  //   ),
+                                  //   width: 100,
+                                  // ),
+                                  Image.network(
+                                    NetworkURL.gambarBerita(value.listBerita[index].image), 
+                                    width: 100,),
                                 ),
                               ],
                             ),

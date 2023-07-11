@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:princess_solution/login/login_notifier.dart';
-import 'package:princess_solution/menu/menu_page.dart';
+// import 'package:princess_solution/menu/menu_page.dart';
 import 'package:provider/provider.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -87,25 +92,33 @@ class LoginPage extends StatelessWidget {
                                     return null;
                                   }
                                 },
-                                obscureText: true,
+                                obscureText: value.obsecureText,
                                 decoration: InputDecoration(
-                                  icon: Icon(MdiIcons.lock),
-                                  labelText: 'Password',
-                                  floatingLabelStyle:
-                                      const TextStyle(color: Colors.black),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(20),
-                                      borderSide: BorderSide(
-                                        color: Colors.grey,
-                                        width: 2,
-                                      )),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(20),
-                                      borderSide: BorderSide(
-                                        color: Colors.black,
-                                        width: 2,
-                                      )),
-                                ),
+                                    icon: Icon(MdiIcons.lock),
+                                    labelText: 'Password',
+                                    floatingLabelStyle:
+                                        const TextStyle(color: Colors.black),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                        borderSide: BorderSide(
+                                          color: Colors.grey,
+                                          width: 2,
+                                        )),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                        borderSide: BorderSide(
+                                          color: Colors.black,
+                                          width: 2,
+                                        )),
+                                    suffixIcon: GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          value.obsecureText =
+                                              !value.obsecureText;
+                                        });
+                                      },
+                                      child: Icon(value.obsecureText ? MdiIcons.eyeOff : MdiIcons.eye),
+                                    )),
                               ),
                               SizedBox(
                                 height: 16,

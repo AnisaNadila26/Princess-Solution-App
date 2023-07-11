@@ -7,13 +7,14 @@ part of 'data.dart';
 // **************************************************************************
 
 Data _$DataFromJson(Map<String, dynamic> json) => Data(
-      noRegistrasi: json['no_registrasi'] as int,
+      noRegistrasi: json['no_registrasi'] as String,
       nama: json['nama'] as String,
       tanggalLahir: json['ttl'] as String,
       email: json['email'] as String,
       telpon: json['telpon'] as String,
       pekerjaan: json['pekerjaan'] as String,
       alamat: json['alamat'] as String,
+      fotoProfil: json['foto_profil'] as String,
       jenisKendaraan: json['jenis_kendaraan'] as String,
       kodeKendaraan: json['kode_kendaraan'] as String,
       instruktur: json['instruktur'] as String,
@@ -37,6 +38,7 @@ Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'telpon': instance.telpon,
       'pekerjaan': instance.pekerjaan,
       'alamat': instance.alamat,
+      'foto_profil': instance.fotoProfil,
       'jenis_kendaraan': instance.jenisKendaraan,
       'kode_kendaraan': instance.kodeKendaraan,
       'instruktur': instance.instruktur,

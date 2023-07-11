@@ -12,6 +12,7 @@ class Data {
     required this.telpon,
     required this.pekerjaan,
     required this.alamat,
+    required this.fotoProfil,
     required this.jenisKendaraan,
     required this.kodeKendaraan,
     required this.instruktur,
@@ -28,7 +29,7 @@ class Data {
   });
 
   @JsonKey(name: 'no_registrasi')
-  int noRegistrasi;
+  String noRegistrasi;
   String nama;
   @JsonKey(name: 'ttl')
   String tanggalLahir;
@@ -36,6 +37,8 @@ class Data {
   String telpon;
   String pekerjaan;
   String alamat;
+   @JsonKey(name: 'foto_profil')
+  String fotoProfil;
   @JsonKey(name: 'jenis_kendaraan')
   String jenisKendaraan;
   @JsonKey(name: 'kode_kendaraan')

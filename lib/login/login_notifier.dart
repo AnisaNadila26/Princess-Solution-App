@@ -9,6 +9,7 @@ class LoginNotifier extends ChangeNotifier {
   final BuildContext context;
 
   LoginNotifier(this.context) {
+    // obsecureText = true;
     getProfile();
   }
 
@@ -18,6 +19,8 @@ class LoginNotifier extends ChangeNotifier {
   TextEditingController password = TextEditingController();
   GlobalKey<FormState> keyForm = GlobalKey<FormState>();
 
+  var obsecureText = true;
+
   cekLogin() {
     if (keyForm.currentState!.validate()) {
       simpan();
@@ -25,8 +28,8 @@ class LoginNotifier extends ChangeNotifier {
   }
 
   Future simpan() async {
-    LoginRepository.login(NetworkURL.login(), email.text.trim(),
-            password.text.trim())
+    LoginRepository.login(
+            NetworkURL.login(), email.text.trim(), password.text.trim())
         .then((value) {
       Navigator.pop(context);
       if (value['code'] == 200) {
