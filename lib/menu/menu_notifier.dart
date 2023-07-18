@@ -15,4 +15,5 @@ class MenuNotifier extends ChangeNotifier {
     page = 1;
     notifyListeners();
   }
+  
 }

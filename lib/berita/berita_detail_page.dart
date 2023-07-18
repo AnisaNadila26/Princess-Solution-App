@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:princess_solution/isi_berita.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:princess_solution/berita/berita_detail_notifier.dart';
+import 'package:princess_solution/models/berita.dart';
 import 'package:provider/provider.dart';
 
+import '../network/network.dart';
+
 class BeritaDetailPage extends StatelessWidget {
-  final IsiBerita isi;
+  final Berita isi;
   BeritaDetailPage({Key? key, required this.isi}) : super(key: key);
 
   @override
@@ -40,8 +43,9 @@ class BeritaDetailPage extends StatelessWidget {
                   backgroundColor: Colors.grey,
                   flexibleSpace: FlexibleSpaceBar(
                       // title: Text(widget.berita.judul),
-                      background: Image(
-                    image: AssetImage(isi.imageUrl),
+                      background: Image.network(
+                        NetworkURL.gambarBerita(isi.image),
+                    // image: AssetImage(isi.image),
                     fit: BoxFit.cover,
                   )),
                 ),

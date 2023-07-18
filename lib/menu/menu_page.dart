@@ -5,6 +5,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:princess_solution/dasbor/dasbor_page.dart';
 import 'package:princess_solution/berita/berita_page.dart';
+import 'package:princess_solution/konsultasi/konsultasi_page.dart';
 import 'package:princess_solution/profil/profil_page.dart';
 
 class MenuPage extends StatelessWidget {
@@ -23,14 +24,15 @@ class MenuPage extends StatelessWidget {
                         )
                       : value.page == 1
                           ? const BeritaPage()
-                          : value.page == 4
-                              ? const ProfilPage()
-                              // : value.page == 2
-                              //     ? const Pengumuman()
-                              : const SizedBox(),
+                          : value.page == 3
+                              ? const KonsultasiPage()
+                              : value.page == 4
+                                  ? const ProfilPage()
+                                  : const SizedBox(),
                 ),
                 bottomNavigationBar: SizedBox(
                   child: CurvedNavigationBar(
+                      index: value.page,
                       color: Colors.black,
                       buttonBackgroundColor: Colors.black,
                       backgroundColor: Colors.white,

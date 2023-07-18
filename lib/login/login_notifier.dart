@@ -19,7 +19,7 @@ class LoginNotifier extends ChangeNotifier {
   TextEditingController password = TextEditingController();
   GlobalKey<FormState> keyForm = GlobalKey<FormState>();
 
-  var obsecureText = true;
+  bool obsecureText = true;
 
   cekLogin() {
     if (keyForm.currentState!.validate()) {

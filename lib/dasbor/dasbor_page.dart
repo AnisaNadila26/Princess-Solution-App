@@ -26,6 +26,7 @@ class DasborPage extends StatelessWidget {
                             fontWeight: FontWeight.w700,
                           ),
                         ),
+                        centerTitle: true,
                         backgroundColor: Colors.black,
                       )
                     : PreferredSize(
@@ -44,7 +45,11 @@ class DasborPage extends StatelessWidget {
                     }
                     return true;
                   },
-                  child: ListView(children: [
+                  child: value.isLoading
+                    ? Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : ListView(children: [
                     SizedBox(
                       height: 370,
                       child: Container(
@@ -176,7 +181,7 @@ class DasborPage extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text('Pengumuman'),
+                                        Text('Berita'),
                                         Icon(MdiIcons.chevronRight),
                                       ],
                                     ),
@@ -184,7 +189,7 @@ class DasborPage extends StatelessWidget {
                                       color: Colors.black,
                                       thickness: 0.2,
                                     ),
-                                    Text('Belum ada Pengumuman'),
+                                    Text('Belum ada Berita'),
                                   ],
                                 ),
                               ),

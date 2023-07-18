@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:princess_solution/data/preference.dart';
 import 'package:princess_solution/models/data.dart';
 
-class ProfilNotifier extends ChangeNotifier {
+class UbahProfilNotifier extends ChangeNotifier {
   final BuildContext context;
 
-  ProfilNotifier(this.context) {
+  UbahProfilNotifier(this.context) {
     getProfile();
   }
 

@@ -8,9 +8,10 @@ class DasborNotifier extends ChangeNotifier {
   DasborNotifier(this.context) {
     getProfile();
   }
-   
+
   Data? users;
   var onAppBar = false;
+  var isLoading = true;
 
   showAppBar() {
     onAppBar = true;
@@ -23,10 +24,11 @@ class DasborNotifier extends ChangeNotifier {
   }
 
   getProfile() async {
+    isLoading = true;
     Preference().getUsers().then((value) {
       users = value;
+      isLoading = false;
       notifyListeners();
     });
   }
-  
 }

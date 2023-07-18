@@ -1,6 +1,9 @@
 const url = 'http://localhost/kp/public/api';
 const url_imagesProfil = 'http://localhost/kp/public/assets/images/profil';
 const url_imagesBerita = 'http://localhost/kp/public/assets/images/berita';
+var numPhone = '6281279572555';
+// var whatsapp = 'whatsapp://send?phone=$numPhone&text=hello';
+var whatsapp = 'https://wa.me/$numPhone';
 
 class NetworkURL {
   static String login() {
@@ -17,5 +20,9 @@ class NetworkURL {
 
   static String gambarBerita(String image) {
     return '$url_imagesBerita/$image';
+  }
+
+  static String sendWA() {
+    return '$whatsapp';
   }
 }

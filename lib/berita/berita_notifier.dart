@@ -11,13 +11,20 @@ class BeritaNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+  bool isLoading = true;
+
   List<Berita> listBerita = [];
-   Future getBerita() async {
+  Future getBerita() async {
+    isLoading = true;
     BeritaRepository.getBerita(NetworkURL.getBerita()).then((value) {
       if (value['code'] == 200) {
         for (Map<String, dynamic> i in value['data']) {
           listBerita.add(Berita.fromJson(i));
         }
+        isLoading = false;
+        notifyListeners();
+      } else {
+        isLoading = false;
         notifyListeners();
       }
     });

@@ -25,7 +25,17 @@ class ProfilPage extends StatelessWidget {
                             fontWeight: FontWeight.w700,
                           ),
                         ),
+                        centerTitle: true,
                         backgroundColor: Colors.black,
+                        actions: [
+                          Icon(
+                            MdiIcons.accountEdit, 
+                            color: Colors.white
+                          ),
+                          SizedBox(
+                            width: 10,
+                          )
+                        ],
                       )
                     : PreferredSize(
                         child: SizedBox(), preferredSize: Size(0, 0)),
@@ -43,7 +53,9 @@ class ProfilPage extends StatelessWidget {
                     }
                     return true;
                   },
-                  child: ListView(children: [
+                  child: value.isLoading 
+                  ? Center(child: CircularProgressIndicator(),) 
+                  : ListView(children: [
                     SizedBox(
                       height: 320,
                       child: Container(
@@ -60,13 +72,28 @@ class ProfilPage extends StatelessWidget {
                                     )),
                                 child: Container(
                                   alignment: Alignment.topCenter,
-                                  margin: EdgeInsets.only(top: 20),
-                                  child: Text(
-                                    "Profil",
-                                    style: TextStyle(
-                                      fontSize: 24,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w700,
+                                  margin: EdgeInsets.only(top: 20, right: 10),
+                                  child: SizedBox(
+                                    // width: 250,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        SizedBox(
+                                          width: 35,
+                                        ),
+                                        Text(
+                                          "Profil",
+                                          style: TextStyle(
+                                            fontSize: 24,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                        Icon(
+                                          MdiIcons.accountEdit, 
+                                          color: Colors.white,
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -137,8 +164,7 @@ class ProfilPage extends StatelessWidget {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 15),
                                     child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text('Tanggal Lahir'),
                                         SizedBox(height: 3),
@@ -164,8 +190,7 @@ class ProfilPage extends StatelessWidget {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 15),
                                     child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text('Email'),
                                         SizedBox(height: 3),
