@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:princess_solution/isi_berita.dart';
+// import 'package:princess_solution/isi_berita.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:princess_solution/berita/berita_detail_notifier.dart';
 import 'package:princess_solution/models/berita.dart';
 import 'package:provider/provider.dart';
-
-import '../network/network.dart';
+import 'package:princess_solution/network/network.dart';
 
 class BeritaDetailPage extends StatelessWidget {
   final Berita isi;

@@ -27,7 +27,7 @@ class MenuPage extends StatelessWidget {
                           : value.page == 3
                               ? const KonsultasiPage()
                               : value.page == 4
-                                  ? const ProfilPage()
+                                  ? ProfilPage()
                                   : const SizedBox(),
                 ),
                 bottomNavigationBar: SizedBox(

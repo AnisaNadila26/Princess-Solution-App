@@ -12,7 +12,7 @@ class BeritaRepository {
     }
     if (response.statusCode == 200) {
       if (kDebugMode) {
-        print("RESPONSE DATA LOGIN : ${response.data}");
+        print("RESPONSE DATA BERITA : ${response.data}");
       }
       return response.data;
     } else {

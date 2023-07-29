@@ -43,6 +43,7 @@ dependencies:
   foundation_flutter: ^0.2.0
   shared_preferences: ^2.1.0
   url_launcher: ^6.1.11
+  image_picker: ^1.0.1
   
 dev_dependencies:
   flutter_test  :

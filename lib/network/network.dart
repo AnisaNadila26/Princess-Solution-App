@@ -25,4 +25,8 @@ class NetworkURL {
   static String sendWA() {
     return '$whatsapp';
   }
+
+  static String ubahProfil() {
+    return '$url/ubahprofil';
+  }
 }

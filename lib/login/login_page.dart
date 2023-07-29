@@ -105,44 +105,47 @@ class _LoginPageState extends State<LoginPage> {
                                       return null;
                                     }
                                   },
-                                  obscureText: value.obsecureText,
+                                  obscureText: !value.passwordVisible,
                                   decoration: InputDecoration(
                                       icon: Icon(MdiIcons.lock),
                                       labelText: 'Password',
                                       floatingLabelStyle:
                                           const TextStyle(color: Colors.black),
                                       enabledBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(20),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
                                           borderSide: BorderSide(
                                             color: Colors.grey,
                                             width: 2,
                                           )),
                                       focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(20),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
                                           borderSide: BorderSide(
                                             color: Colors.black,
                                             width: 2,
                                           )),
                                       errorBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(20),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
                                           borderSide: BorderSide(
                                             color: Colors.grey,
                                             width: 2,
                                           )),
                                       focusedErrorBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(20),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
                                           borderSide: BorderSide(
                                             color: Colors.black,
                                             width: 2,
                                           )),
                                       suffixIcon: GestureDetector(
                                         onTap: () {
-                                          setState(() {
-                                            value.obsecureText =
-                                                !value.obsecureText;
-                                          });
+                                          value.passwordVisibility();
                                         },
-                                        child: Icon(value.obsecureText ? MdiIcons.eyeOff : MdiIcons.eye),
+                                        child: Icon(value.passwordVisible
+                                            ? MdiIcons.eye
+                                            : MdiIcons.eyeOff),
                                       )),
                                 ),
                                 SizedBox(

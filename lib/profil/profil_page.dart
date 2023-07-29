@@ -3,6 +3,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:princess_solution/profil/profil_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:princess_solution/network/network.dart';
+import 'package:princess_solution/profil/ubah_profil_page.dart';
 // import 'package:go_router/go_router.dart';
 
 class ProfilPage extends StatelessWidget {
@@ -28,9 +29,19 @@ class ProfilPage extends StatelessWidget {
                         centerTitle: true,
                         backgroundColor: Colors.black,
                         actions: [
-                          Icon(
-                            MdiIcons.accountEdit, 
-                            color: Colors.white
+                        IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return UbahProfilPage();
+                                }),
+                              );
+                            }, 
+                            icon: Icon(
+                              MdiIcons.accountEdit, 
+                              color: Colors.white,
+                            )
                           ),
                           SizedBox(
                             width: 10,
@@ -73,28 +84,36 @@ class ProfilPage extends StatelessWidget {
                                 child: Container(
                                   alignment: Alignment.topCenter,
                                   margin: EdgeInsets.only(top: 20, right: 10),
-                                  child: SizedBox(
-                                    // width: 250,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        SizedBox(
-                                          width: 35,
-                                        ),
-                                        Text(
-                                          "Profil",
-                                          style: TextStyle(
-                                            fontSize: 24,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                        Icon(
-                                          MdiIcons.accountEdit, 
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      SizedBox(
+                                        width: 50,
+                                      ),
+                                      Text(
+                                        "Profil",
+                                        style: TextStyle(
+                                          fontSize: 24,
                                           color: Colors.white,
+                                          fontWeight: FontWeight.w700,
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                      IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) {
+                                              return UbahProfilPage();
+                                            }),
+                                          );
+                                        }, 
+                                        icon: Icon(
+                                          MdiIcons.accountEdit,
+                                          color: Colors.white,
+                                        )
+                                      )
+                                    ],
                                   ),
                                 ),
                               ),
@@ -121,7 +140,7 @@ class ProfilPage extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: Column(
                         children: [
                           Card(
@@ -369,7 +388,8 @@ class ProfilPage extends StatelessWidget {
                       ),
                     ),
                   ]),
-                )),
+                )
+              ),
               )),
     );
     // return Scaffold(
