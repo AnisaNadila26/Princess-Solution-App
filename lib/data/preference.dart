@@ -1,6 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:princess_solution/models/data.dart';
+import 'package:princess_solution/models/instruktur.dart';
 
 class Preference {
   static String noRegistrasi = "no_registrasi";
@@ -38,7 +39,7 @@ class Preference {
     pref.setString(Preference.fotoProfil, users.fotoProfil);
     pref.setString(Preference.jenisKendaraan, users.jenisKendaraan);
     pref.setString(Preference.kodeKendaraan, users.kodeKendaraan);
-    pref.setString(Preference.instruktur, users.instruktur);
+    pref.setString(Preference.instruktur, users.instruktur.idInstruktur);
     pref.setString(Preference.paket, users.paket);
     pref.setString(Preference.jadwal, users.jadwal);
     pref.setString(Preference.status, users.status);
@@ -65,7 +66,10 @@ class Preference {
       fotoProfil: pref.getString(Preference.fotoProfil) ?? "",
       jenisKendaraan: pref.getString(Preference.jenisKendaraan) ?? "",
       kodeKendaraan: pref.getString(Preference.kodeKendaraan) ?? "",
-      instruktur: pref.getString(Preference.instruktur) ?? "",
+      instruktur: Instruktur(
+          idInstruktur: pref.getString(Preference.instruktur) ?? "",
+          nama: "",
+          usia: ""),
       paket: pref.getString(Preference.paket) ?? "",
       jadwal: pref.getString(Preference.jadwal) ?? "",
       status: pref.getString(Preference.status) ?? "",
@@ -104,5 +108,10 @@ class Preference {
     pref.remove(Preference.qr);
     pref.remove(Preference.createdAt);
     pref.remove(Preference.updatedAt);
+  }
+
+  removeFotoProfil() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.remove(Preference.fotoProfil);
   }
 }

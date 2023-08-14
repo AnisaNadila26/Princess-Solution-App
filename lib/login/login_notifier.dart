@@ -5,15 +5,15 @@ import 'package:princess_solution/data/preference.dart';
 import 'package:princess_solution/repository/login_repository.dart';
 import 'package:princess_solution/menu/menu_page.dart';
 
+// import '../models/instruktur.dart';
+
 class LoginNotifier extends ChangeNotifier {
   final BuildContext context;
 
-  LoginNotifier(this.context) {
-    // obsecureText = true;
-    getProfile();
-  }
+  LoginNotifier(this.context);
 
   Data? users;
+  
 
   GlobalKey<FormState> keyForm = GlobalKey<FormState>();
   TextEditingController email = TextEditingController();
@@ -21,7 +21,7 @@ class LoginNotifier extends ChangeNotifier {
 
   bool passwordVisible = false;
 
-  passwordVisibility () {
+  passwordVisibility() {
     passwordVisible = !passwordVisible;
     notifyListeners();
   }
@@ -33,53 +33,50 @@ class LoginNotifier extends ChangeNotifier {
   }
 
   Future simpan() async {
-    LoginRepository.login(
-            NetworkURL.login(), email.text.trim(), password.text.trim())
-        .then((value) {
-      Navigator.pop(context);
-      if (value['code'] == 200) {
-        Data users = Data.fromJson(value);
-        Preference().setUsers(users);
-        Navigator.pushAndRemoveUntil(
+    try {
+      LoginRepository.login(
+        NetworkURL.login(),
+        email.text.trim(),
+        password.text.trim(),
+      ).then((value) {
+        Navigator.pop(context);
+        if (value['code'] == 200) {
+          Data users = Data.fromJson(value['data']);
+          Preference().setUsers(users);
+          Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => const MenuPage()),
-            (route) => false);
-      } else {
-        showModalBottomSheet(
-          backgroundColor: Colors.white,
-          context: context,
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(16),
-                  topRight: Radius.circular(16))),
-          builder: (context) {
-            return Container(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text("Loading"),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text("Tutup"))
-                ],
-              ),
-            );
-          });
-      }
-    });
+            (route) => false,
+          );
+        }
+      }).catchError((error) {
+        final snackBar = SnackBar(
+          content: Text('Email atau Password salah'),
+          backgroundColor: Colors.black,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          behavior: SnackBarBehavior.floating,
+          margin: EdgeInsets.all(50),
+          elevation: 30,
+        );
+        ScaffoldMessenger.of(context)
+            .showSnackBar(snackBar); // Tampilkan snackbar jika terjadi error
+      });
+    } catch (error) {
+      print(error);
+    }
   }
 
-  getProfile() async {
-    Preference().getUsers().then((value) {
-      users = value;
-      notifyListeners();
-    });
-  }
+  // getProfile() async {
+  //   final profile = await Preference().getUsers();
+  //   users = profile;
+
+  //   if (users != null && users!.instruktur.idInstruktur.isNotEmpty) {
+  //     instruktur = await InstrukturRepository.getInstruktur(
+  //         int.parse(users!.instruktur.idInstruktur));
+  //   }
+
+  //   notifyListeners();
+  // }
 }

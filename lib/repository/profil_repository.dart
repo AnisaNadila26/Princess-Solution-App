@@ -13,6 +13,7 @@ class ProfilRepository {
     String alamat,
     List<int>? fotoProfil,
     String? namaFoto,
+    // {bool hapusFoto = false}
   ) async {
     print(url);
     print(noRegistrasi);
@@ -22,6 +23,7 @@ class ProfilRepository {
     print(telpon);
     print(pekerjaan);
     print(alamat);
+    print(namaFoto);
 
     Dio dio = Dio();
     FormData formData = FormData.fromMap({
@@ -32,9 +34,9 @@ class ProfilRepository {
       "telpon": telpon,
       "pekerjaan": pekerjaan,
       "alamat": alamat,
-      "fotoProfil": namaFoto == ""
-      ? ""
-      : MultipartFile.fromBytes(fotoProfil!, filename: namaFoto),
+      "foto_profil": namaFoto == ""
+          ? ""
+          : MultipartFile.fromBytes(fotoProfil!, filename: namaFoto),
     });
 
     final response = await dio.post(url, data: formData);
@@ -43,7 +45,7 @@ class ProfilRepository {
     }
     if (response.statusCode == 200) {
       if (kDebugMode) {
-        print("RESPONSE DATA LOGIN : ${response.data}");
+        print("RESPONSE DATA UPDATE : ${response.data}");
       }
       return response.data;
     } else {

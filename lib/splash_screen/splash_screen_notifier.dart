@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:princess_solution/menu/menu_page.dart';
 import 'package:princess_solution/login/login_page.dart';
 
 class SplashScreenNotifier extends ChangeNotifier {
@@ -7,6 +6,7 @@ class SplashScreenNotifier extends ChangeNotifier {
 
   SplashScreenNotifier(this.context) {
     init();
+    notifyListeners();
   }
 
   init() async {

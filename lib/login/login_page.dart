@@ -4,14 +4,9 @@ import 'package:princess_solution/login/login_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -162,9 +157,6 @@ class _LoginPageState extends State<LoginPage> {
                                           alignment: Alignment.center,
                                           decoration: BoxDecoration(
                                             color: Color.fromRGBO(0, 0, 0, 1),
-                                            // border: Border.all(
-                                            //   color: Colors.black,
-                                            // ),
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                           ),
@@ -174,22 +166,6 @@ class _LoginPageState extends State<LoginPage> {
                                               color: Colors.white,
                                             ),
                                           ))),
-                                  // child: TextButton(
-                                  //     style: TextButton.styleFrom(
-                                  //       foregroundColor: Colors.white,
-                                  //       backgroundColor: Colors.black,
-                                  //     ),
-                                  //     onPressed: () {
-                                  //       Navigator.pushAndRemoveUntil(
-                                  //           context,
-                                  //           MaterialPageRoute(
-                                  //               builder: (context) => const MenuPage()),
-                                  //           (route) => false);
-                                  //     },
-                                  //     child: Container(
-                                  //       padding: EdgeInsets.all(16),
-                                  //       child: Text('Masuk'),
-                                  //     )),
                                 ),
                               ],
                             )),

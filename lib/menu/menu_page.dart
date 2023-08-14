@@ -5,6 +5,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:princess_solution/dasbor/dasbor_page.dart';
 import 'package:princess_solution/berita/berita_page.dart';
+import 'package:princess_solution/presensi/presensi_page.dart';
 import 'package:princess_solution/konsultasi/konsultasi_page.dart';
 import 'package:princess_solution/profil/profil_page.dart';
 
@@ -13,8 +14,11 @@ class MenuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+    int initialPageIndex = args?['page'] ?? 0;
+    
     return ChangeNotifierProvider(
-      create: (_) => MenuNotifier(context),
+      create: (_) => MenuNotifier(context, initialPageIndex),
       child: Consumer<MenuNotifier>(
           builder: (context, value, child) => Scaffold(
                 body: InkWell(
@@ -24,6 +28,8 @@ class MenuPage extends StatelessWidget {
                         )
                       : value.page == 1
                           ? const BeritaPage()
+                          : value.page == 2
+                              ? const PresensiPage()
                           : value.page == 3
                               ? const KonsultasiPage()
                               : value.page == 4
@@ -43,26 +49,6 @@ class MenuPage extends StatelessWidget {
                         Icon(MdiIcons.qrcode, color: Colors.white, size: 30),
                         Icon(MdiIcons.chat, color: Colors.white, size: 30),
                         Icon(MdiIcons.account, color: Colors.white, size: 30),
-                        // IconButton(
-                        //     onPressed: value.gantiPage(0),
-                        //     icon: Icon(MdiIcons.home,
-                        //         color: Colors.white, size: 30)),
-                        // IconButton(
-                        //     onPressed: value.gantiPage(1),
-                        //     icon: Icon(MdiIcons.newspaper,
-                        //         color: Colors.white, size: 30)),
-                        // IconButton(
-                        //     onPressed: value.gantiPage(2),
-                        //     icon: Icon(MdiIcons.qrcode,
-                        //         color: Colors.white, size: 30)),
-                        // IconButton(
-                        //     onPressed: value.gantiPage(3),
-                        //     icon: Icon(MdiIcons.chat,
-                        //         color: Colors.white, size: 30)),
-                        // IconButton(
-                        //     onPressed: value.gantiPage(4),
-                        //     icon: Icon(MdiIcons.account,
-                        //         color: Colors.white, size: 30)),
                       ],
                       onTap: (index) {
                         value.gantiPage(index);

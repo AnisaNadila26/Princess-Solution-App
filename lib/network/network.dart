@@ -10,6 +10,11 @@ class NetworkURL {
     return '$url/login';
   }
 
+  static String getInstruktur(int idInstruktur) {
+    return '$url/instruktur/$idInstruktur';
+  }
+
+
   static String getProfil(String fotoProfil) {
     return '$url_imagesProfil/$fotoProfil';
   }

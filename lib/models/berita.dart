@@ -1,8 +1,3 @@
-import 'package:json_annotation/json_annotation.dart';
-
-part 'berita.g.dart';
-
-@JsonSerializable()
 class Berita {
   Berita({
     required this.id,
@@ -18,6 +13,23 @@ class Berita {
   String tanggal;
   String isi;
 
-  factory Berita.fromJson(Map<String, dynamic> json) => _$BeritaFromJson(json);
-  Map<String, dynamic> toJson() => _$BeritaToJson(this);
+  factory Berita.fromJson(Map<String, dynamic> json) {
+    return Berita(
+      id: json['id'],
+      judul: json['judul'],
+      image: json['image'],
+      tanggal: json['tanggal'],
+      isi: json['isi'],
+    );
+  }
+  
+   Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'judul': judul,
+      'image': image,
+      'tanggal': tanggal,
+      'isi': isi,
+    };
+  }
 }
