@@ -1,15 +1,15 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user.dart';
+// part of 'user.dart';
 
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
+// // **************************************************************************
+// // JsonSerializableGenerator
+// // **************************************************************************
 
-User _$UserFromJson(Map<String, dynamic> json) => User(
-      data: Data.fromJson(json['data'] as Map<String, dynamic>),
-    );
+// User _$UserFromJson(Map<String, dynamic> json) => User(
+//       data: Data.fromJson(json['data'] as Map<String, dynamic>),
+//     );
 
-Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
-      'data': instance.data,
-    };
+// Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
+//       'data': instance.data,
+//     };

@@ -31,7 +31,7 @@ class BeritaDetailPage extends StatelessWidget {
                     child: Container(
                       color: Colors.white,
                       child: Center(
-                        child: Text(isi.judul),
+                        child: Text(isi.judul!),
                       ),
                       width: double.maxFinite,
                       padding: EdgeInsets.only(top: 5, bottom: 10),
@@ -43,7 +43,7 @@ class BeritaDetailPage extends StatelessWidget {
                   flexibleSpace: FlexibleSpaceBar(
                       // title: Text(widget.berita.judul),
                       background: Image.network(
-                        NetworkURL.gambarBerita(isi.image),
+                        NetworkURL.gambarBerita(isi.image!),
                     // image: AssetImage(isi.image),
                     fit: BoxFit.cover,
                   )),
@@ -56,11 +56,11 @@ class BeritaDetailPage extends StatelessWidget {
                           Row(
                             children: [
                               Icon(MdiIcons.calendar),
-                              Text(isi.tanggal)
+                              Text(isi.tanggal!)
                             ],
                           ),
                           Text(
-                            isi.isi,
+                            isi.isi!,
                             textAlign: TextAlign.justify,
                           )
                         ],

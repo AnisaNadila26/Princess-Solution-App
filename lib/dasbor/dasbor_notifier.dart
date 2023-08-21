@@ -5,8 +5,8 @@ import 'package:princess_solution/models/berita.dart';
 import 'package:princess_solution/repository/berita_repository.dart';
 import 'package:princess_solution/network/network.dart';
 
-import '../models/instruktur.dart';
-import '../repository/login_repository.dart';
+// import '../models/instruktur.dart';
+// import '../repository/login_repository.dart';
 
 class DasborNotifier extends ChangeNotifier {
   final BuildContext context;
@@ -18,7 +18,7 @@ class DasborNotifier extends ChangeNotifier {
   }
 
   Data? users;
-  Instruktur? instruktur;
+  // Instruktur? instruktur;
   var onAppBar = false;
   var isLoading = true;
 
@@ -32,23 +32,13 @@ class DasborNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  // getProfile() async {
-  //   isLoading = true;
-  //   Preference().getUsers().then((value) {
-  //     users = value;
-  //     isLoading = false;
-  //     notifyListeners();
-  //   });
-  // }
   getProfile() async {
-    final profile = await Preference().getUsers();
-    users = profile;
-
-    if (users != null && users!.instruktur.idInstruktur.isNotEmpty) {
-      instruktur = await InstrukturRepository.getInstruktur(
-          int.parse(users!.instruktur.idInstruktur));
-    }
-    notifyListeners();
+    isLoading = true;
+    Preference().getUsers().then((value) {
+      users = value;
+      isLoading = false;
+      notifyListeners();
+    });
   }
 
   List<Berita> listBerita = [];

@@ -1,4 +1,10 @@
 class Berita {
+  String? id;
+  String? judul;
+  String? image;
+  String? tanggal;
+  String? isi;
+  
   Berita({
     required this.id,
     required this.judul,
@@ -7,11 +13,6 @@ class Berita {
     required this.isi,
   });
 
-  String id;
-  String judul;
-  String image;
-  String tanggal;
-  String isi;
 
   factory Berita.fromJson(Map<String, dynamic> json) {
     return Berita(

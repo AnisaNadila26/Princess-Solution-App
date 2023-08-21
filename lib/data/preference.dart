@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:princess_solution/models/data.dart';
-import 'package:princess_solution/models/instruktur.dart';
+// import 'package:princess_solution/models/instruktur.dart';
 
 class Preference {
   static String noRegistrasi = "no_registrasi";
@@ -14,7 +14,8 @@ class Preference {
   static String fotoProfil = "foto_profil";
   static String jenisKendaraan = "jenis_kendaraan";
   static String kodeKendaraan = "kode_kendaraan";
-  static String instruktur = "instruktur";
+  static String idInstruktur = "id_instruktur";
+  static String namaInstruktur = "nama_instruktur";
   static String paket = "paket";
   static String jadwal = "jadwal";
   static String status = "status";
@@ -25,31 +26,71 @@ class Preference {
   static String qr = "qr";
   static String createdAt = "created_at";
   static String updatedAt = "updated_at";
+  static String rating = "rating";
+  static String review = "review";
 
   setUsers(Data users) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     // pref.setInt(Preference.noRegistrasi, users.noRegistrasi);
-    pref.setString(Preference.noRegistrasi, users.noRegistrasi);
-    pref.setString(Preference.nama, users.nama);
-    pref.setString(Preference.tanggalLahir, users.tanggalLahir);
-    pref.setString(Preference.email, users.email);
-    pref.setString(Preference.telpon, users.telpon);
-    pref.setString(Preference.pekerjaan, users.pekerjaan);
-    pref.setString(Preference.alamat, users.alamat);
-    pref.setString(Preference.fotoProfil, users.fotoProfil);
-    pref.setString(Preference.jenisKendaraan, users.jenisKendaraan);
-    pref.setString(Preference.kodeKendaraan, users.kodeKendaraan);
-    pref.setString(Preference.instruktur, users.instruktur.idInstruktur);
-    pref.setString(Preference.paket, users.paket);
-    pref.setString(Preference.jadwal, users.jadwal);
-    pref.setString(Preference.status, users.status);
-    pref.setString(Preference.jenisPembayaran, users.jenisPembayaran);
-    pref.setString(Preference.jumlahPembayaran, users.jumlahPembayaran);
-    pref.setString(Preference.sisaPembayaran, users.sisaPembayaran);
-    pref.setString(Preference.kehadiran, users.kehadiran);
-    pref.setString(Preference.qr, users.qr);
-    pref.setString(Preference.createdAt, users.createdAt);
-    pref.setString(Preference.updatedAt, users.updatedAt);
+    pref.setString(Preference.noRegistrasi, users.noRegistrasi!);
+    pref.setString(Preference.nama, users.nama!);
+    pref.setString(Preference.tanggalLahir, users.ttl!);
+    pref.setString(Preference.email, users.email!);
+    pref.setString(Preference.telpon, users.telpon!);
+    pref.setString(Preference.pekerjaan, users.pekerjaan!);
+    pref.setString(Preference.alamat, users.alamat!);
+    pref.setString(Preference.fotoProfil, users.fotoProfil!);
+    pref.setString(Preference.jenisKendaraan, users.jenisKendaraan!);
+    pref.setString(Preference.kodeKendaraan, users.kodeKendaraan!);
+    pref.setString(Preference.idInstruktur, users.idInstruktur!);
+    pref.setString(Preference.namaInstruktur, users.namaInstruktur!);
+    pref.setString(Preference.paket, users.paket!);
+    pref.setString(Preference.jadwal, users.jadwal!);
+    pref.setString(Preference.status, users.status!);
+    pref.setString(Preference.jenisPembayaran, users.jenisPembayaran!);
+    pref.setString(Preference.jumlahPembayaran, users.jumlahPembayaran!);
+    pref.setString(Preference.sisaPembayaran, users.sisaPembayaran!);
+    pref.setString(Preference.kehadiran, users.kehadiran!);
+    pref.setString(Preference.qr, users.qr!);
+    pref.setString(Preference.createdAt, users.createdAt!);
+    pref.setString(Preference.updatedAt, users.updatedAt!);
+    pref.setString(Preference.rating, users.rating!);
+    pref.setString(Preference.review, users.review!);
+  }
+
+  setEdit(Data users) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    // pref.setInt(Preference.noRegistrasi, users.noRegistrasi);
+    pref.setString(Preference.noRegistrasi, users.noRegistrasi!);
+    pref.setString(Preference.nama, users.nama!);
+    pref.setString(Preference.tanggalLahir, users.ttl!);
+    pref.setString(Preference.email, users.email!);
+    pref.setString(Preference.telpon, users.telpon!);
+    pref.setString(Preference.pekerjaan, users.pekerjaan!);
+    pref.setString(Preference.alamat, users.alamat!);
+    pref.setString(Preference.fotoProfil, users.fotoProfil!);
+    pref.setString(Preference.jenisKendaraan, users.jenisKendaraan!);
+    pref.setString(Preference.kodeKendaraan, users.kodeKendaraan!);
+    pref.setString(Preference.idInstruktur, users.idInstruktur!);
+    pref.setString(Preference.paket, users.paket!);
+    pref.setString(Preference.jadwal, users.jadwal!);
+    pref.setString(Preference.status, users.status!);
+    pref.setString(Preference.jenisPembayaran, users.jenisPembayaran!);
+    pref.setString(Preference.jumlahPembayaran, users.jumlahPembayaran!);
+    pref.setString(Preference.sisaPembayaran, users.sisaPembayaran!);
+    pref.setString(Preference.kehadiran, users.kehadiran!);
+    pref.setString(Preference.qr, users.qr!);
+    pref.setString(Preference.createdAt, users.createdAt!);
+    pref.setString(Preference.updatedAt, users.updatedAt!);
+  }
+
+  setRating(Data users) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    // pref.setInt(Preference.noRegistrasi, users.noRegistrasi);
+    pref.setString(Preference.noRegistrasi, users.noRegistrasi!);
+    pref.setString(Preference.idInstruktur, users.idInstruktur!);
+    pref.setString(Preference.rating, users.rating!);
+    pref.setString(Preference.review, users.review!);
   }
 
   Future<Data> getUsers() async {
@@ -58,7 +99,7 @@ class Preference {
       // noRegistrasi: pref.getInt(Preference.noRegistrasi) ?? 0,
       noRegistrasi: pref.getString(Preference.noRegistrasi) ?? "",
       nama: pref.getString(Preference.nama) ?? "",
-      tanggalLahir: pref.getString(Preference.tanggalLahir) ?? "",
+      ttl: pref.getString(Preference.tanggalLahir) ?? "",
       email: pref.getString(Preference.email) ?? "",
       telpon: pref.getString(Preference.telpon) ?? "",
       pekerjaan: pref.getString(Preference.pekerjaan) ?? "",
@@ -66,10 +107,8 @@ class Preference {
       fotoProfil: pref.getString(Preference.fotoProfil) ?? "",
       jenisKendaraan: pref.getString(Preference.jenisKendaraan) ?? "",
       kodeKendaraan: pref.getString(Preference.kodeKendaraan) ?? "",
-      instruktur: Instruktur(
-          idInstruktur: pref.getString(Preference.instruktur) ?? "",
-          nama: "",
-          usia: ""),
+      idInstruktur: pref.getString(Preference.idInstruktur) ?? "",
+      namaInstruktur: pref.getString(Preference.namaInstruktur) ?? "",
       paket: pref.getString(Preference.paket) ?? "",
       jadwal: pref.getString(Preference.jadwal) ?? "",
       status: pref.getString(Preference.status) ?? "",
@@ -79,7 +118,9 @@ class Preference {
       kehadiran: pref.getString(Preference.kehadiran) ?? "",
       qr: pref.getString(Preference.qr) ?? "",
       createdAt: pref.getString(Preference.createdAt) ?? "",
-      updatedAt: pref.getString(Preference.updatedAt) ?? "",
+      updatedAt: (pref.getString(Preference.updatedAt) ?? ""),
+      rating: (pref.getString(Preference.rating) ?? ""),
+      review: (pref.getString(Preference.review) ?? ""),
     );
 
     return users;
@@ -97,7 +138,8 @@ class Preference {
     pref.remove(Preference.fotoProfil);
     pref.remove(Preference.jenisKendaraan);
     pref.remove(Preference.kodeKendaraan);
-    pref.remove(Preference.instruktur);
+    pref.remove(Preference.idInstruktur);
+    pref.remove(Preference.namaInstruktur);
     pref.remove(Preference.paket);
     pref.remove(Preference.jadwal);
     pref.remove(Preference.status);
@@ -108,10 +150,12 @@ class Preference {
     pref.remove(Preference.qr);
     pref.remove(Preference.createdAt);
     pref.remove(Preference.updatedAt);
+    pref.remove(Preference.rating);
+    pref.remove(Preference.review);
   }
 
-  removeFotoProfil() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.remove(Preference.fotoProfil);
-  }
+  // removeFotoProfil() async {
+  //   SharedPreferences pref = await SharedPreferences.getInstance();
+  //   pref.remove(Preference.fotoProfil);
+  // }
 }

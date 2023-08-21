@@ -4,6 +4,7 @@ import 'package:princess_solution/profil/profil_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:princess_solution/network/network.dart';
 import 'package:princess_solution/profil/ubah_profil_page.dart';
+import 'package:princess_solution/rating/rating_page.dart';
 // import 'package:go_router/go_router.dart';
 
 class ProfilPage extends StatelessWidget {
@@ -84,9 +85,11 @@ class ProfilPage extends StatelessWidget {
                                           )),
                                       child: Container(
                                         alignment: Alignment.topCenter,
-                                        margin:EdgeInsets.only(top: 20, right: 10),
+                                        margin:
+                                            EdgeInsets.only(top: 20, right: 10),
                                         child: Row(
-                                          mainAxisAlignment:MainAxisAlignment.spaceBetween,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             SizedBox(
                                               width: 50,
@@ -100,20 +103,19 @@ class ProfilPage extends StatelessWidget {
                                               ),
                                             ),
                                             IconButton(
-                                              onPressed: () {
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) {
+                                                onPressed: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
                                                       return UbahProfilPage();
-                                                  }),
-                                                );
-                                              },
-                                              icon: Icon(
-                                                MdiIcons.accountEdit,
-                                                color: Colors.white,
-                                              )
-                                            )
+                                                    }),
+                                                  );
+                                                },
+                                                icon: Icon(
+                                                  MdiIcons.accountEdit,
+                                                  color: Colors.white,
+                                                ))
                                           ],
                                         ),
                                       ),
@@ -128,9 +130,10 @@ class ProfilPage extends StatelessWidget {
                                         backgroundColor: Colors.grey.shade800,
                                         child: ClipOval(
                                           child: Image.network(
-                                            value.users!.fotoProfil.isNotEmpty
-                                              ? NetworkURL.getProfil(value.users!.fotoProfil)
-                                              : 'assets/defaultProfile.png',
+                                            value.users!.fotoProfil!.isNotEmpty
+                                                ? NetworkURL.getProfil(
+                                                    value.users!.fotoProfil!)
+                                                : 'assets/defaultProfile.png',
                                             width: 120,
                                             height: 120,
                                             fit: BoxFit.cover,
@@ -149,7 +152,7 @@ class ProfilPage extends StatelessWidget {
                               children: [
                                 Card(
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20)),
+                                      borderRadius: BorderRadius.circular(20)),
                                   elevation: 2.0,
                                   color: Colors.grey,
                                   child: Padding(
@@ -168,7 +171,7 @@ class ProfilPage extends StatelessWidget {
                                             children: [
                                               Text('Nama'),
                                               SizedBox(height: 3),
-                                              Text(value.users!.nama),
+                                              Text(value.users!.nama!),
                                             ],
                                           ),
                                         )
@@ -198,7 +201,7 @@ class ProfilPage extends StatelessWidget {
                                             children: [
                                               Text('Tanggal Lahir'),
                                               SizedBox(height: 3),
-                                              Text(value.users!.tanggalLahir),
+                                              Text(value.users!.ttl.toString()),
                                             ],
                                           ),
                                         )
@@ -228,7 +231,7 @@ class ProfilPage extends StatelessWidget {
                                             children: [
                                               Text('Email'),
                                               SizedBox(height: 3),
-                                              Text(value.users!.email),
+                                              Text(value.users!.email!),
                                             ],
                                           ),
                                         )
@@ -258,7 +261,7 @@ class ProfilPage extends StatelessWidget {
                                             children: [
                                               Text('Nomor Telepon'),
                                               SizedBox(height: 3),
-                                              Text(value.users!.telpon),
+                                              Text(value.users!.telpon!),
                                             ],
                                           ),
                                         )
@@ -288,7 +291,7 @@ class ProfilPage extends StatelessWidget {
                                             children: [
                                               Text('Pekerjaan'),
                                               SizedBox(height: 3),
-                                              Text(value.users!.pekerjaan),
+                                              Text(value.users!.pekerjaan!),
                                             ],
                                           ),
                                         )
@@ -318,7 +321,7 @@ class ProfilPage extends StatelessWidget {
                                             children: [
                                               Text('Alamat'),
                                               SizedBox(height: 3),
-                                              Text(value.users!.alamat),
+                                              Text(value.users!.alamat!),
                                             ],
                                           ),
                                         )
@@ -348,7 +351,7 @@ class ProfilPage extends StatelessWidget {
                                             children: [
                                               Text('Status'),
                                               SizedBox(height: 3),
-                                              Text(value.users!.status),
+                                              Text(value.users!.status!),
                                             ],
                                           ),
                                         )
@@ -378,7 +381,7 @@ class ProfilPage extends StatelessWidget {
                                             children: [
                                               Text('Jumlah Kehadiran'),
                                               SizedBox(height: 3),
-                                              Text(value.users!.kehadiran),
+                                              Text(value.users!.kehadiran!),
                                             ],
                                           ),
                                         )
@@ -395,24 +398,72 @@ class ProfilPage extends StatelessWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.all(10),
                                     child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
+                                      mainAxisAlignment:MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Icon(MdiIcons.cash),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 15),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                        Row(
+                                          children: [
+                                            Icon(MdiIcons.cash),
+                                            Padding(
+                                              padding: const EdgeInsets.symmetric(
+                                                  horizontal: 15),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text('Tagihan'),
+                                                  SizedBox(height: 3),
+                                                  Text(
+                                                      value.users!.sisaPembayaran!),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                       Icon(MdiIcons.chevronRight),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) {
+                                        return RatingPage();
+                                      }),
+                                    );
+                                  },
+                                  child: Card(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20)),
+                                    elevation: 2.0,
+                                    color: Colors.green.shade200,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: Row(
+                                        mainAxisAlignment:MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
                                             children: [
-                                              Text('Tagihan'),
-                                              SizedBox(height: 3),
-                                              Text(value.users!.sisaPembayaran),
+                                              Icon(MdiIcons.heart),
+                                              Padding(
+                                                padding: const EdgeInsets.symmetric(
+                                                    horizontal: 15),
+                                                child: Column(
+                                                  crossAxisAlignment:CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text('Penilaian Kursus'),
+                                                    SizedBox(height: 3),
+                                                    Text('Berikan penilaian anda'),
+                                                  ],
+                                                ),
+                                              ),
                                             ],
                                           ),
-                                        )
-                                      ],
+                                          Icon(MdiIcons.chevronRight),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -426,22 +477,30 @@ class ProfilPage extends StatelessWidget {
                                             context: context,
                                             builder: (context) {
                                               return AlertDialog(
-                                                shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(20)),
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20)),
                                                 content: Container(
                                                   height: 200,
                                                   width: 250,
                                                   child: Column(
-                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
                                                     children: [
                                                       Container(
                                                         width: 60,
                                                         height: 60,
-                                                        decoration: BoxDecoration(
+                                                        decoration:
+                                                            BoxDecoration(
                                                           color: Colors.black,
-                                                          shape: BoxShape.circle,
+                                                          shape:
+                                                              BoxShape.circle,
                                                         ),
                                                         child: Icon(
-                                                          MdiIcons.logoutVariant, 
+                                                          MdiIcons
+                                                              .logoutVariant,
                                                           color: Colors.white,
                                                         ),
                                                       ),
@@ -449,28 +508,45 @@ class ProfilPage extends StatelessWidget {
                                                       SizedBox(height: 20),
                                                       Text(
                                                         'Keluar',
-                                                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                                                        style: TextStyle(
+                                                            fontSize: 20,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
                                                       ),
                                                       SizedBox(height: 20),
-                                                      Text('Apakah anda yakin ingin keluar?'),
+                                                      Text(
+                                                          'Apakah anda yakin ingin keluar?'),
                                                       SizedBox(height: 20),
                                                       Row(
-                                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
                                                         children: [
                                                           FilledButton(
                                                             onPressed: () {
                                                               Navigator.pop(
                                                                   context);
                                                             },
-                                                            child: Text('Batal'),
-                                                            style: FilledButton.styleFrom(backgroundColor: Colors.grey),
+                                                            child:
+                                                                Text('Batal'),
+                                                            style: FilledButton
+                                                                .styleFrom(
+                                                                    backgroundColor:
+                                                                        Colors
+                                                                            .grey),
                                                           ),
                                                           FilledButton(
                                                             onPressed: () {
                                                               value.logout();
                                                             },
-                                                            child: Text('Keluar'),
-                                                            style: FilledButton.styleFrom(backgroundColor:Colors.black),
+                                                            child:
+                                                                Text('Keluar'),
+                                                            style: FilledButton
+                                                                .styleFrom(
+                                                                    backgroundColor:
+                                                                        Colors
+                                                                            .black),
                                                           ),
                                                         ],
                                                       )

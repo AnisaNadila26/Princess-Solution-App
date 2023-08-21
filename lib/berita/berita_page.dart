@@ -32,14 +32,21 @@ class BeritaPage extends StatelessWidget {
                   )
                 : ListView.separated(
                     itemBuilder: (BuildContext context, int index) {
-                      return BeritaItem(berita: value.listBerita[index]);
+                      if (value.listBerita.isEmpty) {
+                        return Center(
+                          child: Text('Belum ada berita'),
+                        );
+                      } else {
+                        return BeritaItem(berita: value.listBerita[index]);
+                      }
                     },
                     separatorBuilder: (BuildContext context, int index) =>
                         const Divider(
                       color: Colors.black,
                       thickness: 0.2,
                     ),
-                    itemCount: value.listBerita.length,
+                    itemCount:
+                        value.listBerita.isEmpty ? 1 : value.listBerita.length,
                   ),
           ),
         ),

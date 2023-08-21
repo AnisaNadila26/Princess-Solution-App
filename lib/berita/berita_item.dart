@@ -31,18 +31,18 @@ class BeritaItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      berita.judul,
+                      berita.judul!,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                     ),
                     Text(
-                      berita.tanggal,
+                      berita.tanggal!,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                     ),
                     SizedBox(height: 5),
                     Text(
-                      berita.isi,
+                      berita.isi!,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                     ),
@@ -52,7 +52,7 @@ class BeritaItem extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.network(
-                  NetworkURL.gambarBerita(berita.image),
+                  NetworkURL.gambarBerita(berita.image!),
                   width: 100,
                 ),
               ),

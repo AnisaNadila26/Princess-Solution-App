@@ -13,7 +13,6 @@ class ProfilRepository {
     String alamat,
     List<int>? fotoProfil,
     String? namaFoto,
-    // {bool hapusFoto = false}
   ) async {
     print(url);
     print(noRegistrasi);

@@ -61,35 +61,34 @@ class UbahProfilPage extends StatelessWidget {
                                     radius: 60,
                                     backgroundColor: Colors.grey.shade800,
                                     child: ClipOval(
-                                      child: value.file != null
-                                          ? Image.memory(
-                                              value.fileToDisplay!,
-                                              width: 120,
-                                              height: 120,
-                                              fit: BoxFit.cover,
-                                            )
-                                          : (value.fotoProfil == '')
-                                              ? Image.asset(
-                                                  'assets/defaultProfile.png',
-                                                  width: 120,
-                                                  height: 120,
-                                                  fit: BoxFit.cover,
-                                                )
-                                              : Image.network(
-                                                  NetworkURL.getProfil(value
-                                                      .users!.fotoProfil),
-                                                  width: 120,
-                                                  height: 120,
-                                                  fit: BoxFit.cover,
-                                                )
-                                    ),
+                                        child: value.file != null
+                                            ? Image.memory(
+                                                value.fileToDisplay!,
+                                                width: 120,
+                                                height: 120,
+                                                fit: BoxFit.cover,
+                                              )
+                                            : (value.fotoProfil == '')
+                                                ? Image.asset(
+                                                    'assets/defaultProfile.png',
+                                                    width: 120,
+                                                    height: 120,
+                                                    fit: BoxFit.cover,
+                                                  )
+                                                : Image.network(
+                                                    NetworkURL.getProfil(value
+                                                        .users!.fotoProfil!),
+                                                    width: 120,
+                                                    height: 120,
+                                                    fit: BoxFit.cover,
+                                                  )),
                                   ),
                                   Positioned(
                                       bottom: 2,
                                       right: -2,
                                       child: Stack(children: [
                                         Positioned.fill(
-                                          child: Container(
+                                            child: Container(
                                           margin: EdgeInsets.all(5),
                                           decoration: BoxDecoration(
                                               border: Border.all(
@@ -105,47 +104,60 @@ class UbahProfilPage extends StatelessWidget {
                                           onPressed: () {
                                             showModalBottomSheet(
                                                 context: context,
-                                                shape: const RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.vertical(
+                                                shape:
+                                                    const RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.vertical(
                                                     top: Radius.circular(20),
                                                   ),
                                                 ),
-                                                builder:(BuildContext context) {
+                                                builder:
+                                                    (BuildContext context) {
                                                   return SizedBox(
                                                     height: 200,
                                                     child: Column(
-                                                      mainAxisSize:MainAxisSize.min,
-                                                      crossAxisAlignment:CrossAxisAlignment.end,
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .end,
                                                       children: [
                                                         Padding(
                                                           padding:const EdgeInsets.all(10),
                                                           child: TextButton(
-                                                            onPressed: () {
-                                                              Navigator.pop(
-                                                                  context);
-                                                            },
-                                                            child: Text('Batal')
-                                                          ),
+                                                              onPressed: () {
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              child: Text('Batal')),
                                                         ),
                                                         Row(
-                                                          mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceEvenly,
                                                           children: [
                                                             InkWell(
                                                               onTap: () {
-                                                                value.filepick();
+                                                                value
+                                                                    .filepick();
                                                               },
                                                               child: Column(
                                                                 children: [
                                                                   Container(
                                                                     width: 50,
                                                                     height: 50,
-                                                                    decoration:BoxDecoration(
-                                                                      color: Colors.black,
-                                                                      shape: BoxShape.circle,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      shape: BoxShape
+                                                                          .circle,
                                                                     ),
                                                                     child: Icon(
-                                                                      MdiIcons.image,
-                                                                      color: Colors.white,
+                                                                      MdiIcons
+                                                                          .image,
+                                                                      color: Colors
+                                                                          .white,
                                                                     ),
                                                                   ),
                                                                   SizedBox(height:10),
@@ -164,8 +176,10 @@ class UbahProfilPage extends StatelessWidget {
                                                                     height: 50,
                                                                     decoration:
                                                                         BoxDecoration(
-                                                                      color: Colors.black,
-                                                                      shape: BoxShape.circle,
+                                                                      color: Colors
+                                                                          .black,
+                                                                      shape: BoxShape
+                                                                          .circle,
                                                                     ),
                                                                     child: Icon(
                                                                       MdiIcons
@@ -174,8 +188,7 @@ class UbahProfilPage extends StatelessWidget {
                                                                           .white,
                                                                     ),
                                                                   ),
-                                                                  SizedBox(
-                                                                      height: 10),
+                                                                  SizedBox(height:10),
                                                                   Text('Hapus Foto'),
                                                                 ],
                                                               ),

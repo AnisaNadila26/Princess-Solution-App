@@ -5,15 +5,12 @@ import 'package:princess_solution/data/preference.dart';
 import 'package:princess_solution/repository/login_repository.dart';
 import 'package:princess_solution/menu/menu_page.dart';
 
-// import '../models/instruktur.dart';
-
 class LoginNotifier extends ChangeNotifier {
   final BuildContext context;
 
   LoginNotifier(this.context);
 
   Data? users;
-  
 
   GlobalKey<FormState> keyForm = GlobalKey<FormState>();
   TextEditingController email = TextEditingController();
@@ -41,17 +38,19 @@ class LoginNotifier extends ChangeNotifier {
       ).then((value) {
         Navigator.pop(context);
         if (value['code'] == 200) {
-          Data users = Data.fromJson(value['data']);
-          Preference().setUsers(users);
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => const MenuPage()),
-            (route) => false,
-          );
+          if (value['data']['role'] == 'siswa') {
+            Data users = Data.fromJson(value['data']);
+            Preference().setUsers(users);
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => const MenuPage()),
+              (route) => false,
+            );
+          }
         }
       }).catchError((error) {
         final snackBar = SnackBar(
-          content: Text('Email atau Password salah'),
+          content: Text('$error'),
           backgroundColor: Colors.black,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
@@ -60,8 +59,7 @@ class LoginNotifier extends ChangeNotifier {
           margin: EdgeInsets.all(50),
           elevation: 30,
         );
-        ScaffoldMessenger.of(context)
-            .showSnackBar(snackBar); // Tampilkan snackbar jika terjadi error
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       });
     } catch (error) {
       print(error);

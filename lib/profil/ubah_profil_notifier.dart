@@ -39,14 +39,14 @@ class UbahProfilNotifier extends ChangeNotifier {
     isLoading = true;
     Preference().getUsers().then((value) {
       users = value;
-      noRegistrasi = int.parse(users!.noRegistrasi);
+      noRegistrasi = int.parse(users!.noRegistrasi!);
       nama = TextEditingController(text: users!.nama);
-      tanggalLahir = TextEditingController(text: users!.tanggalLahir);
+      tanggalLahir = TextEditingController(text: users!.ttl.toString());
       email = TextEditingController(text: users!.email);
       telpon = TextEditingController(text: users!.telpon);
       pekerjaan = TextEditingController(text: users!.pekerjaan);
       alamat = TextEditingController(text: users!.alamat);
-      fotoProfil = users!.fotoProfil;
+      fotoProfil = users!.fotoProfil!;
       notifyListeners();
       isLoading = false;
       notifyListeners();
@@ -69,7 +69,8 @@ class UbahProfilNotifier extends ChangeNotifier {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             title: Text('Peringatan'),
             content: Text('Ukuran foto melebihi batas maksimum 1000 KB.'),
             actions: [
@@ -145,7 +146,7 @@ class UbahProfilNotifier extends ChangeNotifier {
 
       if (response['code'] == 200) {
         Data users = Data.fromJson(response['data']);
-        Preference().setUsers(users);
+        Preference().setEdit(users);
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
@@ -177,7 +178,7 @@ class UbahProfilNotifier extends ChangeNotifier {
                   const SizedBox(
                     height: 16,
                   ),
-                  FilledButton(
+                  ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
