@@ -76,7 +76,7 @@ class UbahProfilPage extends StatelessWidget {
                                                     fit: BoxFit.cover,
                                                   )
                                                 : Image.network(
-                                                    NetworkURL.getProfil(value
+                                                    NetworkURL.getProfilSiswa(value
                                                         .users!.fotoProfil!),
                                                     width: 120,
                                                     height: 120,

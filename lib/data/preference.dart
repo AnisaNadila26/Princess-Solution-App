@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:princess_solution/models/data.dart';
+import 'package:princess_solution/models/user.dart';
 // import 'package:princess_solution/models/instruktur.dart';
 
 class Preference {
@@ -29,7 +29,7 @@ class Preference {
   static String rating = "rating";
   static String review = "review";
 
-  setUsers(Data users) async {
+  setUsers(User users) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     // pref.setInt(Preference.noRegistrasi, users.noRegistrasi);
     pref.setString(Preference.noRegistrasi, users.noRegistrasi!);
@@ -58,7 +58,7 @@ class Preference {
     pref.setString(Preference.review, users.review!);
   }
 
-  setEdit(Data users) async {
+  setEdit(User users) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     // pref.setInt(Preference.noRegistrasi, users.noRegistrasi);
     pref.setString(Preference.noRegistrasi, users.noRegistrasi!);
@@ -84,7 +84,7 @@ class Preference {
     pref.setString(Preference.updatedAt, users.updatedAt!);
   }
 
-  setRating(Data users) async {
+  setRating(User users) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     // pref.setInt(Preference.noRegistrasi, users.noRegistrasi);
     pref.setString(Preference.noRegistrasi, users.noRegistrasi!);
@@ -93,9 +93,9 @@ class Preference {
     pref.setString(Preference.review, users.review!);
   }
 
-  Future<Data> getUsers() async {
+  Future<User> getUsers() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    Data users = Data(
+    User users = User(
       // noRegistrasi: pref.getInt(Preference.noRegistrasi) ?? 0,
       noRegistrasi: pref.getString(Preference.noRegistrasi) ?? "",
       nama: pref.getString(Preference.nama) ?? "",

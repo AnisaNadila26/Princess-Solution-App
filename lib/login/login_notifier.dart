@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:princess_solution/models/data.dart';
+import 'package:princess_solution/models/user.dart';
+import 'package:princess_solution/models/instruktur.dart';
 import 'package:princess_solution/network/network.dart';
 import 'package:princess_solution/data/preference.dart';
+import 'package:princess_solution/data/preference_ins.dart';
 import 'package:princess_solution/repository/login_repository.dart';
 import 'package:princess_solution/menu/menu_page.dart';
+import 'package:princess_solution/menu/menu_page_ins.dart';
 
 class LoginNotifier extends ChangeNotifier {
   final BuildContext context;
 
   LoginNotifier(this.context);
 
-  Data? users;
+  User? users;
 
   GlobalKey<FormState> keyForm = GlobalKey<FormState>();
   TextEditingController email = TextEditingController();
@@ -39,11 +42,20 @@ class LoginNotifier extends ChangeNotifier {
         Navigator.pop(context);
         if (value['code'] == 200) {
           if (value['data']['role'] == 'siswa') {
-            Data users = Data.fromJson(value['data']);
+            User users = User.fromJson(value['data']);
             Preference().setUsers(users);
             Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => const MenuPage()),
+              (route) => false,
+            );
+          }
+          else if (value['data']['role'] == 'instruktur') {
+            Instruktur ins = Instruktur.fromJson(value['data']);
+            PreferenceInstruktur().setInstruktur(ins);
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => const MenuPageInstruktur()),
               (route) => false,
             );
           }

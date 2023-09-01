@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:princess_solution/data/preference.dart';
-import 'package:princess_solution/models/user.dart';
+import 'package:princess_solution/data/preference_ins.dart';
+import 'package:princess_solution/models/instruktur.dart';
 import 'package:princess_solution/models/berita.dart';
 import 'package:princess_solution/repository/berita_repository.dart';
 import 'package:princess_solution/network/network.dart';
 
-// import '../models/instruktur.dart';
-// import '../repository/login_repository.dart';
-
-class DasborNotifier extends ChangeNotifier {
+class DasborNotifierInstruktur extends ChangeNotifier {
   final BuildContext context;
 
-  DasborNotifier(this.context) {
-    getProfile();
+  DasborNotifierInstruktur(this.context) {
+    getInstruktur();
     getBerita();
     notifyListeners();
   }
 
-  User? users;
+  Instruktur? ins;
   var onAppBar = false;
   var isLoading = true;
 
@@ -31,10 +28,10 @@ class DasborNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  getProfile() async {
+  getInstruktur() async {
     isLoading = true;
-    Preference().getUsers().then((value) {
-      users = value;
+    PreferenceInstruktur().getInstruktur().then((value) {
+      ins = value;
       isLoading = false;
       notifyListeners();
     });

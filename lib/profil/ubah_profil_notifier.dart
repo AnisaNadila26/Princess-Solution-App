@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:princess_solution/data/preference.dart';
 import 'package:princess_solution/menu/menu_page.dart';
-import 'package:princess_solution/models/data.dart';
+import 'package:princess_solution/models/user.dart';
 import 'package:princess_solution/repository/profil_repository.dart';
 import 'package:princess_solution/network/network.dart';
 import 'package:file_picker/file_picker.dart';
@@ -18,7 +18,7 @@ class UbahProfilNotifier extends ChangeNotifier {
 
   int noRegistrasi = 0;
   var isLoading = true;
-  Data? users;
+  User? users;
 
   GlobalKey<FormState> keyForm = GlobalKey<FormState>();
   TextEditingController nama = TextEditingController();
@@ -42,7 +42,7 @@ class UbahProfilNotifier extends ChangeNotifier {
       noRegistrasi = int.parse(users!.noRegistrasi!);
       nama = TextEditingController(text: users!.nama);
       tanggalLahir = TextEditingController(text: users!.ttl.toString());
-      email = TextEditingController(text: users!.email);
+      // email = TextEditingController(text: users!.email);
       telpon = TextEditingController(text: users!.telpon);
       pekerjaan = TextEditingController(text: users!.pekerjaan);
       alamat = TextEditingController(text: users!.alamat);
@@ -145,7 +145,7 @@ class UbahProfilNotifier extends ChangeNotifier {
       );
 
       if (response['code'] == 200) {
-        Data users = Data.fromJson(response['data']);
+        User users = User.fromJson(response['data']);
         Preference().setEdit(users);
         Navigator.pushAndRemoveUntil(
           context,
@@ -205,9 +205,6 @@ class UbahProfilNotifier extends ChangeNotifier {
     isLoading = true;
     Navigator.pop(context);
     isLoading = false;
-
-    // getProfile();
-    // fotoProfil = '';
     notifyListeners();
   }
 }

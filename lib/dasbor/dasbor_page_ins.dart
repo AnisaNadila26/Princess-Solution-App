@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-// import 'package:princess_solution/dasbor/komponen_dasbor/content.dart';
-// import 'package:princess_solution/dasbor/komponen_dasbor/top.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:princess_solution/dasbor/dasbor_notifier.dart';
+import 'package:princess_solution/dasbor/dasbor_notifier_ins.dart';
 import 'package:princess_solution/berita/berita_item.dart';
 import 'package:provider/provider.dart';
-// import 'package:go_router/go_router.dart';
 
-class DasborPage extends StatelessWidget {
+class DasborPageInstruktur extends StatelessWidget {
   final Function? gantiPage;
-  const DasborPage({super.key, this.gantiPage});
+  const DasborPageInstruktur({super.key, this.gantiPage});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => DasborNotifier(context),
-      child: Consumer<DasborNotifier>(
+      create: (_) => DasborNotifierInstruktur(context),
+      child: Consumer<DasborNotifierInstruktur>(
           builder: (context, value, child) => Scaffold(
                 appBar: value.onAppBar
                     ? AppBar(
@@ -63,7 +60,7 @@ class DasborPage extends StatelessWidget {
                         )
                       : ListView(children: [
                           SizedBox(
-                            height: 370,
+                            height: 320,
                             child: Container(
                               child: Stack(
                                 children: [
@@ -106,58 +103,106 @@ class DasborPage extends StatelessWidget {
                                     ),
                                   ),
                                   Positioned(
-                                      top: 120,
+                                      top: 190,
                                       left: 50,
                                       right: 50,
                                       child: Container(
-                                        height: 220,
-                                        width: 320,
-                                        decoration: BoxDecoration(
-                                            color: Colors.grey,
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                        child: Column(children: [
-                                          Image.asset(
-                                            'assets/mobil.png',
-                                            width: 250,
-                                            fit: BoxFit.cover,
-                                          ),
-                                          IntrinsicHeight(
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Text(value.users!.kodeKendaraan!),
-                                                VerticalDivider(
-                                                  color: Colors.black,
-                                                  thickness: 0.2,
-                                                ),
-                                                Text(value.users!.namaInstruktur!),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(height: 10),
-                                          Row(
+                                          height: 100,
+                                          width: 200,
+                                          decoration: BoxDecoration(
+                                              color: Colors.grey,
+                                              borderRadius:
+                                                  BorderRadius.circular(15)),
+                                          child: Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                                MainAxisAlignment.spaceEvenly,
                                             children: [
-                                              Spacer(),
-                                              Icon(MdiIcons.steering, size: 20),
-                                              Text(
-                                                  value.users!.jenisKendaraan!),
-                                              Spacer(),
-                                              Icon(MdiIcons.clipboardList,
-                                                  size: 20),
-                                              Text(value.users!.paket!),
-                                              Spacer(),
-                                              Icon(MdiIcons.clockTimeEight,
-                                                  size: 20),
-                                              Text('10.00-11.00'),
-                                              Spacer(),
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    height: 50,
+                                                    width: 50,
+                                                    child: Center(
+                                                      child: Icon(MdiIcons
+                                                          .accountGroup),
+                                                    ),
+                                                    decoration: BoxDecoration(
+                                                        border: Border.all(
+                                                            color: Colors.grey),
+                                                        shape: BoxShape.circle,
+                                                        color: Colors.white),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 10,
+                                                  ),
+                                                  Column(
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      Text(
+                                                        value.ins!.jumlahSiswa!.toString(),
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 10,
+                                                      ),
+                                                      Text(
+                                                        'Jumlah Siswa',
+                                                      )
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    height: 50,
+                                                    width: 50,
+                                                    child: Center(
+                                                      child:
+                                                          Icon(MdiIcons.star),
+                                                    ),
+                                                    decoration: BoxDecoration(
+                                                        border: Border.all(
+                                                            color: Colors.grey),
+                                                        shape: BoxShape.circle,
+                                                        color: Colors.white),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 10,
+                                                  ),
+                                                  Column(
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      Text(
+                                                        value.ins!.rating!.toString(),
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 10,
+                                                      ),
+                                                      Text(
+                                                        'Rating',
+                                                      ),
+                                                    ],
+                                                  )
+                                                ],
+                                              )
                                             ],
-                                          ),
-                                        ]),
-                                      ))
+                                          )))
                                 ],
                               ),
                             ),
@@ -229,7 +274,9 @@ class DasborPage extends StatelessWidget {
                                       Column(
                                         children: value.listBerita.isEmpty
                                             ? [
-                                                Center(child: Text('Belum ada berita')),
+                                                Center(
+                                                    child: Text(
+                                                        'Belum ada berita')),
                                               ]
                                             : value.listBerita
                                                 .take(3)
@@ -250,39 +297,6 @@ class DasborPage extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                // Card(
-                                //   elevation: 2.0,
-                                //   color: Colors.grey,
-                                //   child: Padding(
-                                //     padding: const EdgeInsets.all(10),
-                                //     child: InkWell(
-                                //       onTap: () {
-                                //         gantiPage!();
-                                //       },
-                                //       // onTap: () {
-                                //       //   context.go('/pengumuman');
-                                //       // },
-                                //       child: Column(
-                                //         crossAxisAlignment: CrossAxisAlignment.start,
-                                //         children: [
-                                //           Row(
-                                //             mainAxisAlignment:
-                                //                 MainAxisAlignment.spaceBetween,
-                                //             children: [
-                                //               Text('Berita'),
-                                //               Icon(MdiIcons.chevronRight),
-                                //             ],
-                                //           ),
-                                //           Divider(
-                                //             color: Colors.black,
-                                //             thickness: 0.2,
-                                //           ),
-                                //           Text('Belum ada Berita'),
-                                //         ],
-                                //       ),
-                                //     ),
-                                //   ),
-                                // ),
                                 SizedBox(height: 30),
                               ],
                             ),

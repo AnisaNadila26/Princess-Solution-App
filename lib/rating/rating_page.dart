@@ -75,7 +75,7 @@ class RatingPage extends StatelessWidget {
                                               child: ClipOval(
                                                 child: Image.network(
                                                   value.users!.fotoProfil!.isNotEmpty
-                                                      ? NetworkURL.getProfil(
+                                                      ? NetworkURL.getProfilSiswa(
                                                           value.users!.fotoProfil!)
                                                       : 'assets/defaultProfile.png',
                                                   width: 50,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:princess_solution/repository/rating_repository.dart';
 import 'package:princess_solution/rating/rating_page.dart';
 import 'package:princess_solution/data/preference.dart';
-import 'package:princess_solution/models/data.dart';
+import 'package:princess_solution/models/user.dart';
 import 'package:princess_solution/network/network.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -14,7 +14,7 @@ class RatingNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  Data? users;
+  User? users;
   int noRegistrasi = 0;
   int idInstruktur = 0;
   double rating = 0;
@@ -81,7 +81,7 @@ class RatingNotifier extends ChangeNotifier {
       );
 
       if (response['code'] == 200) {
-        Data users = Data.fromJson(response['data']);
+        User users = User.fromJson(response['data']);
         Preference().setRating(users);
         Navigator.pushReplacement(
           context,

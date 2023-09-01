@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:princess_solution/data/preference.dart';
-import 'package:princess_solution/models/user.dart';
+import 'package:princess_solution/data/preference_ins.dart';
+import 'package:princess_solution/models/instruktur.dart';
 import 'package:princess_solution/login/login_page.dart';
 
-class ProfilNotifier extends ChangeNotifier {
+class ProfilNotifierInstruktur extends ChangeNotifier {
   final BuildContext context;
 
-  ProfilNotifier(this.context) {
-    getProfile();
+  ProfilNotifierInstruktur(this.context) {
+    getInstruktur();
     notifyListeners();
   }
 
-  User? users;
+  Instruktur? ins;
   var onAppBar = false;
   var isLoading = true;
   bool isLoggedIn = true;
@@ -26,10 +27,10 @@ class ProfilNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  getProfile() async {
+  getInstruktur() async {
     isLoading = true;
-    Preference().getUsers().then((value) {
-      users = value;
+    PreferenceInstruktur().getInstruktur().then((value) {
+      ins = value;
       isLoading = false;
       notifyListeners();
     });

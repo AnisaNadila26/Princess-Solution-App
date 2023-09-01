@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
 import 'package:princess_solution/berita/berita_notifier.dart';
 import 'package:princess_solution/berita/berita_item.dart';
 import 'package:provider/provider.dart';
@@ -30,24 +29,21 @@ class BeritaPage extends StatelessWidget {
                 ? Center(
                     child: CircularProgressIndicator(),
                   )
-                : ListView.separated(
-                    itemBuilder: (BuildContext context, int index) {
-                      if (value.listBerita.isEmpty) {
-                        return Center(
-                          child: Text('Belum ada berita'),
-                        );
-                      } else {
-                        return BeritaItem(berita: value.listBerita[index]);
-                      }
-                    },
-                    separatorBuilder: (BuildContext context, int index) =>
-                        const Divider(
-                      color: Colors.black,
-                      thickness: 0.2,
-                    ),
-                    itemCount:
-                        value.listBerita.isEmpty ? 1 : value.listBerita.length,
-                  ),
+                : value.listBerita.isEmpty
+                    ? Center(
+                        child: Text('Belum ada berita'),
+                      )
+                    : ListView.separated(
+                        itemBuilder: (BuildContext context, int index) {
+                          return BeritaItem(berita: value.listBerita[index]);
+                        },
+                        separatorBuilder: (BuildContext context, int index) =>
+                            const Divider(
+                          color: Colors.black,
+                          thickness: 0.2,
+                        ),
+                        itemCount: value.listBerita.length,
+                      ),
           ),
         ),
       ),
