@@ -5,9 +5,6 @@ import 'package:princess_solution/models/berita.dart';
 import 'package:princess_solution/repository/berita_repository.dart';
 import 'package:princess_solution/network/network.dart';
 
-// import '../models/instruktur.dart';
-// import '../repository/login_repository.dart';
-
 class DasborNotifier extends ChangeNotifier {
   final BuildContext context;
 

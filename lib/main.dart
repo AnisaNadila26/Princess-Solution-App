@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'theme.dart';
-import 'home.dart';
-import 'package:princess_solution/menu/menu_page.dart';
 import 'package:princess_solution/splash_screen/splash_screen_page.dart';
 // import 'routers.dart';
 

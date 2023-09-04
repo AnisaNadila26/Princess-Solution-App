@@ -62,7 +62,7 @@ class LoginNotifier extends ChangeNotifier {
         }
       }).catchError((error) {
         final snackBar = SnackBar(
-          content: Text('$error'),
+          content: Text('Email atau Password salah'),
           backgroundColor: Colors.black,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),

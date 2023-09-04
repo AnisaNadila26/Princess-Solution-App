@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:princess_solution/pembayaran/pembayaran_page.dart';
 import 'package:princess_solution/profil/profil_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:princess_solution/network/network.dart';
@@ -388,37 +389,50 @@ class ProfilPage extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(height: 10),
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
-                                  elevation: 2.0,
-                                  color: Colors.green.shade200,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10),
-                                    child: Row(
-                                      mainAxisAlignment:MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Icon(MdiIcons.cash),
-                                            Padding(
-                                              padding: const EdgeInsets.symmetric(
-                                                  horizontal: 15),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text('Tagihan'),
-                                                  SizedBox(height: 3),
-                                                  Text(
-                                                      value.users!.sisaPembayaran!),
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                       Icon(MdiIcons.chevronRight),
-                                      ],
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) {
+                                        return PembayaranPage();
+                                      }),
+                                    );
+                                  },
+                                  child: Card(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    elevation: 2.0,
+                                    color: Colors.green.shade200,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(MdiIcons.cash),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 15),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text('Tagihan'),
+                                                    SizedBox(height: 3),
+                                                    Text(value.users!
+                                                        .sisaPembayaran!),
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          Icon(MdiIcons.chevronRight),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -434,26 +448,31 @@ class ProfilPage extends StatelessWidget {
                                   },
                                   child: Card(
                                     shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(20)),
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
                                     elevation: 2.0,
                                     color: Colors.green.shade200,
                                     child: Padding(
                                       padding: const EdgeInsets.all(10),
                                       child: Row(
-                                        mainAxisAlignment:MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
                                           Row(
                                             children: [
                                               Icon(MdiIcons.heart),
                                               Padding(
-                                                padding: const EdgeInsets.symmetric(
-                                                    horizontal: 15),
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 15),
                                                 child: Column(
-                                                  crossAxisAlignment:CrossAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
                                                   children: [
                                                     Text('Penilaian Kursus'),
                                                     SizedBox(height: 3),
-                                                    Text('Berikan penilaian anda'),
+                                                    Text(
+                                                        'Berikan penilaian anda'),
                                                   ],
                                                 ),
                                               ),
