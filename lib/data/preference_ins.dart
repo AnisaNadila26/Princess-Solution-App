@@ -94,14 +94,13 @@ class PreferenceInstruktur {
     return ins;
   }
 
-  setNilai(Nilai nilai) async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    // pref.setInt(Preference.noRegistrasi, users.noRegistrasi);
-    pref.setString(PreferenceInstruktur.noRegistrasi, nilai.noRegistrasi!);
-    pref.setString(PreferenceInstruktur.idInstruktur, nilai.idInstruktur!);
-    pref.setString(PreferenceInstruktur.nilai, nilai.nilai!);
-    pref.setString(PreferenceInstruktur.idMateri, nilai.idMateri!);
-  }
+  // setNilai(Nilai nilai) async {
+  //   SharedPreferences pref = await SharedPreferences.getInstance();
+  //   // pref.setInt(Preference.noRegistrasi, users.noRegistrasi);
+  //   pref.setString(PreferenceInstruktur.noRegistrasi, nilai.noRegistrasi!);
+  //   pref.setString(PreferenceInstruktur.idInstruktur, nilai.idInstruktur!);
+  //   pref.setString(PreferenceInstruktur.nilai, nilai.nilai!);
+  // }
 
   remove() async {
     SharedPreferences pref = await SharedPreferences.getInstance();

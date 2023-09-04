@@ -26,6 +26,10 @@ class NetworkURL {
   static String getMateri() {
     return '$url/materi';
   }
+
+  static String getNilai() {
+    return '$url/getNilai';
+  }
   
   static String saveNilai() {
     return '$url/nilai';

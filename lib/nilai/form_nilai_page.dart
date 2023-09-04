@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:princess_solution/models/data.dart';
-import 'package:princess_solution/models/materi.dart';
 import 'package:princess_solution/nilai/form_nilai_notifier.dart';
 import 'package:princess_solution/nilai/materi_item.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +16,9 @@ class FormNilaiPage extends StatelessWidget {
     return ChangeNotifierProvider(
         create: (_) => FormNilaiNotifier(context),
         child: Consumer<FormNilaiNotifier>(builder: (context, value, child) {
+          value.noRegistrasi = int.parse(item.noRegistrasi!);
           value.setInitialValues(item);
+          value.getNilai(item.noRegistrasi.toString(), value.idInstruktur.toString());
           if (!value.isMateriLoaded) {
             value.getMateri(hari);
             value.isMateriLoaded = true;
@@ -34,7 +35,7 @@ class FormNilaiPage extends StatelessWidget {
               ),
               centerTitle: true,
               backgroundColor: Colors.black,
-               leading: IconButton(
+              leading: IconButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -59,7 +60,11 @@ class FormNilaiPage extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Column(
+                  child: value.isLoading
+                      ? Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // Column(
@@ -203,48 +208,44 @@ class FormNilaiPage extends StatelessWidget {
                             ),
                             Column(
                               children: value.listMateri.isNotEmpty
-                                  ? value.listMateri
-                                      .map((materi) => Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: <Widget>[
-                                              Row(
-                                                children: [
-                                                  Flexible(
-                                                    child: MateriItem(
-                                                        materi: materi),
-                                                  ),
-                                                  SizedBox(width: 10),
-                                                  for (int i = 1; i <= 5; i++)
-                                                    Radio<int>(
-                                                      value: i,
-                                                      groupValue:
-                                                          value.nilaiMap[
-                                                              materi.idMateri],
-                                                      onChanged: (nilai) {
-                                                        if (value.nilaiMap[materi
-                                                                .idMateri] ==
-                                                            i) {
-                                                          value.updateNilai(
-                                                              materi.idMateri!,
-                                                              null); // Remove selection
-                                                        } else {
-                                                          value.updateNilai(
-                                                              materi.idMateri!,
-                                                              i);
-                                                        }
-                                                      },
-                                                    ),
-                                                ],
+                                  ? value.listMateri.map((materi) {
+                                      int? selectedValue =
+                                          value.nilaiMap[materi.idMateri];
+                                      return Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Row(
+                                            children: [
+                                              Flexible(
+                                                child: MateriItem(
+                                                  materi: materi,
+                                                ),
                                               ),
-                                              Divider(
-                                                  color: Colors.black,
-                                                  thickness: 0.2),
+                                              SizedBox(width: 10),
+                                              for (int i = 1; i <= 5; i++)
+                                                Radio<int>(
+                                                  value: i,
+                                                  groupValue: selectedValue,
+                                                  onChanged: (int? nilai) {
+                                                    if (nilai != null) {
+                                                      value.updateNilai(
+                                                          materi.idMateri!,
+                                                          nilai);
+                                                    }
+                                                  },
+                                                )
                                             ],
-                                          ))
-                                      .toList()
+                                          ),
+                                          Divider(
+                                            color: Colors.black,
+                                            thickness: 0.2,
+                                          ),
+                                        ],
+                                      );
+                                    }).toList()
                                   : [Text('Tidak ada data materi.')],
-                            )
+                            ),
                           ],
                         ),
                       ),

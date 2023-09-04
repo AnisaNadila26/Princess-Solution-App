@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
@@ -58,18 +60,18 @@ class SiswaRepository {
     String url,
     int noRegistrasi,
     int idInstruktur,
-    Map<String, int?> nilaiMap,
+    String nilaiJson,
   ) async {
     print(url);
     print(noRegistrasi);
     print(idInstruktur);
-    print(nilaiMap);
+    print(nilaiJson);
 
     Dio dio = Dio();
     FormData formData = FormData.fromMap({
       "no_registrasi": noRegistrasi,
       "id_instruktur": idInstruktur,
-      "nilai": nilaiMap,
+      "nilai": nilaiJson,
     });
 
     final response = await dio.post(url, data: formData);
@@ -84,5 +86,43 @@ class SiswaRepository {
     } else {
       return response.data;
     }
+  }
+
+  static Future<Map<String, int>> getNilai(
+      String url, String noRegistrasi, String idInstruktur) async {
+      FormData formData = FormData.fromMap({
+        "no_registrasi": noRegistrasi,
+        "id_instruktur": idInstruktur,
+      });
+      Dio dio = Dio();
+      final response = await dio.post(url, data: formData);
+
+      if (kDebugMode) {
+        print("RESPONSE STATUS CODE : ${response.statusCode}");
+      }
+
+      if (response.statusCode == 200) {
+        if (kDebugMode) {
+          print("RESPONSE DATA AMBIL NILAI : ${response.data}");
+        }
+        final Map<String, dynamic> data = response.data;
+
+        final Map<String, int> nilaiMap = {};
+
+        if (data.containsKey('data')) {
+          final List<dynamic> nilaiDataList = data['data'];
+
+          for (final dynamic nilaiData in nilaiDataList) {
+            final Map<String, dynamic> nilaiMapJson =
+                jsonDecode(nilaiData['nilai']);
+            nilaiMapJson.forEach((idMateri, nilai) {
+              nilaiMap[idMateri] = nilai as int;
+            });
+          }
+        }
+        return nilaiMap;
+      } else {
+        return <String, int>{};
+      }
   }
 }
