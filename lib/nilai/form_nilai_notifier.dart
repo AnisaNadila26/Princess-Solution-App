@@ -25,25 +25,25 @@ class FormNilaiNotifier extends ChangeNotifier {
   Map<String, int?> nilaiMap = {};
 
   GlobalKey<FormState> keyForm = GlobalKey<FormState>();
-  TextEditingController instruktur = TextEditingController();
-  TextEditingController namaSiswa = TextEditingController();
-  TextEditingController kodeKendaraan = TextEditingController();
-  TextEditingController paket = TextEditingController();
+  // TextEditingController instruktur = TextEditingController();
+  // TextEditingController namaSiswa = TextEditingController();
+  // TextEditingController kodeKendaraan = TextEditingController();
+  // TextEditingController paket = TextEditingController();
 
   getInstruktur() async {
     isLoading = true;
     ins = await PreferenceInstruktur().getInstruktur();
     idInstruktur = int.parse(ins!.idInstruktur!);
-    instruktur.text = ins?.nama ?? '';
+    // instruktur.text = ins?.nama ?? '';
     isLoading = false;
     notifyListeners();
   }
 
-  void setInitialValues(Data data) {
-    namaSiswa.text = data.nama ?? '';
-    kodeKendaraan.text = data.kodeKendaraan ?? '';
-    paket.text = data.paket ?? '';
-  }
+  // void setInitialValues(Data data) {
+  //   namaSiswa.text = data.nama ?? '';
+  //   kodeKendaraan.text = data.kodeKendaraan ?? '';
+  //   paket.text = data.paket ?? '';
+  // }
 
   Future getMateri(String hari) async {
     if (isMateriLoaded) {

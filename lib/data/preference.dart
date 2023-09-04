@@ -6,6 +6,7 @@ import 'package:princess_solution/models/user.dart';
 class Preference {
   static String noRegistrasi = "no_registrasi";
   static String nama = "nama";
+  static String idAkun = "id_akun";
   static String tanggalLahir = "ttl";
   static String email = "email";
   static String telpon = "telpon";
@@ -63,6 +64,7 @@ class Preference {
     // pref.setInt(Preference.noRegistrasi, users.noRegistrasi);
     pref.setString(Preference.noRegistrasi, users.noRegistrasi!);
     pref.setString(Preference.nama, users.nama!);
+    pref.setString(Preference.idAkun, users.idAkun!);
     pref.setString(Preference.tanggalLahir, users.ttl!);
     pref.setString(Preference.email, users.email!);
     pref.setString(Preference.telpon, users.telpon!);
@@ -99,6 +101,7 @@ class Preference {
       // noRegistrasi: pref.getInt(Preference.noRegistrasi) ?? 0,
       noRegistrasi: pref.getString(Preference.noRegistrasi) ?? "",
       nama: pref.getString(Preference.nama) ?? "",
+      idAkun: pref.getString(Preference.idAkun) ?? "",
       ttl: pref.getString(Preference.tanggalLahir) ?? "",
       email: pref.getString(Preference.email) ?? "",
       telpon: pref.getString(Preference.telpon) ?? "",

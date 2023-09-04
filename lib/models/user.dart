@@ -1,6 +1,7 @@
 class User {
   String? noRegistrasi;
   String? nama;
+  String? idAkun;
   String? ttl;
   String? email;
   String? telpon;
@@ -28,6 +29,7 @@ class User {
   User({
     this.noRegistrasi,
     this.nama,
+    this.idAkun,
     this.ttl,
     this.email,
     this.telpon,
@@ -56,6 +58,7 @@ class User {
   factory User.fromJson(Map<String, dynamic> json) => User(
         noRegistrasi: json["no_registrasi"],
         nama: json["nama"],
+        idAkun: json["id_akun"],
         ttl: json["ttl"],
         email: json["email"],
         telpon: json["telpon"],
@@ -84,6 +87,7 @@ class User {
   Map<String, dynamic> toJson() => {
         "no_registrasi": noRegistrasi,
         "nama": nama,
+        "id_akun": idAkun,
         "ttl": ttl,
         "email": email,
         "telpon": telpon,

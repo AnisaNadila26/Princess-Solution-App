@@ -17,7 +17,7 @@ class FormNilaiPage extends StatelessWidget {
         create: (_) => FormNilaiNotifier(context),
         child: Consumer<FormNilaiNotifier>(builder: (context, value, child) {
           value.noRegistrasi = int.parse(item.noRegistrasi!);
-          value.setInitialValues(item);
+          // value.setInitialValues(item);
           value.getNilai(item.noRegistrasi.toString(), value.idInstruktur.toString());
           if (!value.isMateriLoaded) {
             value.getMateri(hari);
@@ -67,74 +67,88 @@ class FormNilaiPage extends StatelessWidget {
                       : Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Column(
-                      //   crossAxisAlignment: CrossAxisAlignment.start,
-                      //   children: [
-                      //     Text('Instruktur'),
-                      //     Text('Nama Siswa'),
-                      //     Text('Kode Kendaraan'),
-                      //     Text('Paket'),
-                      //   ],
-                      // ),
-                      // SizedBox(width: 30),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Instruktur'),
+                              Text('Nama Siswa'),
+                              Text('Kode Kendaraan'),
+                              Text('Paket'),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(value.ins!.nama!),
+                              Text(item.nama!),
+                              Text(item.kodeKendaraan!),
+                              Text(item.paket!),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(width: 30),
                       Form(
                         key: value.keyForm,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            TextFormField(
-                              controller: value.instruktur,
-                              decoration: InputDecoration(
-                                labelText: 'Instruktur',
-                                enabled: false,
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                ),
-                                contentPadding: EdgeInsets.only(right: 50),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            TextFormField(
-                              controller: value.namaSiswa,
-                              decoration: InputDecoration(
-                                labelText: 'Nama Siswa',
-                                enabled: false,
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                ),
-                                contentPadding: EdgeInsets.only(right: 50),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            TextFormField(
-                              controller: value.kodeKendaraan,
-                              decoration: InputDecoration(
-                                labelText: 'Kode Kendaraan',
-                                enabled: false,
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                ),
-                                contentPadding: EdgeInsets.only(right: 50),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            TextFormField(
-                              controller: value.paket,
-                              decoration: InputDecoration(
-                                labelText: 'Paket',
-                                enabled: false,
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                ),
-                                contentPadding: EdgeInsets.only(right: 50),
-                              ),
-                            ),
+                            // TextFormField(
+                            //   controller: value.instruktur,
+                            //   decoration: InputDecoration(
+                            //     labelText: 'Instruktur',
+                            //     enabled: false,
+                            //     enabledBorder: UnderlineInputBorder(
+                            //       borderSide: BorderSide.none,
+                            //     ),
+                            //     contentPadding: EdgeInsets.only(right: 50),
+                            //   ),
+                            // ),
+                            // SizedBox(
+                            //   height: 10,
+                            // ),
+                            // TextFormField(
+                            //   controller: value.namaSiswa,
+                            //   decoration: InputDecoration(
+                            //     labelText: 'Nama Siswa',
+                            //     enabled: false,
+                            //     enabledBorder: UnderlineInputBorder(
+                            //       borderSide: BorderSide.none,
+                            //     ),
+                            //     contentPadding: EdgeInsets.only(right: 50),
+                            //   ),
+                            // ),
+                            // SizedBox(
+                            //   height: 10,
+                            // ),
+                            // TextFormField(
+                            //   controller: value.kodeKendaraan,
+                            //   decoration: InputDecoration(
+                            //     labelText: 'Kode Kendaraan',
+                            //     enabled: false,
+                            //     enabledBorder: UnderlineInputBorder(
+                            //       borderSide: BorderSide.none,
+                            //     ),
+                            //     contentPadding: EdgeInsets.only(right: 50),
+                            //   ),
+                            // ),
+                            // SizedBox(
+                            //   height: 10,
+                            // ),
+                            // TextFormField(
+                            //   controller: value.paket,
+                            //   decoration: InputDecoration(
+                            //     labelText: 'Paket',
+                            //     enabled: false,
+                            //     enabledBorder: UnderlineInputBorder(
+                            //       borderSide: BorderSide.none,
+                            //     ),
+                            //     contentPadding: EdgeInsets.only(right: 50),
+                            //   ),
+                            // ),
                             SizedBox(height: 20),
                             Card(
                               color: Colors.grey,

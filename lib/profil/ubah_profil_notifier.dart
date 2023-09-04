@@ -42,7 +42,7 @@ class UbahProfilNotifier extends ChangeNotifier {
       noRegistrasi = int.parse(users!.noRegistrasi!);
       nama = TextEditingController(text: users!.nama);
       tanggalLahir = TextEditingController(text: users!.ttl.toString());
-      // email = TextEditingController(text: users!.email);
+      email = TextEditingController(text: users!.email);
       telpon = TextEditingController(text: users!.telpon);
       pekerjaan = TextEditingController(text: users!.pekerjaan);
       alamat = TextEditingController(text: users!.alamat);
