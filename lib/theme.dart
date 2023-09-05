@@ -20,7 +20,10 @@ class PrincessTheme {
       primarySwatch: Colors.blueGrey,
       primaryColor: Colors.white,
       brightness: Brightness.light,
-      // backgroundColor: const Color(0xFFE5E5E5),
+      backgroundColor: Color.fromRGBO(28, 46, 82, 1.0),
+      // colorScheme: ColorScheme.light(
+      //   background: Color.fromRGBO(28, 46, 82, 1.0), // Atur latar belakang
+      // ),
       dividerColor: Colors.white54,
       // textTheme: lightTextTheme,
     );

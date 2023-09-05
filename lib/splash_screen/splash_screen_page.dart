@@ -11,7 +11,7 @@ class SplashScreenPage extends StatelessWidget {
       create: (_) => SplashScreenNotifier(context),
       child: Consumer<SplashScreenNotifier>(
         builder: (context, value, child) => Scaffold(
-          backgroundColor: Colors.white,
+          // backgroundColor: Colors.white,
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,

@@ -22,7 +22,7 @@ class BeritaItem extends StatelessWidget {
           );
         },
         child: Padding(
-          padding: const EdgeInsets.all(5),
+          padding: const EdgeInsets.all(10),
           child: Row(
             children: [
               Expanded(
@@ -34,7 +34,9 @@ class BeritaItem extends StatelessWidget {
                       berita.judul!,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
+                      style: TextStyle(fontWeight: FontWeight.w600),
                     ),
+                    SizedBox(height: 5),
                     Text(
                       berita.tanggal!,
                       overflow: TextOverflow.ellipsis,

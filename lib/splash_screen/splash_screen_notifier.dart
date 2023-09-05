@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:princess_solution/login/login_page.dart';
+// import 'package:princess_solution/login/login_page.dart';
+import 'package:princess_solution/onBoarding/onBoarding_page.dart';
 
 class SplashScreenNotifier extends ChangeNotifier {
   final BuildContext context;
@@ -14,7 +15,7 @@ class SplashScreenNotifier extends ChangeNotifier {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
-          builder: (context) => LoginPage()), (route) => false
+          builder: (context) => OnboardingPage(index: 0,)), (route) => false
       );
     });
     notifyListeners();

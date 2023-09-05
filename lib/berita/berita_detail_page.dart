@@ -31,10 +31,10 @@ class BeritaDetailPage extends StatelessWidget {
                     child: Container(
                       color: Colors.white,
                       child: Center(
-                        child: Text(isi.judul!),
+                        child: Text(isi.judul!, style: TextStyle(fontWeight: FontWeight.w600),),
                       ),
                       width: double.maxFinite,
-                      padding: EdgeInsets.only(top: 5, bottom: 10),
+                      padding: EdgeInsets.only(top: 10, bottom: 20),
                     ),
                   ),
                   expandedHeight: 500,
@@ -50,15 +50,17 @@ class BeritaDetailPage extends StatelessWidget {
                 ),
                 SliverToBoxAdapter(
                   child: Padding(
-                      padding: EdgeInsets.all(15),
+                      padding: EdgeInsets.all(20),
                       child: Column(
                         children: [
                           Row(
                             children: [
                               Icon(MdiIcons.calendar),
+                              SizedBox(width: 5),
                               Text(isi.tanggal!)
                             ],
                           ),
+                          SizedBox(height: 10),
                           Text(
                             isi.isi!,
                             textAlign: TextAlign.justify,

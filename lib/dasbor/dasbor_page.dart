@@ -71,7 +71,16 @@ class DasborPage extends StatelessWidget {
                                     height: 240,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                          color: Colors.black,
+                                          gradient: LinearGradient(
+                                            begin: Alignment.topCenter,
+                                            end: Alignment.bottomCenter,
+                                            colors: [
+                                              // Color.fromRGBO(119, 154, 184, 1.0),
+                                              Color.fromRGBO(76, 105, 176, 1.0),
+                                              Color.fromRGBO(28, 46, 82, 1.0),
+                                              Colors.black,
+                                            ],
+                                          ),
                                           borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(20),
                                             bottomRight: Radius.circular(20),
@@ -127,12 +136,14 @@ class DasborPage extends StatelessWidget {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
-                                                Text(value.users!.kodeKendaraan!),
+                                                Text(value
+                                                    .users!.kodeKendaraan!),
                                                 VerticalDivider(
                                                   color: Colors.black,
                                                   thickness: 0.2,
                                                 ),
-                                                Text(value.users!.namaInstruktur!),
+                                                Text(value
+                                                    .users!.namaInstruktur!),
                                               ],
                                             ),
                                           ),
@@ -229,7 +240,9 @@ class DasborPage extends StatelessWidget {
                                       Column(
                                         children: value.listBerita.isEmpty
                                             ? [
-                                                Center(child: Text('Belum ada berita')),
+                                                Center(
+                                                    child: Text(
+                                                        'Belum ada berita')),
                                               ]
                                             : value.listBerita
                                                 .take(3)
