@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = PrincessTheme.light();
+    final theme = PrincessTheme.dark();
 
      return MaterialApp(
       theme: theme,

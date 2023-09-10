@@ -88,8 +88,11 @@ class RatingNotifier extends ChangeNotifier {
           MaterialPageRoute(builder: (context) => RatingPage()),
         );
         final snackBar = SnackBar(
-          content: Text('Penilaian berhasil dikirim'),
-          backgroundColor: Colors.black,
+          content: Text(
+            'Penilaian berhasil dikirim',
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          backgroundColor: Theme.of(context).cardColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -100,8 +103,11 @@ class RatingNotifier extends ChangeNotifier {
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       } else {
         final snackBar = SnackBar(
-          content: Text('Penilaian gagal dikirim'),
-          backgroundColor: Colors.black,
+          content: Text(
+            'Penilaian gagal dikirim',
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          backgroundColor: Theme.of(context).cardColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),

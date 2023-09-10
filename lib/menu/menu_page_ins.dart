@@ -6,7 +6,6 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:princess_solution/dasbor/dasbor_page_ins.dart';
 import 'package:princess_solution/berita/berita_page.dart';
 import 'package:princess_solution/nilai/nilai_page.dart';
-import 'package:princess_solution/konsultasi/konsultasi_page.dart';
 import 'package:princess_solution/profil/profil_page_ins.dart';
 
 class MenuPageInstruktur extends StatelessWidget {
@@ -39,9 +38,9 @@ class MenuPageInstruktur extends StatelessWidget {
                 bottomNavigationBar: SizedBox(
                   child: CurvedNavigationBar(
                       index: value.page,
-                      color: Colors.black,
-                      buttonBackgroundColor: Colors.black,
-                      backgroundColor: Colors.white,
+                      color: Color.fromRGBO(76, 105, 176, 1.0),
+                      buttonBackgroundColor: Color.fromRGBO(76, 105, 176, 1.0),
+                      backgroundColor: Color.fromRGBO(11, 13, 30, 1.0),
                       animationDuration: Duration(milliseconds: 300),
                       items: [
                         Icon(MdiIcons.home, color: Colors.white, size: 30),

@@ -21,14 +21,21 @@ class DasborPage extends StatelessWidget {
                     ? AppBar(
                         title: Text(
                           "Dasbor",
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
+                        flexibleSpace: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Color.fromRGBO(12, 15, 39, 1.0),
+                                Color.fromRGBO(76, 105, 176, 1.0),
+                              ],
+                            ),
                           ),
                         ),
                         centerTitle: true,
-                        backgroundColor: Colors.black,
                         actions: [
                           IconButton(
                               onPressed: () {},
@@ -75,10 +82,8 @@ class DasborPage extends StatelessWidget {
                                             begin: Alignment.topCenter,
                                             end: Alignment.bottomCenter,
                                             colors: [
-                                              // Color.fromRGBO(119, 154, 184, 1.0),
+                                              Color.fromRGBO(12, 15, 39, 1.0),
                                               Color.fromRGBO(76, 105, 176, 1.0),
-                                              Color.fromRGBO(28, 46, 82, 1.0),
-                                              Colors.black,
                                             ],
                                           ),
                                           borderRadius: BorderRadius.only(
@@ -98,11 +103,9 @@ class DasborPage extends StatelessWidget {
                                               ),
                                               Text(
                                                 "Dasbor",
-                                                style: TextStyle(
-                                                  fontSize: 24,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w700,
-                                                ),
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .headlineSmall,
                                               ),
                                               IconButton(
                                                   onPressed: () {},
@@ -122,9 +125,15 @@ class DasborPage extends StatelessWidget {
                                         height: 220,
                                         width: 320,
                                         decoration: BoxDecoration(
-                                            color: Colors.grey,
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
+                                          color: Theme.of(context).cardColor,
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          border: Border.all(
+                                            color: Color.fromRGBO(
+                                                226, 235, 245, 1.0),
+                                            width: 3.0,
+                                          ),
+                                        ),
                                         child: Column(children: [
                                           Image.asset(
                                             'assets/mobil.png',
@@ -136,14 +145,23 @@ class DasborPage extends StatelessWidget {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
-                                                Text(value
-                                                    .users!.kodeKendaraan!),
+                                                Text(
+                                                  value.users!.kodeKendaraan!,
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyLarge,
+                                                ),
                                                 VerticalDivider(
-                                                  color: Colors.black,
+                                                  color: Theme.of(context)
+                                                      .dividerColor,
                                                   thickness: 0.2,
                                                 ),
-                                                Text(value
-                                                    .users!.namaInstruktur!),
+                                                Text(
+                                                  value.users!.namaInstruktur!,
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyLarge,
+                                                ),
                                               ],
                                             ),
                                           ),
@@ -154,16 +172,33 @@ class DasborPage extends StatelessWidget {
                                             children: [
                                               Spacer(),
                                               Icon(MdiIcons.steering, size: 20),
+                                              SizedBox(width: 5),
                                               Text(
-                                                  value.users!.jenisKendaraan!),
+                                                value.users!.jenisKendaraan!,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
+                                              ),
                                               Spacer(),
                                               Icon(MdiIcons.clipboardList,
                                                   size: 20),
-                                              Text(value.users!.paket!),
+                                              SizedBox(width: 5),
+                                              Text(
+                                                value.users!.paket!,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
+                                              ),
                                               Spacer(),
                                               Icon(MdiIcons.clockTimeEight,
                                                   size: 20),
-                                              Text('10.00-11.00'),
+                                              SizedBox(width: 5),
+                                              Text(
+                                                '10.00-11.00',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
+                                              ),
                                               Spacer(),
                                             ],
                                           ),
@@ -176,30 +211,49 @@ class DasborPage extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Text(
+                                    'Jadwal',
+                                    style: Theme.of(context).textTheme.titleLarge,
+                                  ),
+                                ),
                                 Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    side: BorderSide(
+                                      color: Color.fromRGBO(226, 235, 245, 1.0),
+                                      width: 3.0,
+                                    ),
+                                  ),
                                   elevation: 2.0,
-                                  color: Colors.grey,
+                                  color: Theme.of(context).cardColor,
                                   child: Padding(
                                     padding: const EdgeInsets.all(10),
                                     child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text('Jadwal'),
+                                            Text(
+                                              '15 Februari 2023',
+                                              style: Theme.of(context).textTheme.bodyLarge,
+                                            ),
                                             Icon(MdiIcons.chevronRight),
                                           ],
                                         ),
-                                        Text('15 Februari 2023'),
                                         Divider(
-                                          color: Colors.black,
+                                          color: Theme.of(context).dividerColor,
                                           thickness: 0.2,
                                         ),
-                                        Text('Tidak ada Jadwal'),
+                                        Text(
+                                          'Tidak ada Jadwal',
+                                          style: Theme.of(context).textTheme.bodyMedium,
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -218,8 +272,9 @@ class DasborPage extends StatelessWidget {
                                           children: [
                                             Text(
                                               'Berita Terbaru',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w700),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleLarge,
                                             ),
                                             InkWell(
                                               onTap: () {
@@ -229,7 +284,10 @@ class DasborPage extends StatelessWidget {
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.end,
                                                 children: [
-                                                  Text('Lainnya'),
+                                                  Text(
+                                                    'Lainnya',
+                                                    style: Theme.of(context).textTheme.bodyLarge,
+                                                  ),
                                                   Icon(MdiIcons.arrowRight),
                                                 ],
                                               ),
@@ -241,8 +299,10 @@ class DasborPage extends StatelessWidget {
                                         children: value.listBerita.isEmpty
                                             ? [
                                                 Center(
-                                                    child: Text(
-                                                        'Belum ada berita')),
+                                                  child: Text(
+                                                    'Belum ada berita',
+                                                    style: Theme.of(context).textTheme.bodyMedium,
+                                                )),
                                               ]
                                             : value.listBerita
                                                 .take(3)
@@ -254,7 +314,9 @@ class DasborPage extends StatelessWidget {
                                                         BeritaItem(
                                                             berita: berita),
                                                         Divider(
-                                                            color: Colors.black,
+                                                            color: Theme.of(
+                                                                    context)
+                                                                .dividerColor,
                                                             thickness: 0.2),
                                                       ],
                                                     ))

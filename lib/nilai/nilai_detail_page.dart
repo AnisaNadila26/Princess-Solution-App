@@ -19,7 +19,7 @@ class NilaiDetailPage extends StatelessWidget {
           builder: (context, value, child) => Container(
                 height: 500,
                 decoration: BoxDecoration(
-                    color: Colors.black,
+                    color: Theme.of(context).cardColor,
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(20),
                     )),
@@ -34,7 +34,7 @@ class NilaiDetailPage extends StatelessWidget {
                           children: [
                             CircleAvatar(
                               radius: 50,
-                              backgroundColor: Colors.black,
+                              backgroundColor: Theme.of(context).cardColor,
                               child: ClipOval(
                                 child: Image.network(
                                   isi.fotoProfil!.isNotEmpty
@@ -49,11 +49,11 @@ class NilaiDetailPage extends StatelessWidget {
                             ),
                             Text(
                               isi.nama!,
-                              style: TextStyle(color: Colors.white),
+                              style: Theme.of(context).textTheme.bodyMedium,
                             ),
                             Text(
                               isi.alamat!,
-                              style: TextStyle(color: Colors.white),
+                              style: Theme.of(context).textTheme.bodyMedium,
                             ),
                           ],
                         ),
@@ -62,8 +62,13 @@ class NilaiDetailPage extends StatelessWidget {
                         ),
                         Card(
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          color: Colors.grey,
+                            borderRadius: BorderRadius.circular(20.0),
+                            side: BorderSide(
+                              color: Color.fromRGBO(226, 235, 245, 1.0),
+                              width: 3.0,
+                            ),
+                          ),
+                          color: Theme.of(context).cardColor,
                           child: Padding(
                             padding: const EdgeInsets.all(25),
                             child: Column(
@@ -74,30 +79,48 @@ class NilaiDetailPage extends StatelessWidget {
                                   children: [
                                     Column(
                                       children: [
-                                        Text('Paket'),
-                                        Text(isi.paket!),
+                                        Text(
+                                          'Paket',
+                                          style: Theme.of(context).textTheme.bodyMedium,
+                                        ),
+                                        Text(
+                                          isi.paket!,
+                                          style: Theme.of(context).textTheme.bodyMedium,
+                                        ),
                                       ],
                                     ),
                                     Container(
                                       width: 2,
                                       height: 50,
-                                      color: Colors.black,
+                                      color: Theme.of(context).dividerColor,
                                     ),
                                     Column(
                                       children: [
-                                        Text('Jenis Kendaraan'),
-                                        Text(isi.jenisKendaraan!),
+                                        Text(
+                                          'Jenis Kendaraan',
+                                          style: Theme.of(context).textTheme.bodyMedium,
+                                        ),
+                                        Text(
+                                          isi.jenisKendaraan!,
+                                          style: Theme.of(context).textTheme.bodyMedium,
+                                        ),
                                       ],
                                     ),
                                     Container(
                                       width: 2,
                                       height: 50,
-                                      color: Colors.black,
+                                      color: Theme.of(context).dividerColor,
                                     ),
                                     Column(
                                       children: [
-                                        Text('Kode Kendaraan'),
-                                        Text(isi.kodeKendaraan!),
+                                        Text(
+                                          'Kode Kendaraan',
+                                          style: Theme.of(context).textTheme.bodyMedium,
+                                        ),
+                                        Text(
+                                          isi.kodeKendaraan!,
+                                          style: Theme.of(context).textTheme.bodyMedium,
+                                        ),
                                       ],
                                     ),
                                   ],
@@ -106,8 +129,7 @@ class NilaiDetailPage extends StatelessWidget {
                                   height: 30,
                                 ),
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Column(
                                       children: [
@@ -118,15 +140,22 @@ class NilaiDetailPage extends StatelessWidget {
                                             child: Icon(MdiIcons.numeric),
                                           ),
                                           decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: Colors.grey),
-                                              shape: BoxShape.circle,
-                                              color: Colors.white),
+                                            border: Border.all(
+                                              color: Color.fromRGBO(
+                                                  226, 235, 245, 1.0),
+                                              width: 3.0,
+                                            ),
+                                            shape: BoxShape.circle,
+                                            color: Theme.of(context).cardColor,
+                                          ),
                                         ),
                                         SizedBox(
                                           height: 10,
                                         ),
-                                        Text(isi.noRegistrasi!),
+                                        Text(
+                                          isi.noRegistrasi!,
+                                          style: Theme.of(context).textTheme.bodyMedium,
+                                        ),
                                       ],
                                     ),
                                     Column(
@@ -138,15 +167,22 @@ class NilaiDetailPage extends StatelessWidget {
                                             child: Icon(MdiIcons.cakeVariant),
                                           ),
                                           decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: Colors.grey),
-                                              shape: BoxShape.circle,
-                                              color: Colors.white),
+                                            border: Border.all(
+                                              color: Color.fromRGBO(
+                                                  226, 235, 245, 1.0),
+                                              width: 3.0,
+                                            ),
+                                            shape: BoxShape.circle,
+                                            color: Theme.of(context).cardColor,
+                                          ),
                                         ),
                                         SizedBox(
                                           height: 10,
                                         ),
-                                        Text(isi.ttl!),
+                                        Text(
+                                          isi.ttl!,
+                                          style: Theme.of(context).textTheme.bodyMedium,
+                                        ),
                                       ],
                                     ),
                                     Column(
@@ -158,15 +194,22 @@ class NilaiDetailPage extends StatelessWidget {
                                             child: Icon(MdiIcons.phone),
                                           ),
                                           decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: Colors.grey),
-                                              shape: BoxShape.circle,
-                                              color: Colors.white),
+                                            border: Border.all(
+                                              color: Color.fromRGBO(
+                                                  226, 235, 245, 1.0),
+                                              width: 3.0,
+                                            ),
+                                            shape: BoxShape.circle,
+                                            color: Theme.of(context).cardColor,
+                                          ),
                                         ),
                                         SizedBox(
                                           height: 10,
                                         ),
-                                        Text(isi.telpon!),
+                                        Text(
+                                          isi.telpon!,
+                                          style: Theme.of(context).textTheme.bodyMedium,
+                                        ),
                                       ],
                                     ),
                                     Column(
@@ -178,15 +221,22 @@ class NilaiDetailPage extends StatelessWidget {
                                             child: Icon(MdiIcons.briefcase),
                                           ),
                                           decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: Colors.grey),
-                                              shape: BoxShape.circle,
-                                              color: Colors.white),
+                                            border: Border.all(
+                                              color: Color.fromRGBO(
+                                                  226, 235, 245, 1.0),
+                                              width: 3.0,
+                                            ),
+                                            shape: BoxShape.circle,
+                                            color: Theme.of(context).cardColor,
+                                          ),
                                         ),
                                         SizedBox(
                                           height: 10,
                                         ),
-                                        Text(isi.pekerjaan!),
+                                        Text(
+                                          isi.pekerjaan!,
+                                          style: Theme.of(context).textTheme.bodyMedium,
+                                        ),
                                       ],
                                     ),
                                   ],
@@ -203,8 +253,10 @@ class NilaiDetailPage extends StatelessWidget {
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Penilaian',
-                                    style: TextStyle(color: Colors.white)),
+                                Text(
+                                  'Penilaian',
+                                  style: Theme.of(context).textTheme.titleLarge,
+                                ),
                               ]),
                         ),
                         for (Hari hari in value.listHari)
@@ -223,9 +275,13 @@ class NilaiDetailPage extends StatelessWidget {
                             },
                             child: Card(
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20)),
-                              elevation: 2.0,
-                              color: Colors.grey,
+                                borderRadius: BorderRadius.circular(20.0),
+                                side: BorderSide(
+                                  color: Color.fromRGBO(226, 235, 245, 1.0),
+                                  width: 3.0,
+                                ),
+                              ),
+                              color: Theme.of(context).cardColor,
                               child: Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: Row(
@@ -241,7 +297,10 @@ class NilaiDetailPage extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text('Hari ${hari.hari}'),
+                                              Text(
+                                                'Hari ${hari.hari}',
+                                                style: Theme.of(context).textTheme.bodyLarge,
+                                              ),
                                             ],
                                           ),
                                         ),

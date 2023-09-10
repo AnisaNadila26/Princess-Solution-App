@@ -14,7 +14,7 @@ class NilaiItem extends StatelessWidget {
         onTap: () {
           showModalBottomSheet(
               context: context,
-              backgroundColor: Colors.black,
+              backgroundColor: Theme.of(context).cardColor,
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(20),
@@ -32,12 +32,20 @@ class NilaiItem extends StatelessWidget {
                   offset: Offset(-120, 0),
                   child: Card(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    elevation: 5.0,
-                    color: Colors.grey,
+                      borderRadius: BorderRadius.circular(20),
+                      side: BorderSide(
+                        color: Color.fromRGBO(226, 235, 245, 1.0),
+                        width: 3.0,
+                      ),
+                    ),
+                    color: Theme.of(context).cardColor,
                     child: Padding(
                       padding: const EdgeInsets.only(
-                          top: 10, bottom: 10, left: 130, right: 10),
+                        top: 10, 
+                        bottom: 10, 
+                        left: 130, 
+                        right: 10
+                      ),
                       child: Row(
                         children: [
                           Expanded(
@@ -47,21 +55,25 @@ class NilaiItem extends StatelessWidget {
                               children: [
                                 Text(
                                   item.nama!,
+                                  style: Theme.of(context).textTheme.bodyMedium,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 SizedBox(height: 10),
                                 Text(
                                   item.paket!,
+                                  style: Theme.of(context).textTheme.bodyMedium,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 SizedBox(height: 10),
                                 Text(
                                   item.kodeKendaraan!,
+                                  style: Theme.of(context).textTheme.bodyMedium,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 SizedBox(height: 10),
                                 Text(
                                   item.jenisKendaraan!,
+                                  style: Theme.of(context).textTheme.bodyMedium,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ],
@@ -90,9 +102,13 @@ class NilaiItem extends StatelessWidget {
                   offset: Offset(120, 0),
                   child: Card(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    elevation: 5.0,
-                    color: Colors.grey,
+                      borderRadius: BorderRadius.circular(20),
+                      side: BorderSide(
+                        color: Color.fromRGBO(226, 235, 245, 1.0),
+                        width: 3.0,
+                      ),
+                    ),
+                    color: Theme.of(context).cardColor,
                     child: Padding(
                       padding: const EdgeInsets.only(
                           top: 10, bottom: 10, left: 10, right: 130),
@@ -116,21 +132,25 @@ class NilaiItem extends StatelessWidget {
                               children: [
                                 Text(
                                   item.nama!,
+                                  style: Theme.of(context).textTheme.bodyMedium,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 SizedBox(height: 10),
                                 Text(
                                   item.paket!,
+                                  style: Theme.of(context).textTheme.bodyMedium,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 SizedBox(height: 10),
                                 Text(
                                   item.kodeKendaraan!,
+                                  style: Theme.of(context).textTheme.bodyMedium,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 SizedBox(height: 10),
                                 Text(
                                   item.jenisKendaraan!,
+                                  style: Theme.of(context).textTheme.bodyMedium,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ],

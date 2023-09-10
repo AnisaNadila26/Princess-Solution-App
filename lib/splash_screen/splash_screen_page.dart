@@ -22,7 +22,6 @@ class SplashScreenPage extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Image.asset(
                     'assets/princess.png',
-                    
                   ),
                 )
               )

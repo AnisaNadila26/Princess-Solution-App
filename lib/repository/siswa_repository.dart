@@ -90,6 +90,7 @@ class SiswaRepository {
 
   static Future<Map<String, int>> getNilai(
       String url, String noRegistrasi, String idInstruktur) async {
+    try {
       FormData formData = FormData.fromMap({
         "no_registrasi": noRegistrasi,
         "id_instruktur": idInstruktur,
@@ -97,20 +98,16 @@ class SiswaRepository {
       Dio dio = Dio();
       final response = await dio.post(url, data: formData);
 
-      if (kDebugMode) {
-        print("RESPONSE STATUS CODE : ${response.statusCode}");
-      }
-
       if (response.statusCode == 200) {
         if (kDebugMode) {
           print("RESPONSE DATA AMBIL NILAI : ${response.data}");
         }
         final Map<String, dynamic> data = response.data;
 
-        final Map<String, int> nilaiMap = {};
-
         if (data.containsKey('data')) {
           final List<dynamic> nilaiDataList = data['data'];
+
+          final Map<String, int> nilaiMap = {};
 
           for (final dynamic nilaiData in nilaiDataList) {
             final Map<String, dynamic> nilaiMapJson =
@@ -119,10 +116,21 @@ class SiswaRepository {
               nilaiMap[idMateri] = nilai as int;
             });
           }
+          return nilaiMap;
+        } else {
+          print("Data nilai tidak ditemukan");
+          return <String, int>{};
         }
-        return nilaiMap;
-      } else {
+      } 
+      else {
+        print("Data nilai tidak ditemukan");
         return <String, int>{};
       }
+    } catch (error) {
+      print("Data nilai tidak ditemukan");
+      return <String, int>{};
+    }
   }
+
+
 }

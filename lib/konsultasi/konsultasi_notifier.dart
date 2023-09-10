@@ -13,8 +13,18 @@ class KonsultasiNotifier extends ChangeNotifier {
       await launchUrl(Uri.parse(NetworkURL.sendWA()));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Anda tidak memiliki aplikasi WhatsApp"),
+        SnackBar(
+          content: Text(
+            "Anda tidak memiliki aplikasi WhatsApp",
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          backgroundColor: Theme.of(context).cardColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          behavior: SnackBarBehavior.floating,
+          margin: EdgeInsets.all(50),
+          elevation: 30,
         ),
       );
     }

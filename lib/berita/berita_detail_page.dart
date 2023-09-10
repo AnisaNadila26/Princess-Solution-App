@@ -20,6 +20,10 @@ class BeritaDetailPage extends StatelessWidget {
             child: CustomScrollView(
               slivers: [
                 SliverAppBar(
+                  // title: Text(
+                  //   isi.judul!,
+                  //   style: Theme.of(context).textTheme.titleLarge,
+                  // ),
                   leading: IconButton(
                     onPressed: () {
                       Navigator.pop(context);
@@ -29,9 +33,12 @@ class BeritaDetailPage extends StatelessWidget {
                   bottom: PreferredSize(
                     preferredSize: Size.fromHeight(20),
                     child: Container(
-                      color: Colors.white,
+                      color: Theme.of(context).scaffoldBackgroundColor,
                       child: Center(
-                        child: Text(isi.judul!, style: TextStyle(fontWeight: FontWeight.w600),),
+                        child: Text(
+                          isi.judul!,
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
                       ),
                       width: double.maxFinite,
                       padding: EdgeInsets.only(top: 10, bottom: 20),
@@ -39,11 +46,11 @@ class BeritaDetailPage extends StatelessWidget {
                   ),
                   expandedHeight: 500,
                   pinned: true,
-                  backgroundColor: Colors.grey,
+                  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                   flexibleSpace: FlexibleSpaceBar(
                       // title: Text(widget.berita.judul),
                       background: Image.network(
-                        NetworkURL.gambarBerita(isi.image!),
+                    NetworkURL.gambarBerita(isi.image!),
                     // image: AssetImage(isi.image),
                     fit: BoxFit.cover,
                   )),
@@ -57,13 +64,20 @@ class BeritaDetailPage extends StatelessWidget {
                             children: [
                               Icon(MdiIcons.calendar),
                               SizedBox(width: 5),
-                              Text(isi.tanggal!)
+                              Text(
+                                isi.tanggal!,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .copyWith(color: Colors.grey),
+                              )
                             ],
                           ),
                           SizedBox(height: 10),
                           Text(
                             isi.isi!,
                             textAlign: TextAlign.justify,
+                            style: Theme.of(context).textTheme.bodyMedium,
                           )
                         ],
                       )),

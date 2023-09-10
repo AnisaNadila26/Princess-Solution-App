@@ -18,14 +18,21 @@ class DasborPageInstruktur extends StatelessWidget {
                     ? AppBar(
                         title: Text(
                           "Dasbor",
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
+                        flexibleSpace: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Color.fromRGBO(12, 15, 39, 1.0),
+                                Color.fromRGBO(76, 105, 176, 1.0),
+                              ],
+                            ),
                           ),
                         ),
                         centerTitle: true,
-                        backgroundColor: Colors.black,
                         actions: [
                           IconButton(
                               onPressed: () {},
@@ -68,11 +75,19 @@ class DasborPageInstruktur extends StatelessWidget {
                                     height: 240,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                          color: Colors.black,
-                                          borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(20),
-                                            bottomRight: Radius.circular(20),
-                                          )),
+                                        gradient: LinearGradient(
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          colors: [
+                                            Color.fromRGBO(12, 15, 39, 1.0),
+                                            Color.fromRGBO(76, 105, 176, 1.0),
+                                          ],
+                                        ),
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(20),
+                                          bottomRight: Radius.circular(20),
+                                        )
+                                      ),
                                       child: Container(
                                         alignment: Alignment.topCenter,
                                         margin:
@@ -86,11 +101,7 @@ class DasborPageInstruktur extends StatelessWidget {
                                               ),
                                               Text(
                                                 "Dasbor",
-                                                style: TextStyle(
-                                                  fontSize: 24,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w700,
-                                                ),
+                                                style: Theme.of(context).textTheme.headlineSmall,
                                               ),
                                               IconButton(
                                                   onPressed: () {},
@@ -110,9 +121,15 @@ class DasborPageInstruktur extends StatelessWidget {
                                           height: 100,
                                           width: 200,
                                           decoration: BoxDecoration(
-                                              color: Colors.grey,
-                                              borderRadius:
-                                                  BorderRadius.circular(15)),
+                                            color: Theme.of(context).cardColor,
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            border: Border.all(
+                                              color: Color.fromRGBO(
+                                                  226, 235, 245, 1.0),
+                                              width: 3.0,
+                                            ),
+                                          ),
                                           child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceEvenly,
@@ -129,30 +146,35 @@ class DasborPageInstruktur extends StatelessWidget {
                                                           .accountGroup),
                                                     ),
                                                     decoration: BoxDecoration(
-                                                        border: Border.all(
-                                                            color: Colors.grey),
-                                                        shape: BoxShape.circle,
-                                                        color: Colors.white),
+                                                      border: Border.all(
+                                                        color: Color.fromRGBO(226, 235, 245, 1.0),
+                                                        width: 3.0,
+                                                      ),
+                                                      shape: BoxShape.circle,
+                                                      color: Theme.of(context).cardColor
+                                                    ),
                                                   ),
                                                   SizedBox(
                                                     width: 10,
                                                   ),
                                                   Column(
-                                                    mainAxisAlignment: MainAxisAlignment.center,
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Text(
                                                         value.ins!.jumlahSiswa!.toString(),
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
+                                                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.bold),
                                                       ),
                                                       SizedBox(
                                                         height: 10,
                                                       ),
                                                       Text(
                                                         'Jumlah Siswa',
+                                                        style: Theme.of(context).textTheme.bodyLarge,
                                                       )
                                                     ],
                                                   )
@@ -172,30 +194,35 @@ class DasborPageInstruktur extends StatelessWidget {
                                                           Icon(MdiIcons.star),
                                                     ),
                                                     decoration: BoxDecoration(
-                                                        border: Border.all(
-                                                            color: Colors.grey),
-                                                        shape: BoxShape.circle,
-                                                        color: Colors.white),
+                                                      border: Border.all(
+                                                        color: Color.fromRGBO(226, 235, 245, 1.0),
+                                                        width: 3.0,
+                                                      ),
+                                                      shape: BoxShape.circle,
+                                                      color: Theme.of(context).cardColor,
+                                                    ),
                                                   ),
                                                   SizedBox(
                                                     width: 10,
                                                   ),
                                                   Column(
-                                                    mainAxisAlignment: MainAxisAlignment.center,
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Text(
                                                         value.ins!.rating!.toString(),
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold),
+                                                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.bold),
                                                       ),
                                                       SizedBox(
                                                         height: 10,
                                                       ),
                                                       Text(
                                                         'Rating',
+                                                        style: Theme.of(context).textTheme.bodyLarge,
                                                       ),
                                                     ],
                                                   )
@@ -210,10 +237,25 @@ class DasborPageInstruktur extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Text(
+                                    'Jadwal',
+                                    style: Theme.of(context).textTheme.titleLarge,
+                                  ),
+                                ),
                                 Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    side: BorderSide(
+                                      color: Color.fromRGBO(226, 235, 245, 1.0),
+                                      width: 3.0,
+                                    ),
+                                  ),
                                   elevation: 2.0,
-                                  color: Colors.grey,
+                                  color: Theme.of(context).cardColor,
                                   child: Padding(
                                     padding: const EdgeInsets.all(10),
                                     child: Column(
@@ -224,16 +266,25 @@ class DasborPageInstruktur extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text('Jadwal'),
+                                            Text(
+                                              '15 Februari 2023',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge,
+                                            ),
                                             Icon(MdiIcons.chevronRight),
                                           ],
                                         ),
-                                        Text('15 Februari 2023'),
                                         Divider(
-                                          color: Colors.black,
+                                          color: Theme.of(context).dividerColor,
                                           thickness: 0.2,
                                         ),
-                                        Text('Tidak ada Jadwal'),
+                                        Text(
+                                          'Tidak ada Jadwal',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -252,8 +303,7 @@ class DasborPageInstruktur extends StatelessWidget {
                                           children: [
                                             Text(
                                               'Berita Terbaru',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w700),
+                                              style: Theme.of(context).textTheme.titleLarge,
                                             ),
                                             InkWell(
                                               onTap: () {
@@ -263,7 +313,10 @@ class DasborPageInstruktur extends StatelessWidget {
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.end,
                                                 children: [
-                                                  Text('Lainnya'),
+                                                  Text(
+                                                    'Lainnya',
+                                                    style: Theme.of(context).textTheme.bodyLarge,
+                                                  ),
                                                   Icon(MdiIcons.arrowRight),
                                                 ],
                                               ),

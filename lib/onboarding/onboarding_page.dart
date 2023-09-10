@@ -43,16 +43,17 @@ class OnboardingPage extends StatelessWidget {
       },
       child: Consumer<OnboardingNotifier>(
         builder: (context, value, child) => Scaffold(
+          appBar: AppBar(
+            title: Text(
+              'Selamat Datang',
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+            backgroundColor: Colors.transparent,
+            centerTitle: true,
+          ),
           body: SafeArea(
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: Text(
-                    'Selamat Datang',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                ),
                 Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: Align(
@@ -65,7 +66,10 @@ class OnboardingPage extends StatelessWidget {
                                 onPressed: () {
                                   value.skipToLastPage();
                                 },
-                                child: Text('Skip'),
+                                child: Text(
+                                  'Skip',
+                                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.grey),
+                                ),
                               )
                             : SizedBox(
                                 height: 28,
@@ -75,7 +79,7 @@ class OnboardingPage extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: 450,
+                  height: 400,
                   child: GestureDetector(
                     onHorizontalDragEnd: (details) {
                       if (details.primaryVelocity! > 0) {
@@ -104,8 +108,8 @@ class OnboardingPage extends StatelessWidget {
                         dotsCount: onboardingPagesList.length,
                         position: value.currentPageIndex,
                         decorator: DotsDecorator(
-                          color: Colors.grey,
-                          activeColor: Colors.black,
+                          color: Color.fromRGBO(226, 235, 245, 1.0),
+                          activeColor: Color.fromRGBO(76, 105, 176, 1.0),
                           size: const Size.square(9.0),
                           activeSize: const Size(18.0, 9.0),
                           spacing: const EdgeInsets.symmetric(horizontal: 4.0),
@@ -119,18 +123,18 @@ class OnboardingPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           if (value.currentPageIndex > 0)
-                            TextButton(
-                              onPressed: () {
+                            InkWell(
+                              onTap: () {
                                 value.previousPage();
                               },
-                              child: Text('Previous'),
+                              child: Icon(MdiIcons.arrowLeftCircleOutline),
                             ),
                           if (value.currentPageIndex < onboardingPagesList.length - 1)
-                            TextButton(
-                              onPressed: () {
+                            InkWell(
+                              onTap: () {
                                 value.nextPage();
                               },
-                              child: Text('Next'),
+                              child: Icon(MdiIcons.arrowRightCircleOutline),
                             ),
                           if (value.currentPageIndex == onboardingPagesList.length - 1)
                             FilledButton(
@@ -139,9 +143,13 @@ class OnboardingPage extends StatelessWidget {
                                   builder: (context) => LoginPage(),
                                 ));
                               },
-                              child: Text('Login'),
+                              child: Text(
+                                'Login',
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
                               style: FilledButton.styleFrom(
-                                  backgroundColor: Colors.black),
+                                backgroundColor: Color.fromRGBO(76, 105, 176, 1.0),
+                              ),
                             ),
                         ],
                       ),

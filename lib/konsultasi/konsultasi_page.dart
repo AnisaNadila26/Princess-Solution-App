@@ -14,14 +14,21 @@ class KonsultasiPage extends StatelessWidget {
           appBar: AppBar(
             title: Text(
               'Konsultasi',
-              style: TextStyle(
-                fontSize: 24,
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
-              ),
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
-            centerTitle: true,
-            backgroundColor: Colors.black,
+            flexibleSpace: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color.fromRGBO(12, 15, 39, 1.0),
+                      Color.fromRGBO(76, 105, 176, 1.0),
+                    ],
+                  ),
+                ),
+              ),
+              centerTitle: true,
           ),
           body: SafeArea(
             child: ListView(
@@ -40,15 +47,24 @@ class KonsultasiPage extends StatelessWidget {
                       margin: EdgeInsets.symmetric(horizontal: 20),
                       child: Column(
                         children: [
-                          Text('Ingin bertanya terkait kursus mengemudi?'),
+                          Text(
+                            'Ingin bertanya terkait kursus mengemudi?',
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
                           SizedBox(
                             height: 8,
                           ),
-                          Text('Tidak dapat hadir kursus?'),
+                          Text(
+                            'Tidak dapat hadir kursus?',
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
                           SizedBox(
                             height: 10,
                           ),
-                          Text('Silahkan hubungi Admin'),
+                          Text(
+                            'Silahkan hubungi Admin',
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
                           SizedBox(
                             height: 16,
                           ),
@@ -62,7 +78,7 @@ class KonsultasiPage extends StatelessWidget {
                               child: Container(
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color: Color.fromRGBO(0, 0, 0, 1),
+                                  color: Color.fromRGBO(76, 105, 176, 1.0),
                                   // border: Border.all(
                                   //   color: Colors.black,
                                   // ),
@@ -70,9 +86,7 @@ class KonsultasiPage extends StatelessWidget {
                                 ),
                                 child: Text(
                                   'Admin',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
+                                  style: Theme.of(context).textTheme.bodyMedium,
                                 )
                               )
                             ),

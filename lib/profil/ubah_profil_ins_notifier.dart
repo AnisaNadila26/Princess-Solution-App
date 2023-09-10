@@ -1,52 +1,45 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:princess_solution/data/preference.dart';
-import 'package:princess_solution/menu/menu_page.dart';
-import 'package:princess_solution/models/user.dart';
+import 'package:princess_solution/data/preference_ins.dart';
+import 'package:princess_solution/menu/menu_page_ins.dart';
+import 'package:princess_solution/models/instruktur.dart';
 import 'package:princess_solution/repository/profil_repository.dart';
 import 'package:princess_solution/network/network.dart';
 import 'package:file_picker/file_picker.dart';
 
-class UbahProfilNotifier extends ChangeNotifier {
+class UbahProfilInsNotifier extends ChangeNotifier {
   final BuildContext context;
 
-  UbahProfilNotifier(this.context) {
-    getProfile();
+  UbahProfilInsNotifier(this.context) {
+    getInstruktur();
     notifyListeners();
   }
 
-  int noRegistrasi = 0;
+  int idInstruktur = 0;
   var isLoading = true;
-  User? users;
+  Instruktur? ins;
 
   GlobalKey<FormState> keyForm = GlobalKey<FormState>();
   TextEditingController nama = TextEditingController();
-  TextEditingController tanggalLahir = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController telpon = TextEditingController();
-  TextEditingController pekerjaan = TextEditingController();
-  TextEditingController alamat = TextEditingController();
+  TextEditingController usia = TextEditingController();
 
   String fotoProfil = '';
   List<PlatformFile>? paths;
   List<int>? file;
   Uint8List? fileToDisplay;
-  // bool hapusFoto = false;
-  DateTime selectedDate = DateTime.now();
 
-  getProfile() async {
+  getInstruktur() async {
     isLoading = true;
-    Preference().getUsers().then((value) {
-      users = value;
-      noRegistrasi = int.parse(users!.noRegistrasi!);
-      nama = TextEditingController(text: users!.nama);
-      tanggalLahir = TextEditingController(text: users!.ttl.toString());
-      email = TextEditingController(text: users!.email);
-      telpon = TextEditingController(text: users!.telpon);
-      pekerjaan = TextEditingController(text: users!.pekerjaan);
-      alamat = TextEditingController(text: users!.alamat);
-      fotoProfil = users!.fotoProfil!;
+    PreferenceInstruktur().getInstruktur().then((value) {
+      ins = value;
+      idInstruktur = int.parse(ins!.idInstruktur!);
+      nama = TextEditingController(text: ins!.nama);
+      email = TextEditingController(text: ins!.email);
+      telpon = TextEditingController(text: ins!.telpon);
+      usia = TextEditingController(text: ins!.usia);
+      fotoProfil = ins!.fotoProfil!;
       notifyListeners();
       isLoading = false;
       notifyListeners();
@@ -87,7 +80,6 @@ class UbahProfilNotifier extends ChangeNotifier {
         file = paths!.first.bytes!;
         fileToDisplay = Uint8List.fromList(file!);
         fotoProfil = paths!.first.name;
-        // hapusFoto = false;
         Navigator.pop(context);
         notifyListeners();
       }
@@ -98,59 +90,32 @@ class UbahProfilNotifier extends ChangeNotifier {
     }
   }
 
-  Future<void> selectDate(BuildContext context) async {
-    DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: selectedDate,
-      firstDate: selectedDate.subtract(Duration(days: 365 * 50)),
-      lastDate: selectedDate,
-      // builder: (BuildContext context, Widget? child) {
-      //   return Theme(
-      //     data: ThemeData.light().copyWith(
-      //       primaryColor: Colors.black, // Warna kepala tanggal yang dipilih
-      //       accentColor:Colors.pink, // Warna tanggal yang dipilih dan tanggal hari ini
-      //       buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
-      //       dialogBackgroundColor: Colors.white, // Warna latar belakang dialog
-      //     ),
-      //     child: child!,
-      //   );
-      // },
-    );
-
-    if (picked != null && picked != selectedDate) {
-      tanggalLahir.text = DateFormat('yyyy-MM-dd').format(picked);
-      notifyListeners();
-    }
-  }
-
   cekUpdate() {
     if (keyForm.currentState!.validate()) {
-      ubahProfilSiswa();
+      ubahProfilIns();
     }
   }
 
-  Future ubahProfilSiswa() async {
+  Future ubahProfilIns() async {
     try {
-      var response = await ProfilRepository.ubahProfilSiswa(
-        NetworkURL.ubahProfilSiswa(),
-        noRegistrasi,
+      var response = await ProfilRepository.ubahProfilInstruktur(
+        NetworkURL.ubahProfilInstruktur(),
+        idInstruktur,
         nama.text.trim(),
-        tanggalLahir.text.trim(),
         email.text.trim(),
         telpon.text.trim(),
-        pekerjaan.text.trim(),
-        alamat.text.trim(),
+        usia.text.trim(),
         file == null ? [] : file,
         fotoProfil == '' ? 'default' : fotoProfil,
       );
 
       if (response['code'] == 200) {
-        User users = User.fromJson(response['data']);
-        Preference().setEdit(users);
+        Instruktur ins = Instruktur.fromJson(response['data']);
+        PreferenceInstruktur().setEdit(ins);
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (context) => MenuPage(),
+            builder: (context) => MenuPageInstruktur(),
             settings: RouteSettings(
               arguments: {'page': 4},
             ),

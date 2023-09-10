@@ -49,21 +49,24 @@ class LoginNotifier extends ChangeNotifier {
               MaterialPageRoute(builder: (context) => const MenuPage()),
               (route) => false,
             );
-          }
-          else if (value['data']['role'] == 'instruktur') {
+          } else if (value['data']['role'] == 'instruktur') {
             Instruktur ins = Instruktur.fromJson(value['data']);
             PreferenceInstruktur().setInstruktur(ins);
             Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (context) => const MenuPageInstruktur()),
+              MaterialPageRoute(
+                  builder: (context) => const MenuPageInstruktur()),
               (route) => false,
             );
           }
         }
       }).catchError((error) {
         final snackBar = SnackBar(
-          content: Text('Email atau Password salah'),
-          backgroundColor: Colors.black,
+          content: Text(
+            'Email atau Password salah',
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          backgroundColor: Theme.of(context).cardColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -78,15 +81,5 @@ class LoginNotifier extends ChangeNotifier {
     }
   }
 
-  // getProfile() async {
-  //   final profile = await Preference().getUsers();
-  //   users = profile;
-
-  //   if (users != null && users!.instruktur.idInstruktur.isNotEmpty) {
-  //     instruktur = await InstrukturRepository.getInstruktur(
-  //         int.parse(users!.instruktur.idInstruktur));
-  //   }
-
-  //   notifyListeners();
-  // }
+  getProfile() async {}
 }

@@ -72,10 +72,10 @@ class NilaiNotifier extends ChangeNotifier {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         height: 45,
-        width: 250,
+        width: 260,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
-          color: Colors.grey.shade300,
+          color: Theme.of(context).cardColor,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -88,7 +88,7 @@ class NilaiNotifier extends ChangeNotifier {
                     width: 150,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25),
-                      color: Colors.black,
+                      color: Color.fromRGBO(76, 105, 176, 1.0),
                     ),
                   ),
                 TextButton(
@@ -99,9 +99,10 @@ class NilaiNotifier extends ChangeNotifier {
                     child: Text(
                       'Manual',
                       textAlign: TextAlign.end,
-                      style: TextStyle(
-                        color: currentTabIndex == 0 ? Colors.white : Colors.black,
-                      ),
+                      style: Theme.of(context).textTheme.bodyLarge,
+                      // style: TextStyle(
+                      //   color: currentTabIndex == 0 ? Colors.white : Colors.black,
+                      // ),
                     ),
                   ),
                 ),
@@ -116,7 +117,7 @@ class NilaiNotifier extends ChangeNotifier {
                     width: 150,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25),
-                      color: Colors.black,
+                      color: Color.fromRGBO(76, 105, 176, 1.0),
                     ),
                   ),
                 TextButton(
@@ -126,9 +127,10 @@ class NilaiNotifier extends ChangeNotifier {
                         EdgeInsets.only(right: currentTabIndex == 1 ? 0 : 20),
                     child: Text(
                       'Matic',
-                      style: TextStyle(
-                        color: currentTabIndex == 1 ? Colors.white : Colors.black,
-                      ),
+                      style: Theme.of(context).textTheme.bodyLarge,
+                      // style: TextStyle(
+                      //   color: currentTabIndex == 1 ? Colors.white : Colors.black,
+                      // ),
                     ),
                   ),
                 ),

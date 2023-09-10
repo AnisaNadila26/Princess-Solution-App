@@ -12,9 +12,23 @@ class PresensiPage extends StatelessWidget {
         child: Consumer<PresensiNotifier>(
           builder: (context, value, child) => Scaffold(
             appBar: AppBar(
-              title: Text('Presensi'),
+              title: Text(
+                'Presensi',
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+              flexibleSpace: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color.fromRGBO(12, 15, 39, 1.0),
+                      Color.fromRGBO(76, 105, 176, 1.0),
+                    ],
+                  ),
+                ),
+              ),
               centerTitle: true,
-              backgroundColor: Colors.black,
             ),
             body: SafeArea(
               child: Center(

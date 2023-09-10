@@ -25,10 +25,6 @@ class FormNilaiNotifier extends ChangeNotifier {
   Map<String, int?> nilaiMap = {};
 
   GlobalKey<FormState> keyForm = GlobalKey<FormState>();
-  // TextEditingController instruktur = TextEditingController();
-  // TextEditingController namaSiswa = TextEditingController();
-  // TextEditingController kodeKendaraan = TextEditingController();
-  // TextEditingController paket = TextEditingController();
 
   getInstruktur() async {
     isLoading = true;
@@ -38,12 +34,6 @@ class FormNilaiNotifier extends ChangeNotifier {
     isLoading = false;
     notifyListeners();
   }
-
-  // void setInitialValues(Data data) {
-  //   namaSiswa.text = data.nama ?? '';
-  //   kodeKendaraan.text = data.kodeKendaraan ?? '';
-  //   paket.text = data.paket ?? '';
-  // }
 
   Future getMateri(String hari) async {
     if (isMateriLoaded) {
@@ -79,18 +69,22 @@ class FormNilaiNotifier extends ChangeNotifier {
   Future getNilai(String noRegistrasi, String idInstruktur) async {
     try {
       if (nilaiMap.isEmpty) {
-        nilaiMap = await SiswaRepository.getNilai(
-          NetworkURL.getNilai(), 
-          noRegistrasi, 
-          idInstruktur
-        );
+        final Map<String, int?> tempNilaiMap = await SiswaRepository.getNilai(
+            NetworkURL.getNilai(), noRegistrasi, idInstruktur);
 
-        listMateri.forEach((materi) {
-          if (!nilaiMap.containsKey(materi.idMateri)) {
-            nilaiMap[materi.idMateri!] = null;
-          }
-        });
-        notifyListeners();
+        if (tempNilaiMap.isNotEmpty) {
+          nilaiMap = tempNilaiMap;
+
+          listMateri.forEach((materi) {
+            if (!nilaiMap.containsKey(materi.idMateri)) {
+              nilaiMap[materi.idMateri!] = null;
+            }
+          });
+
+          notifyListeners();
+        } else {
+          print("Data nilai tidak ditemukan");
+        }
       }
     } catch (error) {
       print("Error: $error");
@@ -98,6 +92,9 @@ class FormNilaiNotifier extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+
+
 
   cekNilai() {
     if (keyForm.currentState!.validate()) {
@@ -125,8 +122,11 @@ class FormNilaiNotifier extends ChangeNotifier {
       if (response['code'] == 200) {
         Navigator.pop(context);
         final snackBar = SnackBar(
-          content: Text('Penilaian berhasil dikirim'),
-          backgroundColor: Colors.black,
+          content: Text(
+            'Penilaian berhasil dikirim',
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          backgroundColor: Theme.of(context).cardColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -137,8 +137,11 @@ class FormNilaiNotifier extends ChangeNotifier {
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       } else {
         final snackBar = SnackBar(
-          content: Text('Penilaian gagal dikirim'),
-          backgroundColor: Colors.black,
+          content: Text(
+            'Penilaian gagal dikirim',
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          backgroundColor: Theme.of(context).cardColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),

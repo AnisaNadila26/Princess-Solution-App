@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:princess_solution/profil/ubah_profil_notifier.dart';
+import 'package:princess_solution/profil/ubah_profil_ins_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:princess_solution/network/network.dart';
 
-class UbahProfilPage extends StatelessWidget {
-  const UbahProfilPage({super.key});
+class UbahProfilInsPage extends StatelessWidget {
+  const UbahProfilInsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (_) => UbahProfilNotifier(context),
-        child: Consumer<UbahProfilNotifier>(
+        create: (_) => UbahProfilInsNotifier(context),
+        child: Consumer<UbahProfilInsNotifier>(
             builder: (context, value, child) => Scaffold(
                   appBar: AppBar(
                     title: Text(
@@ -83,8 +83,8 @@ class UbahProfilPage extends StatelessWidget {
                                                     fit: BoxFit.cover,
                                                   )
                                                 : Image.network(
-                                                    NetworkURL.getProfilSiswa(
-                                                        value.users!
+                                                    NetworkURL.getProfilInstruktur(
+                                                        value.ins!
                                                             .fotoProfil!),
                                                     width: 120,
                                                     height: 120,
@@ -99,12 +99,12 @@ class UbahProfilPage extends StatelessWidget {
                                             child: Container(
                                           margin: EdgeInsets.all(5),
                                           decoration: BoxDecoration(
-                                            border: Border.all(
-                                              color: Color.fromRGBO(226, 235, 245, 1.0),
-                                              width: 3.0,
-                                            ),
-                                            shape: BoxShape.circle,
-                                            color: Theme.of(context).cardColor),
+                                              border: Border.all(
+                                                  color: Color.fromRGBO(226, 235, 245, 1.0),
+                                                  width: 3.0,
+                                              ),
+                                              shape: BoxShape.circle,
+                                              color: Theme.of(context).cardColor),
                                         )),
                                         IconButton(
                                           icon: Icon(
@@ -121,26 +121,28 @@ class UbahProfilPage extends StatelessWidget {
                                                     top: Radius.circular(20),
                                                   ),
                                                 ),
-                                                backgroundColor: Theme.of(context).cardColor,
-                                                builder: (BuildContext context) {
+                                                builder:
+                                                    (BuildContext context) {
                                                   return SizedBox(
                                                     height: 200,
                                                     child: Column(
-                                                      mainAxisSize: MainAxisSize.min,
-                                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .end,
                                                       children: [
                                                         Padding(
-                                                          padding: const EdgeInsets.all(10),
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(10),
                                                           child: TextButton(
-                                                            onPressed: () {
-                                                              Navigator.pop(
-                                                                  context);
-                                                            },
-                                                            child: Text(
-                                                              'Batal',
-                                                              style: Theme.of(context).textTheme.bodyMedium,
-                                                            )
-                                                          ),
+                                                              onPressed: () {
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              child: Text(
+                                                                  'Batal')),
                                                         ),
                                                         Row(
                                                           mainAxisAlignment:
@@ -157,54 +159,57 @@ class UbahProfilPage extends StatelessWidget {
                                                                   Container(
                                                                     width: 50,
                                                                     height: 50,
-                                                                    decoration: BoxDecoration(
-                                                                      color: Theme.of(context).cardColor,
-                                                                      shape: BoxShape.circle,
-                                                                      border: Border.all(
-                                                                        color: Color.fromRGBO(226, 235, 245, 1.0),
-                                                                        width: 3.0,
-                                                                      )
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      shape: BoxShape
+                                                                          .circle,
                                                                     ),
                                                                     child: Icon(
-                                                                      MdiIcons.image,
-                                                                      color: Colors.white,
+                                                                      MdiIcons
+                                                                          .image,
+                                                                      color: Colors
+                                                                          .white,
                                                                     ),
                                                                   ),
-                                                                  SizedBox(height: 10),
+                                                                  SizedBox(
+                                                                      height:
+                                                                          10),
                                                                   Text(
-                                                                    'Pilih Foto',
-                                                                    style: Theme.of(context).textTheme.bodyMedium,
-                                                                  ),
+                                                                      'Pilih Foto'),
                                                                 ],
                                                               ),
                                                             ),
                                                             InkWell(
                                                               onTap: () {
-                                                                value.deleteFotoProfil();
+                                                                value
+                                                                    .deleteFotoProfil();
                                                               },
                                                               child: Column(
                                                                 children: [
                                                                   Container(
                                                                     width: 50,
                                                                     height: 50,
-                                                                    decoration: BoxDecoration(
-                                                                      color: Theme.of(context).cardColor,
-                                                                      shape: BoxShape.circle,
-                                                                      border: Border.all(
-                                                                        color: Color.fromRGBO(226, 235, 245, 1.0),
-                                                                        width: 3.0,
-                                                                      )
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: Colors
+                                                                          .black,
+                                                                      shape: BoxShape
+                                                                          .circle,
                                                                     ),
                                                                     child: Icon(
-                                                                      MdiIcons.trashCanOutline,
-                                                                      color: Colors.white,
+                                                                      MdiIcons
+                                                                          .trashCanOutline,
+                                                                      color: Colors
+                                                                          .white,
                                                                     ),
                                                                   ),
-                                                                  SizedBox(height: 10),
+                                                                  SizedBox(
+                                                                      height:
+                                                                          10),
                                                                   Text(
-                                                                    'Hapus Foto',
-                                                                    style: Theme.of(context).textTheme.bodyMedium,
-                                                                  ),
+                                                                      'Hapus Foto'),
                                                                 ],
                                                               ),
                                                             ),
@@ -244,19 +249,17 @@ class UbahProfilPage extends StatelessWidget {
                                         ),
                                         focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Color.fromRGBO(
-                                                76, 105, 176, 1.0),
+                                            color: Color.fromRGBO(76, 105, 176,1.0),
                                             width: 2.0,
                                           ),
                                         ),
-                                        errorBorder: UnderlineInputBorder(
+                                        errorBorder:  UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color.fromRGBO(226, 235, 245, 1.0),
                                             width: 2.0,
                                           ),
                                         ),
-                                        focusedErrorBorder:
-                                            UnderlineInputBorder(
+                                        focusedErrorBorder:  UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color.fromRGBO(
                                                 76, 105, 176, 1.0),
@@ -264,55 +267,6 @@ class UbahProfilPage extends StatelessWidget {
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    TextFormField(
-                                      controller: value.tanggalLahir,
-                                      validator: (value) {
-                                        if (value!.isEmpty) {
-                                          return "Field tidak boleh kosong";
-                                        } else {
-                                          return null;
-                                        }
-                                      },
-                                      decoration: InputDecoration(
-                                          labelText: "Tanggal Lahir",
-                                          border: InputBorder.none,
-                                          enabledBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color.fromRGBO(226, 235, 245, 1.0),
-                                              width: 2.0,
-                                            ),
-                                          ),
-                                          focusedBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color.fromRGBO(
-                                                  76, 105, 176, 1.0),
-                                              width: 2.0,
-                                            ),
-                                          ),
-                                          errorBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color.fromRGBO(226, 235, 245, 1.0),
-                                              width: 2.0,
-                                            ),
-                                          ),
-                                          focusedErrorBorder:
-                                              UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color.fromRGBO(
-                                                  76, 105, 176, 1.0),
-                                              width: 2.0,
-                                            ),
-                                          ),
-                                          suffixIcon: IconButton(
-                                            icon: Icon(MdiIcons.calendarMonth),
-                                            onPressed: () {
-                                              value.selectDate(context);
-                                            },
-                                          )),
                                     ),
                                     SizedBox(
                                       height: 10,
@@ -337,8 +291,7 @@ class UbahProfilPage extends StatelessWidget {
                                         ),
                                         focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Color.fromRGBO(
-                                                76, 105, 176, 1.0),
+                                            color: Color.fromRGBO(76, 105, 176, 1.0),
                                             width: 2.0,
                                           ),
                                         ),
@@ -351,8 +304,7 @@ class UbahProfilPage extends StatelessWidget {
                                         focusedErrorBorder:
                                             UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Color.fromRGBO(
-                                                76, 105, 176, 1.0),
+                                            color: Color.fromRGBO(76, 105, 176, 1.0),
                                             width: 2.0,
                                           ),
                                         ),
@@ -381,8 +333,7 @@ class UbahProfilPage extends StatelessWidget {
                                         ),
                                         focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Color.fromRGBO(
-                                                76, 105, 176, 1.0),
+                                            color: Color.fromRGBO(76, 105, 176, 1.0),
                                             width: 2.0,
                                           ),
                                         ),
@@ -395,96 +346,7 @@ class UbahProfilPage extends StatelessWidget {
                                         focusedErrorBorder:
                                             UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Color.fromRGBO(
-                                                76, 105, 176, 1.0),
-                                            width: 2.0,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    TextFormField(
-                                      controller: value.pekerjaan,
-                                      validator: (value) {
-                                        if (value!.isEmpty) {
-                                          return "Field tidak boleh kosong";
-                                        } else {
-                                          return null;
-                                        }
-                                      },
-                                      decoration: InputDecoration(
-                                        labelText: "Pekerjaan",
-                                        border: InputBorder.none,
-                                        enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color.fromRGBO(226, 235, 245, 1.0),
-                                            width: 2.0,
-                                          ),
-                                        ),
-                                        focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color.fromRGBO(
-                                                76, 105, 176, 1.0),
-                                            width: 2.0,
-                                          ),
-                                        ),
-                                        errorBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color.fromRGBO(226, 235, 245, 1.0),
-                                            width: 2.0,
-                                          ),
-                                        ),
-                                        focusedErrorBorder:
-                                            UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color.fromRGBO(
-                                                76, 105, 176, 1.0),
-                                            width: 2.0,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    TextFormField(
-                                      controller: value.alamat,
-                                      validator: (value) {
-                                        if (value!.isEmpty) {
-                                          return "Field tidak boleh kosong";
-                                        } else {
-                                          return null;
-                                        }
-                                      },
-                                      decoration: InputDecoration(
-                                        labelText: "Alamat",
-                                        border: InputBorder.none,
-                                        enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color.fromRGBO(226, 235, 245, 1.0),
-                                            width: 2.0,
-                                          ),
-                                        ),
-                                        focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color.fromRGBO(
-                                                76, 105, 176, 1.0),
-                                            width: 2.0,
-                                          ),
-                                        ),
-                                        errorBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color.fromRGBO(226, 235, 245, 1.0),
-                                            width: 2.0,
-                                          ),
-                                        ),
-                                        focusedErrorBorder:
-                                            UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color.fromRGBO(
-                                                76, 105, 176, 1.0),
+                                            color: Color.fromRGBO(76, 105, 176, 1.0),
                                             width: 2.0,
                                           ),
                                         ),

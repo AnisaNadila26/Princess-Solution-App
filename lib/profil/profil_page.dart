@@ -20,14 +20,21 @@ class ProfilPage extends StatelessWidget {
                     ? AppBar(
                         title: Text(
                           "Profil",
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
+                        flexibleSpace: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Color.fromRGBO(12, 15, 39, 1.0),
+                                Color.fromRGBO(76, 105, 176, 1.0),
+                              ],
+                            ),
                           ),
                         ),
                         centerTitle: true,
-                        backgroundColor: Colors.black,
                         actions: [
                           IconButton(
                               onPressed: () {
@@ -77,7 +84,14 @@ class ProfilPage extends StatelessWidget {
                                     height: 240,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                          color: Colors.black,
+                                          gradient: LinearGradient(
+                                            begin: Alignment.topCenter,
+                                            end: Alignment.bottomCenter,
+                                            colors: [
+                                              Color.fromRGBO(12, 15, 39, 1.0),
+                                              Color.fromRGBO(76, 105, 176, 1.0),
+                                            ],
+                                          ),
                                           borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(20),
                                             bottomRight: Radius.circular(20),
@@ -95,11 +109,7 @@ class ProfilPage extends StatelessWidget {
                                             ),
                                             Text(
                                               "Profil",
-                                              style: TextStyle(
-                                                fontSize: 24,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w700,
-                                              ),
+                                              style: Theme.of(context).textTheme.headlineSmall,
                                             ),
                                             IconButton(
                                                 onPressed: () {
@@ -151,9 +161,14 @@ class ProfilPage extends StatelessWidget {
                               children: [
                                 Card(
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    side: BorderSide(
+                                      color: Color.fromRGBO(226, 235, 245, 1.0),
+                                      width: 3.0,
+                                    ),
+                                  ),
                                   elevation: 2.0,
-                                  color: Colors.grey,
+                                  color: Theme.of(context).cardColor,
                                   child: Padding(
                                     padding: const EdgeInsets.all(10),
                                     child: Row(
@@ -168,9 +183,15 @@ class ProfilPage extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text('Nama'),
+                                              Text(
+                                                'Nama',
+                                                style: Theme.of(context).textTheme.bodyLarge,
+                                              ),
                                               SizedBox(height: 3),
-                                              Text(value.users!.nama!),
+                                              Text(
+                                                value.users!.nama!,
+                                                style: Theme.of(context).textTheme.bodyMedium,
+                                              ),
                                             ],
                                           ),
                                         )
@@ -181,9 +202,14 @@ class ProfilPage extends StatelessWidget {
                                 SizedBox(height: 10),
                                 Card(
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    side: BorderSide(
+                                      color: Color.fromRGBO(226, 235, 245, 1.0),
+                                      width: 3.0,
+                                    ),
+                                  ),
                                   elevation: 2.0,
-                                  color: Colors.grey,
+                                  color: Theme.of(context).cardColor,
                                   child: Padding(
                                     padding: const EdgeInsets.all(10),
                                     child: Row(
@@ -198,9 +224,15 @@ class ProfilPage extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text('Tanggal Lahir'),
+                                              Text(
+                                                'Tanggal Lahir',
+                                                style: Theme.of(context).textTheme.bodyLarge,
+                                              ),
                                               SizedBox(height: 3),
-                                              Text(value.users!.ttl.toString()),
+                                              Text(
+                                                value.users!.ttl.toString(),
+                                                style: Theme.of(context).textTheme.bodyMedium,
+                                              ),
                                             ],
                                           ),
                                         )
@@ -211,9 +243,14 @@ class ProfilPage extends StatelessWidget {
                                 SizedBox(height: 10),
                                 Card(
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    side: BorderSide(
+                                      color: Color.fromRGBO(226, 235, 245, 1.0),
+                                      width: 3.0,
+                                    ),
+                                  ),
                                   elevation: 2.0,
-                                  color: Colors.grey,
+                                  color: Theme.of(context).cardColor,
                                   child: Padding(
                                     padding: const EdgeInsets.all(10),
                                     child: Row(
@@ -228,9 +265,15 @@ class ProfilPage extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text('Email'),
+                                              Text(
+                                                'Email',
+                                                style: Theme.of(context).textTheme.bodyLarge,
+                                              ),
                                               SizedBox(height: 3),
-                                              Text(value.users!.email!),
+                                              Text(
+                                                value.users!.email!,
+                                                style: Theme.of(context).textTheme.bodyMedium,
+                                              ),
                                             ],
                                           ),
                                         )
@@ -241,9 +284,14 @@ class ProfilPage extends StatelessWidget {
                                 SizedBox(height: 10),
                                 Card(
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    side: BorderSide(
+                                      color: Color.fromRGBO(226, 235, 245, 1.0),
+                                      width: 3.0,
+                                    ),
+                                  ),
                                   elevation: 2.0,
-                                  color: Colors.grey,
+                                  color: Theme.of(context).cardColor,
                                   child: Padding(
                                     padding: const EdgeInsets.all(10),
                                     child: Row(
@@ -258,9 +306,15 @@ class ProfilPage extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text('Nomor Telepon'),
+                                              Text(
+                                                'Nomor Telepon',
+                                                style: Theme.of(context).textTheme.bodyLarge,
+                                              ),
                                               SizedBox(height: 3),
-                                              Text(value.users!.telpon!),
+                                              Text(
+                                                value.users!.telpon!,
+                                                style: Theme.of(context).textTheme.bodyMedium,
+                                              ),
                                             ],
                                           ),
                                         )
@@ -271,9 +325,14 @@ class ProfilPage extends StatelessWidget {
                                 SizedBox(height: 10),
                                 Card(
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    side: BorderSide(
+                                      color: Color.fromRGBO(226, 235, 245, 1.0),
+                                      width: 3.0,
+                                    ),
+                                  ),
                                   elevation: 2.0,
-                                  color: Colors.grey,
+                                  color: Theme.of(context).cardColor,
                                   child: Padding(
                                     padding: const EdgeInsets.all(10),
                                     child: Row(
@@ -288,9 +347,15 @@ class ProfilPage extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text('Pekerjaan'),
+                                              Text(
+                                                'Pekerjaan',
+                                                style: Theme.of(context).textTheme.bodyLarge,
+                                              ),
                                               SizedBox(height: 3),
-                                              Text(value.users!.pekerjaan!),
+                                              Text(
+                                                value.users!.pekerjaan!,
+                                                style: Theme.of(context).textTheme.bodyMedium,
+                                              ),
                                             ],
                                           ),
                                         )
@@ -301,9 +366,14 @@ class ProfilPage extends StatelessWidget {
                                 SizedBox(height: 10),
                                 Card(
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    side: BorderSide(
+                                      color: Color.fromRGBO(226, 235, 245, 1.0),
+                                      width: 3.0,
+                                    ),
+                                  ),
                                   elevation: 2.0,
-                                  color: Colors.grey,
+                                  color: Theme.of(context).cardColor,
                                   child: Padding(
                                     padding: const EdgeInsets.all(10),
                                     child: Row(
@@ -318,9 +388,15 @@ class ProfilPage extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text('Alamat'),
+                                              Text(
+                                                'Alamat',
+                                                style: Theme.of(context).textTheme.bodyLarge,
+                                              ),
                                               SizedBox(height: 3),
-                                              Text(value.users!.alamat!),
+                                              Text(
+                                                value.users!.alamat!,
+                                                style: Theme.of(context).textTheme.bodyMedium,
+                                              ),
                                             ],
                                           ),
                                         )
@@ -331,9 +407,14 @@ class ProfilPage extends StatelessWidget {
                                 SizedBox(height: 10),
                                 Card(
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    side: BorderSide(
+                                      color: Color.fromRGBO(226, 235, 245, 1.0),
+                                      width: 3.0,
+                                    ),
+                                  ),
                                   elevation: 2.0,
-                                  color: Colors.grey,
+                                  color: Theme.of(context).cardColor,
                                   child: Padding(
                                     padding: const EdgeInsets.all(10),
                                     child: Row(
@@ -348,9 +429,15 @@ class ProfilPage extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text('Status'),
+                                              Text(
+                                                'Status',
+                                                style: Theme.of(context).textTheme.bodyLarge,
+                                              ),
                                               SizedBox(height: 3),
-                                              Text(value.users!.status!),
+                                              Text(
+                                                value.users!.status!,
+                                                style: Theme.of(context).textTheme.bodyMedium,
+                                              ),
                                             ],
                                           ),
                                         )
@@ -360,10 +447,15 @@ class ProfilPage extends StatelessWidget {
                                 ),
                                 SizedBox(height: 10),
                                 Card(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
+                                 shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    side: BorderSide(
+                                      color: Color.fromRGBO(226, 235, 245, 1.0),
+                                      width: 3.0,
+                                    ),
+                                  ),
                                   elevation: 2.0,
-                                  color: Colors.grey,
+                                  color: Theme.of(context).cardColor,
                                   child: Padding(
                                     padding: const EdgeInsets.all(10),
                                     child: Row(
@@ -378,9 +470,15 @@ class ProfilPage extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text('Jumlah Kehadiran'),
+                                              Text(
+                                                'Jumlah Kehadiran',
+                                                style: Theme.of(context).textTheme.bodyLarge,
+                                              ),
                                               SizedBox(height: 3),
-                                              Text(value.users!.kehadiran!),
+                                              Text(
+                                                value.users!.kehadiran!,
+                                                style: Theme.of(context).textTheme.bodyMedium,
+                                              ),
                                             ],
                                           ),
                                         )
@@ -400,10 +498,15 @@ class ProfilPage extends StatelessWidget {
                                   },
                                   child: Card(
                                     shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      side: BorderSide(
+                                        color:
+                                            Color.fromRGBO(226, 235, 245, 1.0),
+                                        width: 3.0,
+                                      ),
+                                    ),
                                     elevation: 2.0,
-                                    color: Colors.green.shade200,
+                                    color: Theme.of(context).cardColor,
                                     child: Padding(
                                       padding: const EdgeInsets.all(10),
                                       child: Row(
@@ -421,10 +524,15 @@ class ProfilPage extends StatelessWidget {
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
                                                   children: [
-                                                    Text('Tagihan'),
+                                                    Text(
+                                                      'Tagihan',
+                                                      style: Theme.of(context).textTheme.bodyLarge,
+                                                    ),
                                                     SizedBox(height: 3),
-                                                    Text(value.users!
-                                                        .sisaPembayaran!),
+                                                    Text(
+                                                      value.users!.sisaPembayaran!,
+                                                      style: Theme.of(context).textTheme.bodyMedium,
+                                                    ),
                                                   ],
                                                 ),
                                               )
@@ -448,10 +556,15 @@ class ProfilPage extends StatelessWidget {
                                   },
                                   child: Card(
                                     shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      side: BorderSide(
+                                        color:
+                                            Color.fromRGBO(226, 235, 245, 1.0),
+                                        width: 3.0,
+                                      ),
+                                    ),
                                     elevation: 2.0,
-                                    color: Colors.green.shade200,
+                                    color: Theme.of(context).cardColor,
                                     child: Padding(
                                       padding: const EdgeInsets.all(10),
                                       child: Row(
@@ -469,10 +582,15 @@ class ProfilPage extends StatelessWidget {
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
                                                   children: [
-                                                    Text('Penilaian Kursus'),
+                                                    Text(
+                                                      'Penilaian Kursus',
+                                                      style: Theme.of(context).textTheme.bodyLarge,
+                                                    ),
                                                     SizedBox(height: 3),
                                                     Text(
-                                                        'Berikan penilaian anda'),
+                                                      'Berikan penilaian anda',
+                                                      style: Theme.of(context).textTheme.bodyMedium,
+                                                    ),
                                                   ],
                                                 ),
                                               ),
@@ -495,97 +613,94 @@ class ProfilPage extends StatelessWidget {
                                             builder: (context) {
                                               return AlertDialog(
                                                 shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20)),
+                                                  borderRadius:BorderRadius.circular(20)
+                                                ),
+                                                backgroundColor: Theme.of(context).cardColor,
                                                 content: Container(
                                                   height: 200,
-                                                  width: 250,
-                                                  child: Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Container(
-                                                        width: 60,
-                                                        height: 60,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: Colors.black,
-                                                          shape:
-                                                              BoxShape.circle,
-                                                        ),
-                                                        child: Icon(
-                                                          MdiIcons
-                                                              .logoutVariant,
-                                                          color: Colors.white,
-                                                        ),
-                                                      ),
-                                                      // Icon(MdiIcons.logoutVariant),
-                                                      SizedBox(height: 20),
-                                                      Text(
-                                                        'Keluar',
-                                                        style: TextStyle(
-                                                            fontSize: 20,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w700),
-                                                      ),
-                                                      SizedBox(height: 20),
-                                                      Text(
-                                                          'Apakah anda yakin ingin keluar?'),
-                                                      SizedBox(height: 20),
-                                                      Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceEvenly,
-                                                        children: [
-                                                          FilledButton(
-                                                            onPressed: () {
-                                                              Navigator.pop(
-                                                                  context);
-                                                            },
-                                                            child:
-                                                                Text('Batal'),
-                                                            style: FilledButton
-                                                                .styleFrom(
-                                                                    backgroundColor:
-                                                                        Colors
-                                                                            .grey),
+                                                  width: 200,
+                                                  child: Transform.translate(
+                                                    offset: Offset(0, -50),
+                                                    child: Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment.center,
+                                                      children: [
+                                                        Container(
+                                                          width: 60,
+                                                          height: 60,
+                                                          decoration: BoxDecoration(
+                                                            color: Theme.of(context).cardColor,
+                                                            shape: BoxShape.circle,
+                                                            border: Border.all(
+                                                              color: Color.fromRGBO(226, 235, 245, 1.0),
+                                                              width: 3.0,
+                                                            )
                                                           ),
-                                                          FilledButton(
-                                                            onPressed: () {
-                                                              value.logout();
-                                                            },
-                                                            child:
-                                                                Text('Keluar'),
-                                                            style: FilledButton
-                                                                .styleFrom(
-                                                                    backgroundColor:
-                                                                        Colors
-                                                                            .black),
+                                                          child: Icon(
+                                                            MdiIcons.logoutVariant,
+                                                            color: Colors.white,
                                                           ),
-                                                        ],
-                                                      )
-                                                    ],
+                                                        ),
+                                                        // Icon(MdiIcons.logoutVariant),
+                                                        SizedBox(height: 20),
+                                                        Text(
+                                                          'Keluar',
+                                                           style: Theme.of(context).textTheme.titleLarge,
+                                                        ),
+                                                        SizedBox(height: 20),
+                                                        Text(
+                                                          'Apakah anda yakin ingin keluar?',
+                                                           style: Theme.of(context).textTheme.bodyLarge,
+                                                        ),
+                                                        SizedBox(height: 20),
+                                                        Row(
+                                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                          children: [
+                                                            FilledButton(
+                                                              onPressed: () {
+                                                                Navigator.pop(context);
+                                                              },
+                                                              child:
+                                                                Text(
+                                                                  'Batal',
+                                                                   style: Theme.of(context).textTheme.bodyMedium,
+                                                                ),
+                                                              style: FilledButton.styleFrom(
+                                                                backgroundColor: Colors.grey,
+                                                              ),
+                                                            ),
+                                                            FilledButton(
+                                                              onPressed: () {
+                                                                value.logout();
+                                                              },
+                                                              child:
+                                                                Text(
+                                                                  'Keluar',
+                                                                   style: Theme.of(context).textTheme.bodyMedium,
+                                                                ),
+                                                            style: FilledButton.styleFrom(
+                                                              backgroundColor: Color.fromRGBO(76, 105, 176, 1.0),
+                                                            ),
+                                                            ),
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                               );
                                             });
                                       },
                                       child: Container(
-                                          alignment: Alignment.center,
-                                          decoration: BoxDecoration(
-                                            color: Color.fromRGBO(0, 0, 0, 1),
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                          ),
-                                          child: Text(
-                                            'Keluar',
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ))),
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                          color: Color.fromRGBO(76, 105, 176, 1.0),
+                                          borderRadius: BorderRadius.circular(20),
+                                        ),
+                                        child: Text(
+                                          'Keluar',
+                                          style: Theme.of(context).textTheme.bodyMedium,
+                                        ))),
                                 ),
                                 SizedBox(height: 30),
                               ],

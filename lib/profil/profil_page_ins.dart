@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:princess_solution/profil/profil_notifier_ins.dart';
+import 'package:princess_solution/profil/ubah_profil_ins_page.dart';
 import 'package:provider/provider.dart';
 import 'package:princess_solution/network/network.dart';
-import 'package:princess_solution/profil/ubah_profil_page.dart';
 
 class ProfilPageInstruktur extends StatelessWidget {
   const ProfilPageInstruktur({super.key});
@@ -18,21 +18,28 @@ class ProfilPageInstruktur extends StatelessWidget {
                     ? AppBar(
                         title: Text(
                           "Profil",
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
+                        flexibleSpace: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Color.fromRGBO(12, 15, 39, 1.0),
+                                Color.fromRGBO(76, 105, 176, 1.0),
+                              ],
+                            ),
                           ),
                         ),
                         centerTitle: true,
-                        backgroundColor: Colors.black,
                         actions: [
                           IconButton(
                               onPressed: () {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(builder: (context) {
-                                    return UbahProfilPage();
+                                    return UbahProfilInsPage();
                                   }),
                                 );
                               },
@@ -75,7 +82,14 @@ class ProfilPageInstruktur extends StatelessWidget {
                                     height: 240,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                          color: Colors.black,
+                                          gradient: LinearGradient(
+                                            begin: Alignment.topCenter,
+                                            end: Alignment.bottomCenter,
+                                            colors: [
+                                              Color.fromRGBO(12, 15, 39, 1.0),
+                                              Color.fromRGBO(76, 105, 176, 1.0),
+                                            ],
+                                          ),
                                           borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(20),
                                             bottomRight: Radius.circular(20),
@@ -93,11 +107,9 @@ class ProfilPageInstruktur extends StatelessWidget {
                                             ),
                                             Text(
                                               "Profil",
-                                              style: TextStyle(
-                                                fontSize: 24,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w700,
-                                              ),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .headlineSmall,
                                             ),
                                             IconButton(
                                                 onPressed: () {
@@ -105,7 +117,7 @@ class ProfilPageInstruktur extends StatelessWidget {
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) {
-                                                      return UbahProfilPage();
+                                                      return UbahProfilInsPage();
                                                     }),
                                                   );
                                                 },
@@ -128,8 +140,9 @@ class ProfilPageInstruktur extends StatelessWidget {
                                         child: ClipOval(
                                           child: Image.network(
                                             value.ins!.fotoProfil!.isNotEmpty
-                                                ? NetworkURL.getProfilInstruktur(
-                                                    value.ins!.fotoProfil!)
+                                                ? NetworkURL
+                                                    .getProfilInstruktur(
+                                                        value.ins!.fotoProfil!)
                                                 : 'assets/defaultProfile.png',
                                             width: 120,
                                             height: 120,
@@ -147,9 +160,14 @@ class ProfilPageInstruktur extends StatelessWidget {
                               children: [
                                 Card(
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    side: BorderSide(
+                                      color: Color.fromRGBO(226, 235, 245, 1.0),
+                                      width: 3.0,
+                                    ),
+                                  ),
                                   elevation: 2.0,
-                                  color: Colors.grey,
+                                  color: Theme.of(context).cardColor,
                                   child: Padding(
                                     padding: const EdgeInsets.all(10),
                                     child: Row(
@@ -164,9 +182,19 @@ class ProfilPageInstruktur extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text('Nama'),
+                                              Text(
+                                                'Nama',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
+                                              ),
                                               SizedBox(height: 3),
-                                              Text(value.ins!.nama!),
+                                              Text(
+                                                value.ins!.nama!,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium,
+                                              ),
                                             ],
                                           ),
                                         )
@@ -177,9 +205,14 @@ class ProfilPageInstruktur extends StatelessWidget {
                                 SizedBox(height: 10),
                                 Card(
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    side: BorderSide(
+                                      color: Color.fromRGBO(226, 235, 245, 1.0),
+                                      width: 3.0,
+                                    ),
+                                  ),
                                   elevation: 2.0,
-                                  color: Colors.grey,
+                                  color: Theme.of(context).cardColor,
                                   child: Padding(
                                     padding: const EdgeInsets.all(10),
                                     child: Row(
@@ -194,9 +227,19 @@ class ProfilPageInstruktur extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text('Email'),
+                                              Text(
+                                                'Email',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
+                                              ),
                                               SizedBox(height: 3),
-                                              Text(value.ins!.email!),
+                                              Text(
+                                                value.ins!.email!,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium,
+                                              ),
                                             ],
                                           ),
                                         )
@@ -207,9 +250,14 @@ class ProfilPageInstruktur extends StatelessWidget {
                                 SizedBox(height: 10),
                                 Card(
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    side: BorderSide(
+                                      color: Color.fromRGBO(226, 235, 245, 1.0),
+                                      width: 3.0,
+                                    ),
+                                  ),
                                   elevation: 2.0,
-                                  color: Colors.grey,
+                                  color: Theme.of(context).cardColor,
                                   child: Padding(
                                     padding: const EdgeInsets.all(10),
                                     child: Row(
@@ -224,9 +272,19 @@ class ProfilPageInstruktur extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text('Nomor Telepon'),
+                                              Text(
+                                                'Nomor Telepon',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
+                                              ),
                                               SizedBox(height: 3),
-                                              Text(value.ins!.telpon!),
+                                              Text(
+                                                value.ins!.telpon!,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium,
+                                              ),
                                             ],
                                           ),
                                         )
@@ -237,9 +295,14 @@ class ProfilPageInstruktur extends StatelessWidget {
                                 SizedBox(height: 10),
                                 Card(
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    side: BorderSide(
+                                      color: Color.fromRGBO(226, 235, 245, 1.0),
+                                      width: 3.0,
+                                    ),
+                                  ),
                                   elevation: 2.0,
-                                  color: Colors.grey,
+                                  color: Theme.of(context).cardColor,
                                   child: Padding(
                                     padding: const EdgeInsets.all(10),
                                     child: Row(
@@ -254,9 +317,19 @@ class ProfilPageInstruktur extends StatelessWidget {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text('Usia'),
+                                              Text(
+                                                'Usia',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
+                                              ),
                                               SizedBox(height: 3),
-                                              Text(value.ins!.usia!),
+                                              Text(
+                                                value.ins!.usia!,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium,
+                                              ),
                                             ],
                                           ),
                                         )
@@ -278,76 +351,102 @@ class ProfilPageInstruktur extends StatelessWidget {
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             20)),
+                                                backgroundColor:
+                                                    Theme.of(context).cardColor,
                                                 content: Container(
                                                   height: 200,
-                                                  width: 250,
-                                                  child: Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Container(
-                                                        width: 60,
-                                                        height: 60,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: Colors.black,
-                                                          shape:
-                                                              BoxShape.circle,
-                                                        ),
-                                                        child: Icon(
-                                                          MdiIcons
-                                                              .logoutVariant,
-                                                          color: Colors.white,
-                                                        ),
-                                                      ),
-                                                      // Icon(MdiIcons.logoutVariant),
-                                                      SizedBox(height: 20),
-                                                      Text(
-                                                        'Keluar',
-                                                        style: TextStyle(
-                                                            fontSize: 20,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w700),
-                                                      ),
-                                                      SizedBox(height: 20),
-                                                      Text(
-                                                          'Apakah anda yakin ingin keluar?'),
-                                                      SizedBox(height: 20),
-                                                      Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceEvenly,
-                                                        children: [
-                                                          FilledButton(
-                                                            onPressed: () {
-                                                              Navigator.pop(
-                                                                  context);
-                                                            },
-                                                            child:
-                                                                Text('Batal'),
-                                                            style: FilledButton
-                                                                .styleFrom(
-                                                                    backgroundColor:
-                                                                        Colors
-                                                                            .grey),
+                                                  width: 200,
+                                                  child: Transform.translate(
+                                                    offset: Offset(0, -50),
+                                                    child: Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Container(
+                                                          width: 60,
+                                                          height: 60,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                                  color: Theme.of(
+                                                                          context)
+                                                                      .cardColor,
+                                                                  shape: BoxShape
+                                                                      .circle,
+                                                                  border: Border
+                                                                      .all(
+                                                                    color: Color.fromRGBO(226, 235, 245, 1.0),
+                                                                    width: 3.0,
+                                                                  )),
+                                                          child: Icon(
+                                                            MdiIcons
+                                                                .logoutVariant,
+                                                            color: Colors.white,
                                                           ),
-                                                          FilledButton(
-                                                            onPressed: () {
-                                                              value.logout();
-                                                            },
-                                                            child:
-                                                                Text('Keluar'),
-                                                            style: FilledButton
-                                                                .styleFrom(
-                                                                    backgroundColor:
-                                                                        Colors
-                                                                            .black),
-                                                          ),
-                                                        ],
-                                                      )
-                                                    ],
+                                                        ),
+                                                        // Icon(MdiIcons.logoutVariant),
+                                                        SizedBox(height: 20),
+                                                        Text(
+                                                          'Keluar',
+                                                          style:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .titleLarge,
+                                                        ),
+                                                        SizedBox(height: 20),
+                                                        Text(
+                                                          'Apakah anda yakin ingin keluar?',
+                                                          style:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .bodyLarge,
+                                                        ),
+                                                        SizedBox(height: 20),
+                                                        Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceEvenly,
+                                                          children: [
+                                                            FilledButton(
+                                                              onPressed: () {
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              child: Text(
+                                                                'Batal',
+                                                                style: Theme.of(context).textTheme.bodyMedium,
+                                                              ),
+                                                              style: FilledButton
+                                                                  .styleFrom(
+                                                                backgroundColor:
+                                                                    Colors.grey,
+                                                              ),
+                                                            ),
+                                                            FilledButton(
+                                                              onPressed: () {
+                                                                value.logout();
+                                                              },
+                                                              child: Text(
+                                                                'Keluar',
+                                                                style: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .bodyMedium,
+                                                              ),
+                                                              style: FilledButton
+                                                                  .styleFrom(
+                                                                backgroundColor:
+                                                                    Color.fromRGBO(
+                                                                        76,
+                                                                        105,
+                                                                        176,
+                                                                        1.0),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        )
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                               );
@@ -356,15 +455,16 @@ class ProfilPageInstruktur extends StatelessWidget {
                                       child: Container(
                                           alignment: Alignment.center,
                                           decoration: BoxDecoration(
-                                            color: Color.fromRGBO(0, 0, 0, 1),
+                                            color: Color.fromRGBO(
+                                                76, 105, 176, 1.0),
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                           ),
                                           child: Text(
                                             'Keluar',
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium,
                                           ))),
                                 ),
                                 SizedBox(height: 30),

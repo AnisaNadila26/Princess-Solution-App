@@ -18,163 +18,130 @@ class LoginPage extends StatelessWidget {
               elevation: 0,
               title: Text(
                 'Masuk',
-                style: TextStyle(
-                  color: Colors.black,
-                ),
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
               centerTitle: true,
             ),
-            body: SafeArea(
-              child: ListView(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        child: Image(
-                          image: AssetImage('assets/login.png'),
-                          width: 300,
+            body: Stack(children: [
+              Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('road_login.png'),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              SafeArea(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    SizedBox(
+                      height: 350,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).cardColor,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20),
+                          ),
+                          // border: Border.all(
+                          //   color: Color.fromRGBO(226, 235, 245, 1.0),
+                          //   width: 3.0,
+                          // ),
+                        ),
+                        // margin: EdgeInsets.symmetric(horizontal: 20),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                          child: Transform.translate(
+                            offset: Offset(0, -80),
+                            child: Form(
+                                key: value.keyForm,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Image(
+                                      image: AssetImage('car_login.png'),
+                                      height: 150,
+                                    ),
+                                    SizedBox(
+                                      height: 16,
+                                    ),
+                                    TextFormField(
+                                      controller: value.email,
+                                      validator: (value) {
+                                        if (value!.isEmpty) {
+                                          return "Wajib diisi";
+                                        } else {
+                                          return null;
+                                        }
+                                      },
+                                      keyboardType: TextInputType.emailAddress,
+                                      decoration: InputDecoration(
+                                        icon: Icon(MdiIcons.account),
+                                        labelText: 'Email',
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 16,
+                                    ),
+                                    TextFormField(
+                                      controller: value.password,
+                                      validator: (value) {
+                                        if (value!.isEmpty) {
+                                          return "Wajib diisi";
+                                        } else {
+                                          return null;
+                                        }
+                                      },
+                                      obscureText: !value.passwordVisible,
+                                      decoration: InputDecoration(
+                                          icon: Icon(MdiIcons.lock),
+                                          labelText: 'Password',
+                                          suffixIcon: GestureDetector(
+                                            onTap: () {
+                                              value.passwordVisibility();
+                                            },
+                                            child: Icon(value.passwordVisible
+                                                ? MdiIcons.eye
+                                                : MdiIcons.eyeOff),
+                                          )),
+                                    ),
+                                    SizedBox(
+                                      height: 16,
+                                    ),
+                                    SizedBox(
+                                      height: 50,
+                                      width: 100,
+                                      child: InkWell(
+                                          onTap: () {
+                                            value.cekLogin();
+                                          },
+                                          child: Container(
+                                              alignment: Alignment.center,
+                                              decoration: BoxDecoration(
+                                                color: Color.fromRGBO(
+                                                    76, 105, 176, 1.0),
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                              ),
+                                              child: Text(
+                                                'Masuk',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium,
+                                              ))),
+                                    ),
+                                  ],
+                                )),
+                          ),
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 20),
-                        child: Form(
-                            key: value.keyForm,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  height: 16,
-                                ),
-                                TextFormField(
-                                  controller: value.email,
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return "Wajib diisi";
-                                    } else {
-                                      return null;
-                                    }
-                                  },
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: InputDecoration(
-                                    icon: Icon(MdiIcons.account),
-                                    labelText: 'Email',
-                                    floatingLabelStyle:
-                                        const TextStyle(color: Colors.black),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                        borderSide: BorderSide(
-                                          color: Colors.grey,
-                                          width: 2,
-                                        )),
-                                    focusedBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                        borderSide: BorderSide(
-                                          color: Colors.black,
-                                          width: 2,
-                                        )),
-                                    errorBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                        borderSide: BorderSide(
-                                          color: Colors.grey,
-                                          width: 2,
-                                        )),
-                                    focusedErrorBorder: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                        borderSide: BorderSide(
-                                          color: Colors.black,
-                                          width: 2,
-                                        )),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 16,
-                                ),
-                                TextFormField(
-                                  controller: value.password,
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return "Wajib diisi";
-                                    } else {
-                                      return null;
-                                    }
-                                  },
-                                  obscureText: !value.passwordVisible,
-                                  decoration: InputDecoration(
-                                      icon: Icon(MdiIcons.lock),
-                                      labelText: 'Password',
-                                      floatingLabelStyle:
-                                          const TextStyle(color: Colors.black),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          borderSide: BorderSide(
-                                            color: Colors.grey,
-                                            width: 2,
-                                          )),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          borderSide: BorderSide(
-                                            color: Colors.black,
-                                            width: 2,
-                                          )),
-                                      errorBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          borderSide: BorderSide(
-                                            color: Colors.grey,
-                                            width: 2,
-                                          )),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          borderSide: BorderSide(
-                                            color: Colors.black,
-                                            width: 2,
-                                          )),
-                                      suffixIcon: GestureDetector(
-                                        onTap: () {
-                                          value.passwordVisibility();
-                                        },
-                                        child: Icon(value.passwordVisible
-                                            ? MdiIcons.eye
-                                            : MdiIcons.eyeOff),
-                                      )),
-                                ),
-                                SizedBox(
-                                  height: 16,
-                                ),
-                                SizedBox(
-                                  height: 50,
-                                  width: 100,
-                                  child: InkWell(
-                                      onTap: () {
-                                        value.cekLogin();
-                                      },
-                                      child: Container(
-                                          alignment: Alignment.center,
-                                          decoration: BoxDecoration(
-                                            color: Color.fromRGBO(0, 0, 0, 1),
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                          ),
-                                          child: Text(
-                                            'Masuk',
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ))),
-                                ),
-                              ],
-                            )),
-                      )
-                    ],
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
-            )),
+            ])),
       ),
     );
   }

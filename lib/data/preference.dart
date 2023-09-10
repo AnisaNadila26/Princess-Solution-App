@@ -1,7 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'package:princess_solution/models/user.dart';
-// import 'package:princess_solution/models/instruktur.dart';
 
 class Preference {
   static String noRegistrasi = "no_registrasi";
@@ -29,6 +27,7 @@ class Preference {
   static String updatedAt = "updated_at";
   static String rating = "rating";
   static String review = "review";
+  static String role = "role";
 
   setUsers(User users) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -57,6 +56,7 @@ class Preference {
     pref.setString(Preference.updatedAt, users.updatedAt!);
     pref.setString(Preference.rating, users.rating!);
     pref.setString(Preference.review, users.review!);
+    pref.setString(Preference.role, users.role!);
   }
 
   setEdit(User users) async {
@@ -99,7 +99,7 @@ class Preference {
     SharedPreferences pref = await SharedPreferences.getInstance();
     User users = User(
       // noRegistrasi: pref.getInt(Preference.noRegistrasi) ?? 0,
-      noRegistrasi: pref.getString(Preference.noRegistrasi) ?? "",
+      noRegistrasi: pref.getString(Preference.noRegistrasi) ?? "zero",
       nama: pref.getString(Preference.nama) ?? "",
       idAkun: pref.getString(Preference.idAkun) ?? "",
       ttl: pref.getString(Preference.tanggalLahir) ?? "",
@@ -124,6 +124,7 @@ class Preference {
       updatedAt: (pref.getString(Preference.updatedAt) ?? ""),
       rating: (pref.getString(Preference.rating) ?? ""),
       review: (pref.getString(Preference.review) ?? ""),
+      role: (pref.getString(Preference.role) ?? ""),
     );
 
     return users;
@@ -155,6 +156,7 @@ class Preference {
     pref.remove(Preference.updatedAt);
     pref.remove(Preference.rating);
     pref.remove(Preference.review);
+    pref.remove(Preference.role);
   }
 
   // removeFotoProfil() async {

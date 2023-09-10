@@ -55,8 +55,12 @@ class NetworkURL {
     return '$whatsapp';
   }
 
-  static String ubahProfil() {
-    return '$url/ubahprofil';
+  static String ubahProfilSiswa() {
+    return '$url/ubahprofilsiswa';
+  }
+
+  static String ubahProfilInstruktur() {
+    return '$url/ubahprofilins';
   }
 
   static String rating() {

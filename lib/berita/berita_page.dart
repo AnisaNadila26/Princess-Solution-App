@@ -15,14 +15,21 @@ class BeritaPage extends StatelessWidget {
           appBar: AppBar(
             title: Text(
               'Berita',
-              style: TextStyle(
-                fontSize: 24,
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color.fromRGBO(12, 15, 39, 1.0),
+                    Color.fromRGBO(76, 105, 176, 1.0),
+                  ],
+                ),
               ),
             ),
             centerTitle: true,
-            backgroundColor: Colors.black,
           ),
           body: SafeArea(
             child: value.isLoading
@@ -31,15 +38,18 @@ class BeritaPage extends StatelessWidget {
                   )
                 : value.listBerita.isEmpty
                     ? Center(
-                        child: Text('Belum ada berita'),
+                        child: Text(
+                          'Belum ada berita',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
                       )
                     : ListView.separated(
                         itemBuilder: (BuildContext context, int index) {
                           return BeritaItem(berita: value.listBerita[index]);
                         },
-                        separatorBuilder: (BuildContext context, int index) =>
-                            const Divider(
-                          color: Colors.black,
+                        separatorBuilder: (BuildContext context, int index) => 
+                        Divider(
+                          color: Theme.of(context).dividerColor,
                           thickness: 0.2,
                         ),
                         itemCount: value.listBerita.length,

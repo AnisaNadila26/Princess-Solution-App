@@ -30,11 +30,13 @@ class MateriItem extends StatelessWidget {
             Expanded(
               child: Text(
                 '${materi.namaKategori ?? "Tidak ada kategori"}',
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
             ),
             Expanded(
               child: Text(
                 '${materi.namaMateri ?? "Tidak ada materi"}',
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
             ),  
           ],

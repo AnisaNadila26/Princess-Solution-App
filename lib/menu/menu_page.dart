@@ -39,9 +39,9 @@ class MenuPage extends StatelessWidget {
                 bottomNavigationBar: SizedBox(
                   child: CurvedNavigationBar(
                       index: value.page,
-                      color: Colors.black,
-                      buttonBackgroundColor: Colors.black,
-                      backgroundColor: Colors.white,
+                      color: Color.fromRGBO(76, 105, 176, 1.0),
+                      buttonBackgroundColor: Color.fromRGBO(76, 105, 176, 1.0),
+                      backgroundColor: Color.fromRGBO(11, 13, 30, 1.0),
                       animationDuration: Duration(milliseconds: 300),
                       items: [
                         Icon(MdiIcons.home, color: Colors.white, size: 30),
