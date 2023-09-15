@@ -136,7 +136,7 @@ class DasborPage extends StatelessWidget {
                                         ),
                                         child: Column(children: [
                                           Image.asset(
-                                            'assets/mobil.png',
+                                            'mobil.png',
                                             width: 250,
                                             fit: BoxFit.cover,
                                           ),

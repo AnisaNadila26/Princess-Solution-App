@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:princess_solution/models/data.dart';
 import 'package:princess_solution/models/instruktur.dart';
 import 'package:princess_solution/data/preference_ins.dart';
 import 'package:princess_solution/models/materi.dart';

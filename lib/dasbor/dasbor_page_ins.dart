@@ -142,8 +142,7 @@ class DasborPageInstruktur extends StatelessWidget {
                                                     height: 50,
                                                     width: 50,
                                                     child: Center(
-                                                      child: Icon(MdiIcons
-                                                          .accountGroup),
+                                                      child: Icon(MdiIcons.accountGroup),
                                                     ),
                                                     decoration: BoxDecoration(
                                                       border: Border.all(

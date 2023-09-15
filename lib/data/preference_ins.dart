@@ -1,4 +1,3 @@
-import 'package:princess_solution/models/nilai.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:princess_solution/models/instruktur.dart';
 
@@ -14,9 +13,6 @@ class PreferenceInstruktur {
   static String createdAt = "created_at";
   static String updatedAt = "updated_at";
   static String role = "role";
-  static String noRegistrasi = "no_registrasi";
-  static String nilai = "nilai";
-  static String idMateri = "id_materi";
 
 
   setInstruktur(Instruktur ins) async {

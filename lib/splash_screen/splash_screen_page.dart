@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:princess_solution/splash_screen/splash_screen_notifier.dart';
 import 'package:provider/provider.dart';
@@ -11,20 +13,36 @@ class SplashScreenPage extends StatelessWidget {
       create: (_) => SplashScreenNotifier(context),
       child: Consumer<SplashScreenNotifier>(
         builder: (context, value, child) => Scaffold(
-          // backgroundColor: Colors.white,
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+          body: Stack(
             children: [
-              SizedBox(
-                height: 150,
-                child: Container(
-                  alignment: Alignment.center,
-                  child: Image.asset(
-                    'assets/princess.png',
+              Image.asset(
+                'background.jpg',
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: double.infinity,
+              ),
+              Container(
+                color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.7),
+                width: double.infinity,
+                height: double.infinity,
+              ),
+              Container(
+                alignment: Alignment.center,
+                child: CircleAvatar(
+                  maxRadius: 70,
+                  backgroundColor: Colors.white,
+                  child: ClipOval(
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
+                      child: Image.asset(
+                        'logo.png',
+                        height: 200,
+                        width: 200,
+                      ),
+                    ),
                   ),
-                )
-              )
+                ),
+              ),
             ],
           ),
         ),

@@ -18,8 +18,11 @@ class NilaiNotifier extends ChangeNotifier {
   Instruktur? ins;
   bool isLoading = true;
 
+  TextEditingController searchController = TextEditingController();
+
   setCurrentTab(int index) {
     currentTabIndex = index;
+    searchSiswa('');
     notifyListeners();
   }
 
@@ -31,7 +34,8 @@ class NilaiNotifier extends ChangeNotifier {
       final instruktur = await PreferenceInstruktur().getInstruktur();
       if (instruktur != null) {
         ins = instruktur;
-        getListSiswa(ins!.idInstruktur!);
+        await getListSiswa(ins!.idInstruktur!);
+        searchSiswa('');
       }
     } catch (error) {
       print("Error getting instruktur: $error");
@@ -53,10 +57,12 @@ class NilaiNotifier extends ChangeNotifier {
           NetworkURL.getListSiswa(), idInstruktur);
 
       if (response['code'] == 200) {
-        final manualList = response['data']['siswa_list_manual'] as List<dynamic>;
+        final manualList =
+            response['data']['siswa_list_manual'] as List<dynamic>;
         final maticList = response['data']['siswa_list_matic'] as List<dynamic>;
 
-        siswaListManual = manualList.map((data) => Data.fromJson(data)).toList();
+        siswaListManual =
+            manualList.map((data) => Data.fromJson(data)).toList();
         siswaListMatic = maticList.map((data) => Data.fromJson(data)).toList();
       }
     } catch (error) {
@@ -94,8 +100,8 @@ class NilaiNotifier extends ChangeNotifier {
                 TextButton(
                   onPressed: () => setCurrentTab(0),
                   child: Padding(
-                    padding: EdgeInsets.only(
-                        left: currentTabIndex == 0 ? 0 : 20),
+                    padding:
+                        EdgeInsets.only(left: currentTabIndex == 0 ? 0 : 20),
                     child: Text(
                       'Manual',
                       textAlign: TextAlign.end,
@@ -160,4 +166,29 @@ class NilaiNotifier extends ChangeNotifier {
       itemCount: siswaList.length,
     );
   }
+
+  List<Data> filteredSiswaListManual = [];
+  List<Data> filteredSiswaListMatic = [];
+
+  searchSiswa(String query) {
+    if (currentTabIndex == 0) {
+      filteredSiswaListManual = query.isEmpty
+          ? siswaListManual
+          : siswaListManual
+              .where((siswa) =>
+                  siswa.nama!.toLowerCase().contains(query.toLowerCase()))
+              .toList();
+      filteredSiswaListMatic = [];
+    } else if (currentTabIndex == 1) {
+      filteredSiswaListMatic = query.isEmpty
+          ? siswaListMatic
+          : siswaListMatic
+              .where((siswa) =>
+                  siswa.nama!.toLowerCase().contains(query.toLowerCase()))
+              .toList();
+       filteredSiswaListManual = [];
+    }
+    notifyListeners();
+  }
+
 }

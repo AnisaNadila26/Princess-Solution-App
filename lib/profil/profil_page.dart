@@ -37,18 +37,19 @@ class ProfilPage extends StatelessWidget {
                         centerTitle: true,
                         actions: [
                           IconButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) {
-                                    return UbahProfilPage();
-                                  }),
-                                );
-                              },
-                              icon: Icon(
-                                MdiIcons.accountEdit,
-                                color: Colors.white,
-                              )),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return UbahProfilPage();
+                                }),
+                              );
+                            },
+                            icon: Icon(
+                              MdiIcons.accountEdit,
+                              color: Colors.white,
+                            )
+                          ),
                           SizedBox(
                             width: 10,
                           )

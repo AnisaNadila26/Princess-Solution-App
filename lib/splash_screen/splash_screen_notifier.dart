@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:princess_solution/login/login_page.dart';
 import 'package:princess_solution/onBoarding/onBoarding_page.dart';
 
 class SplashScreenNotifier extends ChangeNotifier {

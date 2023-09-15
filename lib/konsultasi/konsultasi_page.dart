@@ -39,7 +39,7 @@ class KonsultasiPage extends StatelessWidget {
                   children: [
                     SizedBox(
                       child: Image(
-                        image: AssetImage('assets/konsultasi.png'),
+                        image: AssetImage('konsultasi.png'),
                         width: 300,
                       ),
                     ),

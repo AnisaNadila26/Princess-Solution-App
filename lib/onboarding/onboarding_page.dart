@@ -17,21 +17,21 @@ class OnboardingPage extends StatelessWidget {
           title: 'PRESENSI',
           description: 'Scan QR untuk lakukan presensi dengan mudah dan cepat',
           image: Image.asset(
-            'assets/onboarding1.png',
+            'onboarding1.png',
             width: 270,
           )),
       OnboardingModel(
           title: 'PENGUMUMAN',
           description: 'Cek pengumuman untuk mengetahui berita terbaru',
           image: Image.asset(
-            'assets/onboarding2.png',
+            'onboarding2.png',
             width: 180,
           )),
       OnboardingModel(
           title: 'KONSULTASI',
           description: 'Konsultasikan dengan Admin, jika mengalami kendala',
           image: Image.asset(
-            'assets/onboarding3.png',
+            'onboarding3.png',
             width: 180,
           )),
     ];
