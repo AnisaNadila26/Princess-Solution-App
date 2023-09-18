@@ -21,7 +21,10 @@ class FormNilaiNotifier extends ChangeNotifier {
 
   int noRegistrasi = 0;
   int idInstruktur = 0;
-  Map<String, int?> nilaiMap = {};
+  int idHari = 0;
+  Map<String, Map<String, int?>> nilaiMap = {};
+  TextEditingController catatanController = TextEditingController();
+  String catatanValue = '';
 
   GlobalKey<FormState> keyForm = GlobalKey<FormState>();
 
@@ -59,30 +62,53 @@ class FormNilaiNotifier extends ChangeNotifier {
     }
   }
 
-  void updateNilai(String idMateri, int? nilai) {
-    nilaiMap[idMateri] = nilai!;
-    // print("Updated nilaiMap: $nilaiMap");
+  void updateNilai(String idMateri, int? nilai, String idKategori) {
+    if (!nilaiMap.containsKey(idKategori)) {
+      nilaiMap[idKategori] = {};
+    }
+    nilaiMap[idKategori]![idMateri] = nilai;
     notifyListeners();
   }
 
-  Future getNilai(String noRegistrasi, String idInstruktur) async {
+  Future<void> getNilai(
+      String noRegistrasi, String idInstruktur, String idHari) async {
     try {
       if (nilaiMap.isEmpty) {
-        final Map<String, int?> tempNilaiMap = await SiswaRepository.getNilai(
-            NetworkURL.getNilai(), noRegistrasi, idInstruktur);
+        final Map<String, dynamic>? result = await SiswaRepository.getNilai(
+            NetworkURL.getNilai(), noRegistrasi, idInstruktur, idHari);
 
-        if (tempNilaiMap.isNotEmpty) {
-          nilaiMap = tempNilaiMap;
+        Map<String, Map<String, int>> tempNilaiMap = {};
+        String catatan = '';
 
-          listMateri.forEach((materi) {
-            if (!nilaiMap.containsKey(materi.idMateri)) {
-              nilaiMap[materi.idMateri!] = null;
-            }
-          });
+        if (result != null) {
+          if (result.containsKey('nilaiMap')) {
+            tempNilaiMap = result['nilaiMap'];
+          }
+          if (result.containsKey('catatan')) {
+            catatan = result['catatan'];
+          }
 
-          notifyListeners();
+          if (tempNilaiMap.isNotEmpty) {
+            nilaiMap = tempNilaiMap;
+
+            listMateri.forEach((materi) {
+              if (!nilaiMap.containsKey(materi.idKategori)) {
+                nilaiMap[materi.idKategori!] = {};
+              }
+
+              if (!nilaiMap[materi.idKategori]!.containsKey(materi.idMateri!)) {
+                nilaiMap[materi.idKategori]![materi.idMateri!] = null;
+              }
+            });
+
+            catatanController.text = catatan;
+
+            notifyListeners();
+          } else {
+            print("Data nilai tidak ditemukan");
+          }
         } else {
-          print("Data nilai tidak ditemukan");
+          print("Data nilai dari repository bernilai null");
         }
       }
     } catch (error) {
@@ -92,9 +118,6 @@ class FormNilaiNotifier extends ChangeNotifier {
     }
   }
 
-
-
-
   cekNilai() {
     if (keyForm.currentState!.validate()) {
       saveNilai();
@@ -103,21 +126,31 @@ class FormNilaiNotifier extends ChangeNotifier {
 
   Future saveNilai() async {
     try {
-      final Map<String, dynamic> nilaiData = {};
-      for (String idMateri in nilaiMap.keys) {
-        int? nilai = nilaiMap[idMateri];
-        if (nilai != null) {
-          nilaiData[idMateri] = nilai;
+      List<Map<String, dynamic>> nilaiList = [];
+      nilaiMap = Map.fromEntries(nilaiMap.entries.toList()
+        ..sort((a, b) => int.parse(a.key).compareTo(int.parse(b.key))));
+      for (String idKategori in nilaiMap.keys) {
+        Map<String, int?>? nilaiInfo = nilaiMap[idKategori];
+        if (nilaiInfo != null) {
+          nilaiInfo = Map.fromEntries(nilaiInfo.entries.toList()
+          ..sort((a, b) => int.parse(a.key).compareTo(int.parse(b.key))));
+
+          Map<String, dynamic> nilaiData = {
+            "id_kategori": idKategori,
+            "data_nilai": nilaiInfo,
+          };
+          nilaiList.add(nilaiData);
         }
       }
-      final String nilaiJson = jsonEncode(nilaiData);
+      final String nilaiJson = jsonEncode(nilaiList);
 
       var response = await SiswaRepository.kirimNilai(
-        NetworkURL.saveNilai(),
-        noRegistrasi,
-        idInstruktur,
-        nilaiJson,
-      );
+          NetworkURL.saveNilai(),
+          noRegistrasi,
+          idInstruktur,
+          nilaiJson,
+          catatanController.text.trim(),
+          idHari);
       if (response['code'] == 200) {
         Navigator.pop(context);
         final snackBar = SnackBar(
@@ -154,101 +187,4 @@ class FormNilaiNotifier extends ChangeNotifier {
       print("Error: $error");
     }
   }
-
-  // Future<void> saveNilai() async {
-  //   try {
-  //     final List<int> idMateriList = [];
-  //     final List<int> nilaiList = [];
-
-  //     for (String idMateri in nilaiMap.keys) {
-  //       final nilai = nilaiMap[idMateri];
-  //       if (nilai != null) {
-  //         idMateriList.add(int.parse(idMateri));
-  //         nilaiList.add(nilai);
-  //       }
-  //     }
-
-  //     var response = await SiswaRepository.kirimNilai(
-  //       NetworkURL.saveNilai(),
-  //       noRegistrasi,
-  //       idInstruktur,
-  //       nilaiList,
-  //       idMateriList,
-  //     );
-
-  //     if (response['code'] == 200) {
-  //       Nilai nilai = Nilai.fromJson(response['data']);
-  //       PreferenceInstruktur().setNilai(nilai);
-  //       Navigator.pushAndRemoveUntil(
-  //         context,
-  //         MaterialPageRoute(
-  //           builder: (context) => NilaiPage(),
-  //           settings: RouteSettings(
-  //             arguments: {'page': 2},
-  //           ),
-  //         ),
-  //         (route) => false,
-  //       );
-  //       final snackBar = SnackBar(
-  //         content: Text('Penilaian berhasil dikirim'),
-  //         backgroundColor: Colors.black,
-  //         shape: RoundedRectangleBorder(
-  //           borderRadius: BorderRadius.circular(20),
-  //         ),
-  //         behavior: SnackBarBehavior.floating,
-  //         margin: EdgeInsets.all(50),
-  //         elevation: 30,
-  //       );
-  //       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  //     } else {
-  //       final snackBar = SnackBar(
-  //         content: Text('Penilaian gagal dikirim'),
-  //         backgroundColor: Colors.black,
-  //         shape: RoundedRectangleBorder(
-  //           borderRadius: BorderRadius.circular(20),
-  //         ),
-  //         behavior: SnackBarBehavior.floating,
-  //         margin: EdgeInsets.all(50),
-  //         elevation: 30,
-  //       );
-  //       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  //     }
-  //   } catch (error) {
-  //     print("Error: $error");
-  //   }
-  // }
-
-  // getMateri(String hari) async {
-  //   isLoading = true;
-  //   notifyListeners();
-  //   try {
-  //     final response =
-  //         await SiswaRepository.getMateri(NetworkURL.getMateri(), hari);
-  //     if (response['code'] == 200) {
-  //       final materi = response['data'] as List<dynamic>;
-
-  //       listMateri = materi.map((item) => Materi.fromJson(item)).toList();
-  //     }
-  //   } catch (error) {
-  //     listMateri = [];
-  //   }
-  //   isLoading = false;
-  //   notifyListeners();
-  // }
-
-  // Future getMateri(String hari) async {
-  //   isLoading = true;
-  //   SiswaRepository.getMateri(NetworkURL.getMateri(), hari).then((value) {
-  //     if (value['code'] == 200) {
-  //       for (Map<String, dynamic> i in value['data']) {
-  //         listMateri.add(Materi.fromJson(i));
-  //       }
-  //       isLoading = false;
-  //       notifyListeners();
-  //     } else {
-  //       isLoading = false;
-  //       notifyListeners();
-  //     }
-  //   });
-  // }
 }

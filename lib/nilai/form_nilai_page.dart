@@ -17,9 +17,10 @@ class FormNilaiPage extends StatelessWidget {
         create: (_) => FormNilaiNotifier(context),
         child: Consumer<FormNilaiNotifier>(builder: (context, value, child) {
           value.noRegistrasi = int.parse(item.noRegistrasi!);
+          value.idHari = int.parse(hari);
           // value.setInitialValues(item);
-          value.getNilai(
-              item.noRegistrasi.toString(), value.idInstruktur.toString());
+          value.getNilai(item.noRegistrasi.toString(),
+              value.idInstruktur.toString(), value.idHari.toString());
           if (!value.isMateriLoaded) {
             value.getMateri(hari);
             value.isMateriLoaded = true;
@@ -105,65 +106,14 @@ class FormNilaiPage extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  // TextFormField(
-                                  //   controller: value.instruktur,
-                                  //   decoration: InputDecoration(
-                                  //     labelText: 'Instruktur',
-                                  //     enabled: false,
-                                  //     enabledBorder: UnderlineInputBorder(
-                                  //       borderSide: BorderSide.none,
-                                  //     ),
-                                  //     contentPadding: EdgeInsets.only(right: 50),
-                                  //   ),
-                                  // ),
-                                  // SizedBox(
-                                  //   height: 10,
-                                  // ),
-                                  // TextFormField(
-                                  //   controller: value.namaSiswa,
-                                  //   decoration: InputDecoration(
-                                  //     labelText: 'Nama Siswa',
-                                  //     enabled: false,
-                                  //     enabledBorder: UnderlineInputBorder(
-                                  //       borderSide: BorderSide.none,
-                                  //     ),
-                                  //     contentPadding: EdgeInsets.only(right: 50),
-                                  //   ),
-                                  // ),
-                                  // SizedBox(
-                                  //   height: 10,
-                                  // ),
-                                  // TextFormField(
-                                  //   controller: value.kodeKendaraan,
-                                  //   decoration: InputDecoration(
-                                  //     labelText: 'Kode Kendaraan',
-                                  //     enabled: false,
-                                  //     enabledBorder: UnderlineInputBorder(
-                                  //       borderSide: BorderSide.none,
-                                  //     ),
-                                  //     contentPadding: EdgeInsets.only(right: 50),
-                                  //   ),
-                                  // ),
-                                  // SizedBox(
-                                  //   height: 10,
-                                  // ),
-                                  // TextFormField(
-                                  //   controller: value.paket,
-                                  //   decoration: InputDecoration(
-                                  //     labelText: 'Paket',
-                                  //     enabled: false,
-                                  //     enabledBorder: UnderlineInputBorder(
-                                  //       borderSide: BorderSide.none,
-                                  //     ),
-                                  //     contentPadding: EdgeInsets.only(right: 50),
-                                  //   ),
-                                  // ),
                                   SizedBox(height: 20),
                                   Align(
                                     alignment: Alignment.topRight,
                                     child: Text(
                                       'Hari $hari',
-                                      style: Theme.of(context).textTheme.titleLarge,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge,
                                     ),
                                   ),
                                   SizedBox(height: 20),
@@ -349,8 +299,12 @@ class FormNilaiPage extends StatelessWidget {
                                   Column(
                                     children: value.listMateri.isNotEmpty
                                         ? value.listMateri.map((materi) {
-                                            int? selectedValue =
-                                                value.nilaiMap[materi.idMateri];
+                                          Map<String, int?>? nilaiData = value.nilaiMap.containsKey(materi.idKategori)
+                                                ? value.nilaiMap[materi.idKategori]
+                                                : null;
+                                            int? selectedValue = nilaiData != null && nilaiData.containsKey(materi.idMateri)
+                                                ? nilaiData[materi.idMateri]!
+                                                : null;
                                             return Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
@@ -372,9 +326,11 @@ class FormNilaiPage extends StatelessWidget {
                                                             (int? nilai) {
                                                           if (nilai != null) {
                                                             value.updateNilai(
-                                                                materi
-                                                                    .idMateri!,
-                                                                nilai);
+                                                              materi.idMateri!,
+                                                              nilai,
+                                                              materi
+                                                                  .idKategori!,
+                                                            );
                                                           }
                                                         },
                                                       )
@@ -389,6 +345,14 @@ class FormNilaiPage extends StatelessWidget {
                                             );
                                           }).toList()
                                         : [Text('Tidak ada data materi.')],
+                                  ),
+                                  TextFormField(
+                                    controller: value.catatanController,
+                                    maxLength: 255,
+                                    decoration: InputDecoration(
+                                      hintText: 'Catatan',
+                                      border: OutlineInputBorder(),
+                                    ),
                                   ),
                                 ],
                               ),

@@ -29,11 +29,6 @@ class RatingNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setReview(String newReview) {
-    review.text = newReview;
-    notifyListeners();
-  }
-
   emoticonForIndex(int index) {
     switch (index) {
       case 0:
