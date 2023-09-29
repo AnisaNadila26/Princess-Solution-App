@@ -61,11 +61,11 @@ class RatingNotifier extends ChangeNotifier {
 
   cekRating() {
     if (keyForm.currentState!.validate()) {
-      nilai();
+      saveRating();
     }
   }
 
-  Future nilai() async {
+  Future saveRating() async {
     try {
       var response = await RatingRepository.rating(
         NetworkURL.rating(),

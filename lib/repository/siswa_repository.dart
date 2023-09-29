@@ -143,4 +143,60 @@ class SiswaRepository {
       return <String, dynamic>{};
     }
   }
+
+  static Future<dynamic> kirimNilaiAkhir(String url, int noRegistrasi,
+      int idInstruktur, String penilaian, String emotional, String kenyamanan, String penguasaan) async {
+    print(url);
+    print(noRegistrasi);
+    print(idInstruktur);
+    print(penilaian);
+    print(emotional);
+    print(kenyamanan);
+    print(penguasaan);
+
+    Dio dio = Dio();
+    FormData formData = FormData.fromMap({
+      "no_registrasi": noRegistrasi,
+      "id_instruktur": idInstruktur,
+      "penilaian": penilaian,
+      "emotional": emotional,
+      "kenyamanan": kenyamanan,
+      "penguasaan": penguasaan,
+    });
+
+    final response = await dio.post(url, data: formData);
+    if (kDebugMode) {
+      print("RESPONSE STATUS CODE : ${response.statusCode}");
+    }
+    if (response.statusCode == 200) {
+      if (kDebugMode) {
+        print("RESPONSE DATA NILAI : ${response.data}");
+      }
+      return response.data;
+    } else {
+      return response.data;
+    }
+  }
+  
+  static Future<dynamic> getNilaiAkhir(String url, String noRegistrasi, String idInstruktur) async {
+    FormData formData = FormData.fromMap({
+      "no_registrasi": noRegistrasi,
+      "id_instruktur": idInstruktur,
+    });
+    Dio dio = Dio();
+    final response = await dio.post(url, data: formData);
+
+    if (kDebugMode) {
+      print("RESPONSE STATUS CODE : ${response.statusCode}");
+    }
+    if (response.statusCode == 200) {
+      if (kDebugMode) {
+        print("RESPONSE DATA NILAI AKHIR : ${response.data}");
+      }
+      return response.data;
+    } else {
+      print("Data nilai akhir tidak ditemukan");
+      return response.data;
+    }
+  }
 }

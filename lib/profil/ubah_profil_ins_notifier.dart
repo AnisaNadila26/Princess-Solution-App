@@ -16,8 +16,14 @@ class UbahProfilInsNotifier extends ChangeNotifier {
   }
 
   int idInstruktur = 0;
-  var isLoading = true;
+  bool isLoading = true;
+  bool isDataChanged = false;
+
   Instruktur? ins;
+  String fotoProfil = '';
+  List<PlatformFile>? paths;
+  List<int>? file;
+  Uint8List? fileToDisplay;
 
   GlobalKey<FormState> keyForm = GlobalKey<FormState>();
   TextEditingController nama = TextEditingController();
@@ -25,10 +31,70 @@ class UbahProfilInsNotifier extends ChangeNotifier {
   TextEditingController telpon = TextEditingController();
   TextEditingController usia = TextEditingController();
 
-  String fotoProfil = '';
-  List<PlatformFile>? paths;
-  List<int>? file;
-  Uint8List? fileToDisplay;
+  Future<bool> backConfirmDialog(BuildContext context) async {
+    if (isDataChanged) {
+      return await showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            backgroundColor: Theme.of(context).cardColor,
+            content: Container(
+              height: 200,
+              width: 400,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Simpan Perubahan',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    'Apakah Anda ingin menyimpan perubahan yang Anda lakukan?',
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  SizedBox(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      FilledButton(
+                        onPressed: () {
+                          Navigator.of(context).pop(false);
+                        },
+                        child: Text(
+                          'Batal',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        style: FilledButton.styleFrom(
+                          backgroundColor: Colors.grey,
+                        ),
+                      ),
+                      FilledButton(
+                        onPressed: () async {
+                          await cekUpdate();
+                        },
+                        child: Text(
+                          'Simpan',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        style: FilledButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(76, 105, 176, 1.0),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          );
+        },
+      );
+    } else {
+      return true;
+    }
+  }
 
   getInstruktur() async {
     isLoading = true;

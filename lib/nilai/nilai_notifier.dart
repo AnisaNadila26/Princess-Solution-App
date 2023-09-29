@@ -26,6 +26,32 @@ class NilaiNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+  List<Data> siswaListManual = [];
+  List<Data> siswaListMatic = [];
+
+  getListSiswa(String idInstruktur) async {
+    isLoading = true;
+    notifyListeners();
+
+    try {
+      final response = await SiswaRepository.getSiswa(
+          NetworkURL.getListSiswa(), idInstruktur);
+
+      if (response['code'] == 200) {
+        final manualList = response['data']['siswa_list_manual'] as List<dynamic>;
+        final maticList = response['data']['siswa_list_matic'] as List<dynamic>;
+
+        siswaListManual = manualList.map((data) => Data.fromJson(data)).toList();
+        siswaListMatic = maticList.map((data) => Data.fromJson(data)).toList();
+      }
+    } catch (error) {
+      print("Error fetching siswa list: $error");
+    }
+
+    isLoading = false;
+    notifyListeners();
+  }
+
   getInstruktur() async {
     isLoading = true;
     notifyListeners();
@@ -39,34 +65,6 @@ class NilaiNotifier extends ChangeNotifier {
       }
     } catch (error) {
       print("Error getting instruktur: $error");
-    }
-
-    isLoading = false;
-    notifyListeners();
-  }
-
-  List<Data> siswaListManual = [];
-  List<Data> siswaListMatic = [];
-
-  getListSiswa(String idInstruktur) async {
-    isLoading = true;
-    notifyListeners();
-
-    try {
-      final response = await SiswaRepository.getSiswa(
-          NetworkURL.getListSiswa(), idInstruktur);
-
-      if (response['code'] == 200) {
-        final manualList =
-            response['data']['siswa_list_manual'] as List<dynamic>;
-        final maticList = response['data']['siswa_list_matic'] as List<dynamic>;
-
-        siswaListManual =
-            manualList.map((data) => Data.fromJson(data)).toList();
-        siswaListMatic = maticList.map((data) => Data.fromJson(data)).toList();
-      }
-    } catch (error) {
-      print("Error fetching siswa list: $error");
     }
 
     isLoading = false;

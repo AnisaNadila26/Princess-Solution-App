@@ -35,6 +35,14 @@ class NetworkURL {
     return '$url/nilai';
   }
 
+  static String getNilaiAkhir() {
+    return '$url/getNilaiAkhir';
+  }
+
+  static String saveNilaiAkhir() {
+    return '$url/nilaiAkhir';
+  }
+
   static String getProfilSiswa(String fotoProfil) {
     return '$url_imagesProfilSiswa/$fotoProfil';
   }

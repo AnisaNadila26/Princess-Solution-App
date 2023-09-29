@@ -28,11 +28,11 @@ class LoginNotifier extends ChangeNotifier {
 
   cekLogin() {
     if (keyForm.currentState!.validate()) {
-      simpan();
+      masuk();
     }
   }
 
-  Future simpan() async {
+  Future masuk() async {
     try {
       LoginRepository.login(
         NetworkURL.login(),

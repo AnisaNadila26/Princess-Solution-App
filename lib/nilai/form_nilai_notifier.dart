@@ -16,8 +16,8 @@ class FormNilaiNotifier extends ChangeNotifier {
 
   Instruktur? ins;
   bool isLoading = true;
-  bool isMateriLoaded = false;
-  List<Materi> listMateri = [];
+  bool isNilaiDirty = false;
+  bool isCatatanDirty = false;
 
   int noRegistrasi = 0;
   int idInstruktur = 0;
@@ -28,6 +28,72 @@ class FormNilaiNotifier extends ChangeNotifier {
 
   GlobalKey<FormState> keyForm = GlobalKey<FormState>();
 
+  bool isFormDirty() {
+    return isNilaiDirty || isCatatanDirty;
+  }
+
+  Future<bool> backConfirmDialog(BuildContext context) async {
+      return await showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            backgroundColor: Theme.of(context).cardColor,
+            content: Container(
+              height: 200,
+              width: 400,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Simpan Perubahan',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    'Apakah Anda ingin menyimpan perubahan yang Anda lakukan?',
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  SizedBox(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      FilledButton(
+                        onPressed: () {
+                          Navigator.of(context).pop(false);
+                        },
+                        child: Text(
+                          'Batal',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        style: FilledButton.styleFrom(
+                          backgroundColor: Colors.grey,
+                        ),
+                      ),
+                      FilledButton(
+                        onPressed: () async {
+                          await cekNilai();
+                          Navigator.of(context).pop(true);
+                        },
+                        child: Text(
+                          'Simpan',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        style: FilledButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(76, 105, 176, 1.0),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          );
+        },
+      );
+  }
+
   getInstruktur() async {
     isLoading = true;
     ins = await PreferenceInstruktur().getInstruktur();
@@ -37,24 +103,22 @@ class FormNilaiNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+  List<Materi> listMateri = [];
   Future getMateri(String hari) async {
-    if (isMateriLoaded) {
+    if (!isLoading) {
       return;
     }
-
-    isLoading = true;
     try {
-      SiswaRepository.getMateri(NetworkURL.getMateri(), hari).then((value) {
-        if (value['code'] == 200) {
-          listMateri.clear();
-          for (Map<String, dynamic> i in value['data']) {
-            listMateri.add(Materi.fromJson(i));
-          }
+      var response =
+          await SiswaRepository.getMateri(NetworkURL.getMateri(), hari);
+      if (response['code'] == 200) {
+        listMateri.clear();
+        for (Map<String, dynamic> i in response['data']) {
+          listMateri.add(Materi.fromJson(i));
         }
-        isLoading = false;
-        isMateriLoaded = true;
-        notifyListeners();
-      });
+      }
+      isLoading = false;
+      notifyListeners();
     } catch (error) {
       print("Error: $error");
       isLoading = false;
@@ -67,10 +131,19 @@ class FormNilaiNotifier extends ChangeNotifier {
       nilaiMap[idKategori] = {};
     }
     nilaiMap[idKategori]![idMateri] = nilai;
+    isNilaiDirty = true;
     notifyListeners();
   }
 
-  Future<void> getNilai(
+  void updateCatatan(String newCatatan) {
+    if (catatanValue != newCatatan) {
+      catatanValue = newCatatan;
+      isCatatanDirty = true;
+      notifyListeners();
+    }
+  }
+
+  Future getNilai(
       String noRegistrasi, String idInstruktur, String idHari) async {
     try {
       if (nilaiMap.isEmpty) {
@@ -118,7 +191,7 @@ class FormNilaiNotifier extends ChangeNotifier {
     }
   }
 
-  cekNilai() {
+  cekNilai() async {
     if (keyForm.currentState!.validate()) {
       saveNilai();
     }
@@ -133,7 +206,7 @@ class FormNilaiNotifier extends ChangeNotifier {
         Map<String, int?>? nilaiInfo = nilaiMap[idKategori];
         if (nilaiInfo != null) {
           nilaiInfo = Map.fromEntries(nilaiInfo.entries.toList()
-          ..sort((a, b) => int.parse(a.key).compareTo(int.parse(b.key))));
+            ..sort((a, b) => int.parse(a.key).compareTo(int.parse(b.key))));
 
           Map<String, dynamic> nilaiData = {
             "id_kategori": idKategori,

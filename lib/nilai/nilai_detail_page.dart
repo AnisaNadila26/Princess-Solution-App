@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:princess_solution/models/hari.dart';
+import 'package:princess_solution/nilai/nilai_akhir_page.dart';
 import 'package:princess_solution/nilai/nilai_detail_notifier.dart';
 import 'package:princess_solution/nilai/form_nilai_page.dart';
 import 'package:princess_solution/models/data.dart';
@@ -312,6 +313,58 @@ class NilaiDetailPage extends StatelessWidget {
                               ),
                             ),
                           ),
+                        InkWell(
+                          onTap: () async {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return NilaiAkhirPage(
+                                  item: isi,
+                                );
+                              }),
+                            );
+                          },
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              side: BorderSide(
+                                color: Color.fromRGBO(226, 235, 245, 1.0),
+                                width: 3.0,
+                              ),
+                            ),
+                            color: Theme.of(context).cardColor,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 15),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Penilaian Akhir',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Icon(MdiIcons.chevronRight),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),

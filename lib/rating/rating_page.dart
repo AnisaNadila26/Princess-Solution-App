@@ -244,6 +244,7 @@ class RatingPage extends StatelessWidget {
                                                   }
                                                 },
                                                 maxLength: 255,
+                                                maxLines: null,
                                                 decoration: InputDecoration(
                                                   hintText: 'Berikan ulasan Anda...',
                                                   border: OutlineInputBorder(),
