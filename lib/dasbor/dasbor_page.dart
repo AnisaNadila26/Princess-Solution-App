@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:princess_solution/dasbor/dasbor_notifier.dart';
 import 'package:princess_solution/berita/berita_item.dart';
+import 'package:princess_solution/pengaturan/pengaturan_page.dart';
 import 'package:provider/provider.dart';
 // import 'package:go_router/go_router.dart';
 
@@ -38,11 +39,19 @@ class DasborPage extends StatelessWidget {
                         centerTitle: true,
                         actions: [
                           IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                MdiIcons.cog,
-                                color: Colors.white,
-                              )),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return PengaturanPage();
+                                }),
+                              );
+                            },
+                            icon: Icon(
+                              MdiIcons.cog,
+                              color: Colors.white,
+                            )
+                          ),
                           SizedBox(
                             width: 10,
                           )
@@ -108,11 +117,19 @@ class DasborPage extends StatelessWidget {
                                                     .headlineSmall,
                                               ),
                                               IconButton(
-                                                  onPressed: () {},
-                                                  icon: Icon(
-                                                    MdiIcons.cog,
-                                                    color: Colors.white,
-                                                  )),
+                                                onPressed: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) {
+                                                      return PengaturanPage();
+                                                    }),
+                                                  );
+                                                },
+                                                icon: Icon(
+                                                  MdiIcons.cog,
+                                                  color: Colors.white,
+                                                )),
                                             ]),
                                       ),
                                     ),
@@ -233,7 +250,8 @@ class DasborPage extends StatelessWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.all(10),
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Row(
                                           mainAxisAlignment:
@@ -241,7 +259,9 @@ class DasborPage extends StatelessWidget {
                                           children: [
                                             Text(
                                               '15 Februari 2023',
-                                              style: Theme.of(context).textTheme.bodyLarge,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge,
                                             ),
                                             Icon(MdiIcons.chevronRight),
                                           ],
@@ -286,7 +306,9 @@ class DasborPage extends StatelessWidget {
                                                 children: [
                                                   Text(
                                                     'Lainnya',
-                                                    style: Theme.of(context).textTheme.bodyLarge,
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodyLarge,
                                                   ),
                                                   Icon(MdiIcons.arrowRight),
                                                 ],
@@ -299,9 +321,11 @@ class DasborPage extends StatelessWidget {
                                         children: value.listBerita.isEmpty
                                             ? [
                                                 Center(
-                                                  child: Text(
-                                                    'Belum ada berita',
-                                                    style: Theme.of(context).textTheme.bodyMedium,
+                                                    child: Text(
+                                                  'Belum ada berita',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyMedium,
                                                 )),
                                               ]
                                             : value.listBerita

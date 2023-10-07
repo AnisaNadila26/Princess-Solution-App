@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:princess_solution/models/hari.dart';
+import 'package:princess_solution/nilai/instrumen_mobil_page.dart';
 import 'package:princess_solution/nilai/nilai_akhir_page.dart';
 import 'package:princess_solution/nilai/nilai_detail_notifier.dart';
 import 'package:princess_solution/nilai/form_nilai_page.dart';
@@ -82,11 +83,15 @@ class NilaiDetailPage extends StatelessWidget {
                                       children: [
                                         Text(
                                           'Paket',
-                                          style: Theme.of(context).textTheme.bodyMedium,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
                                         ),
                                         Text(
                                           isi.paket!,
-                                          style: Theme.of(context).textTheme.bodyMedium,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
                                         ),
                                       ],
                                     ),
@@ -99,11 +104,15 @@ class NilaiDetailPage extends StatelessWidget {
                                       children: [
                                         Text(
                                           'Jenis Kendaraan',
-                                          style: Theme.of(context).textTheme.bodyMedium,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
                                         ),
                                         Text(
                                           isi.jenisKendaraan!,
-                                          style: Theme.of(context).textTheme.bodyMedium,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
                                         ),
                                       ],
                                     ),
@@ -116,11 +125,15 @@ class NilaiDetailPage extends StatelessWidget {
                                       children: [
                                         Text(
                                           'Kode Kendaraan',
-                                          style: Theme.of(context).textTheme.bodyMedium,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
                                         ),
                                         Text(
                                           isi.kodeKendaraan!,
-                                          style: Theme.of(context).textTheme.bodyMedium,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
                                         ),
                                       ],
                                     ),
@@ -130,7 +143,8 @@ class NilaiDetailPage extends StatelessWidget {
                                   height: 30,
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Column(
                                       children: [
@@ -155,7 +169,9 @@ class NilaiDetailPage extends StatelessWidget {
                                         ),
                                         Text(
                                           isi.noRegistrasi!,
-                                          style: Theme.of(context).textTheme.bodyMedium,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
                                         ),
                                       ],
                                     ),
@@ -182,7 +198,9 @@ class NilaiDetailPage extends StatelessWidget {
                                         ),
                                         Text(
                                           isi.ttl!,
-                                          style: Theme.of(context).textTheme.bodyMedium,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
                                         ),
                                       ],
                                     ),
@@ -209,7 +227,9 @@ class NilaiDetailPage extends StatelessWidget {
                                         ),
                                         Text(
                                           isi.telpon!,
-                                          style: Theme.of(context).textTheme.bodyMedium,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
                                         ),
                                       ],
                                     ),
@@ -236,7 +256,9 @@ class NilaiDetailPage extends StatelessWidget {
                                         ),
                                         Text(
                                           isi.pekerjaan!,
-                                          style: Theme.of(context).textTheme.bodyMedium,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
                                         ),
                                       ],
                                     ),
@@ -260,6 +282,54 @@ class NilaiDetailPage extends StatelessWidget {
                                 ),
                               ]),
                         ),
+                        InkWell(
+                          onTap: () async {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return InstrumenMobilPage(item: isi);
+                              }),
+                            );
+                          },
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              side: BorderSide(
+                                color: Color.fromRGBO(226, 235, 245, 1.0),
+                                width: 3.0,
+                              ),
+                            ),
+                            color: Theme.of(context).cardColor,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 15),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Instrumen Mobil',
+                                              style: Theme.of(context).textTheme.bodyLarge,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Icon(MdiIcons.chevronRight),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
                         for (Hari hari in value.listHari)
                           InkWell(
                             onTap: () async {
@@ -269,7 +339,7 @@ class NilaiDetailPage extends StatelessWidget {
                                 MaterialPageRoute(builder: (context) {
                                   return FormNilaiPage(
                                     item: isi,
-                                    hari: hari.hari!, // Pass the selected day
+                                    hari: hari.hari!,
                                   );
                                 }),
                               );
@@ -300,7 +370,9 @@ class NilaiDetailPage extends StatelessWidget {
                                             children: [
                                               Text(
                                                 'Hari ${hari.hari}',
-                                                style: Theme.of(context).textTheme.bodyLarge,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
                                               ),
                                             ],
                                           ),

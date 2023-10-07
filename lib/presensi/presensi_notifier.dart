@@ -1,20 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+// import 'package:flutter/material.dart';
+// import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
 
-class PresensiNotifier extends ChangeNotifier {
-  String scannedText = 'Hasil Scan';
+// class PresensiNotifier extends ChangeNotifier {
 
-  PresensiNotifier(BuildContext context);
+//   PresensiNotifier(BuildContext context);
 
-  Future scanBarcode() async {
-    String text = await FlutterBarcodeScanner.scanBarcode(
-      "#ff6666", "Cancel", false, ScanMode.DEFAULT);
-    if (text != '-1') {
-      scannedText = text;
-      notifyListeners();
-    } else {
-      scannedText = 'Scan dibatalkan';
-      notifyListeners();
-    }
-  }
-}
+//   String result = '';
+
+//   void setResult(String res) {
+//     result = res;
+//     notifyListeners();
+//   }
+
+//   void clearResult() {
+//     result = '';
+//     notifyListeners();
+//   }
+// }
+

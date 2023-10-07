@@ -177,24 +177,21 @@ class ProfilPage extends StatelessWidget {
                                           MainAxisAlignment.start,
                                       children: [
                                         Icon(MdiIcons.account),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 15),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Nama',
-                                                style: Theme.of(context).textTheme.bodyLarge,
-                                              ),
-                                              SizedBox(height: 3),
-                                              Text(
-                                                value.users!.nama!,
-                                                style: Theme.of(context).textTheme.bodyMedium,
-                                              ),
-                                            ],
-                                          ),
+                                        SizedBox(width: 15),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Nama',
+                                              style: Theme.of(context).textTheme.bodyLarge,
+                                            ),
+                                            SizedBox(height: 3),
+                                            Text(
+                                              value.users!.nama!,
+                                              style: Theme.of(context).textTheme.bodyMedium,
+                                            ),
+                                          ],
                                         )
                                       ],
                                     ),
@@ -218,24 +215,21 @@ class ProfilPage extends StatelessWidget {
                                           MainAxisAlignment.start,
                                       children: [
                                         Icon(MdiIcons.calendarBlank),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 15),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Tanggal Lahir',
-                                                style: Theme.of(context).textTheme.bodyLarge,
-                                              ),
-                                              SizedBox(height: 3),
-                                              Text(
-                                                value.users!.ttl.toString(),
-                                                style: Theme.of(context).textTheme.bodyMedium,
-                                              ),
-                                            ],
-                                          ),
+                                        SizedBox(width: 15),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Tanggal Lahir',
+                                              style: Theme.of(context).textTheme.bodyLarge,
+                                            ),
+                                            SizedBox(height: 3),
+                                            Text(
+                                              value.users!.ttl.toString(),
+                                              style: Theme.of(context).textTheme.bodyMedium,
+                                            ),
+                                          ],
                                         )
                                       ],
                                     ),
@@ -259,24 +253,21 @@ class ProfilPage extends StatelessWidget {
                                           MainAxisAlignment.start,
                                       children: [
                                         Icon(MdiIcons.emailCheck),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 15),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Email',
-                                                style: Theme.of(context).textTheme.bodyLarge,
-                                              ),
-                                              SizedBox(height: 3),
-                                              Text(
-                                                value.users!.email!,
-                                                style: Theme.of(context).textTheme.bodyMedium,
-                                              ),
-                                            ],
-                                          ),
+                                        SizedBox(width: 15),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Email',
+                                              style: Theme.of(context).textTheme.bodyLarge,
+                                            ),
+                                            SizedBox(height: 3),
+                                            Text(
+                                              value.users!.email!,
+                                              style: Theme.of(context).textTheme.bodyMedium,
+                                            ),
+                                          ],
                                         )
                                       ],
                                     ),
@@ -300,24 +291,21 @@ class ProfilPage extends StatelessWidget {
                                           MainAxisAlignment.start,
                                       children: [
                                         Icon(MdiIcons.phone),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 15),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Nomor Telepon',
-                                                style: Theme.of(context).textTheme.bodyLarge,
-                                              ),
-                                              SizedBox(height: 3),
-                                              Text(
-                                                value.users!.telpon!,
-                                                style: Theme.of(context).textTheme.bodyMedium,
-                                              ),
-                                            ],
-                                          ),
+                                        SizedBox(width: 15),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Nomor Telepon',
+                                              style: Theme.of(context).textTheme.bodyLarge,
+                                            ),
+                                            SizedBox(height: 3),
+                                            Text(
+                                              value.users!.telpon!,
+                                              style: Theme.of(context).textTheme.bodyMedium,
+                                            ),
+                                          ],
                                         )
                                       ],
                                     ),
@@ -341,24 +329,21 @@ class ProfilPage extends StatelessWidget {
                                           MainAxisAlignment.start,
                                       children: [
                                         Icon(MdiIcons.briefcase),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 15),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Pekerjaan',
-                                                style: Theme.of(context).textTheme.bodyLarge,
-                                              ),
-                                              SizedBox(height: 3),
-                                              Text(
-                                                value.users!.pekerjaan!,
-                                                style: Theme.of(context).textTheme.bodyMedium,
-                                              ),
-                                            ],
-                                          ),
+                                        SizedBox(width: 15),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Pekerjaan',
+                                              style: Theme.of(context).textTheme.bodyLarge,
+                                            ),
+                                            SizedBox(height: 3),
+                                            Text(
+                                              value.users!.pekerjaan!,
+                                              style: Theme.of(context).textTheme.bodyMedium,
+                                            ),
+                                          ],
                                         )
                                       ],
                                     ),
@@ -382,24 +367,21 @@ class ProfilPage extends StatelessWidget {
                                           MainAxisAlignment.start,
                                       children: [
                                         Icon(MdiIcons.homeAccount),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 15),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Alamat',
-                                                style: Theme.of(context).textTheme.bodyLarge,
-                                              ),
-                                              SizedBox(height: 3),
-                                              Text(
-                                                value.users!.alamat!,
-                                                style: Theme.of(context).textTheme.bodyMedium,
-                                              ),
-                                            ],
-                                          ),
+                                        SizedBox(width: 15),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Alamat',
+                                              style: Theme.of(context).textTheme.bodyLarge,
+                                            ),
+                                            SizedBox(height: 3),
+                                            Text(
+                                              value.users!.alamat!,
+                                              style: Theme.of(context).textTheme.bodyMedium,
+                                            ),
+                                          ],
                                         )
                                       ],
                                     ),
@@ -423,24 +405,21 @@ class ProfilPage extends StatelessWidget {
                                           MainAxisAlignment.start,
                                       children: [
                                         Icon(MdiIcons.school),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 15),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Status',
-                                                style: Theme.of(context).textTheme.bodyLarge,
-                                              ),
-                                              SizedBox(height: 3),
-                                              Text(
-                                                value.users!.status!,
-                                                style: Theme.of(context).textTheme.bodyMedium,
-                                              ),
-                                            ],
-                                          ),
+                                        SizedBox(width: 15),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Status',
+                                              style: Theme.of(context).textTheme.bodyLarge,
+                                            ),
+                                            SizedBox(height: 3),
+                                            Text(
+                                              value.users!.status!,
+                                              style: Theme.of(context).textTheme.bodyMedium,
+                                            ),
+                                          ],
                                         )
                                       ],
                                     ),
@@ -464,24 +443,21 @@ class ProfilPage extends StatelessWidget {
                                           MainAxisAlignment.start,
                                       children: [
                                         Icon(MdiIcons.formatListChecks),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 15),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Jumlah Kehadiran',
-                                                style: Theme.of(context).textTheme.bodyLarge,
-                                              ),
-                                              SizedBox(height: 3),
-                                              Text(
-                                                value.users!.kehadiran!,
-                                                style: Theme.of(context).textTheme.bodyMedium,
-                                              ),
-                                            ],
-                                          ),
+                                        SizedBox(width: 15),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Jumlah Kehadiran',
+                                              style: Theme.of(context).textTheme.bodyLarge,
+                                            ),
+                                            SizedBox(height: 3),
+                                            Text(
+                                              value.users!.kehadiran!,
+                                              style: Theme.of(context).textTheme.bodyMedium,
+                                            ),
+                                          ],
                                         )
                                       ],
                                     ),
@@ -517,25 +493,21 @@ class ProfilPage extends StatelessWidget {
                                           Row(
                                             children: [
                                               Icon(MdiIcons.cash),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 15),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      'Tagihan',
-                                                      style: Theme.of(context).textTheme.bodyLarge,
-                                                    ),
-                                                    SizedBox(height: 3),
-                                                    Text(
-                                                      value.users!.sisaPembayaran!,
-                                                      style: Theme.of(context).textTheme.bodyMedium,
-                                                    ),
-                                                  ],
-                                                ),
+                                              SizedBox(width: 15),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    'Tagihan',
+                                                    style: Theme.of(context).textTheme.bodyLarge,
+                                                  ),
+                                                  SizedBox(height: 3),
+                                                  Text(
+                                                    value.users!.sisaPembayaran!,
+                                                    style: Theme.of(context).textTheme.bodyMedium,
+                                                  ),
+                                                ],
                                               )
                                             ],
                                           ),
@@ -575,25 +547,21 @@ class ProfilPage extends StatelessWidget {
                                           Row(
                                             children: [
                                               Icon(MdiIcons.heart),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 15),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      'Penilaian Kursus',
-                                                      style: Theme.of(context).textTheme.bodyLarge,
-                                                    ),
-                                                    SizedBox(height: 3),
-                                                    Text(
-                                                      'Berikan penilaian anda',
-                                                      style: Theme.of(context).textTheme.bodyMedium,
-                                                    ),
-                                                  ],
-                                                ),
+                                              SizedBox(width: 15),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    'Penilaian Kursus',
+                                                    style: Theme.of(context).textTheme.bodyLarge,
+                                                  ),
+                                                  SizedBox(height: 3),
+                                                  Text(
+                                                    'Berikan penilaian anda',
+                                                    style: Theme.of(context).textTheme.bodyMedium,
+                                                  ),
+                                                ],
                                               ),
                                             ],
                                           ),

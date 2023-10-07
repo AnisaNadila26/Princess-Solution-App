@@ -23,72 +23,6 @@ class NilaiAkhirNotifier extends ChangeNotifier {
   TextEditingController kenyamanan = TextEditingController();
   TextEditingController penguasaan = TextEditingController();
 
-  Future<bool> backConfirmDialog(BuildContext context) async {
-    if (isDataChanged) {
-      return await showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            backgroundColor: Theme.of(context).cardColor,
-            content: Container(
-              height: 200,
-              width: 400,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Simpan Perubahan',
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                  SizedBox(height: 20),
-                  Text(
-                    'Apakah Anda ingin menyimpan perubahan yang Anda lakukan?',
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                  SizedBox(height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      FilledButton(
-                        onPressed: () {
-                          Navigator.of(context).pop(false);
-                        },
-                        child: Text(
-                          'Batal',
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                        style: FilledButton.styleFrom(
-                          backgroundColor: Colors.grey,
-                        ),
-                      ),
-                      FilledButton(
-                        onPressed: () async {
-                         await cekNilaiAkhir();
-                         Navigator.of(context).pop(true);
-                        },
-                        child: Text(
-                          'Simpan',
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                        style: FilledButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(76, 105, 176, 1.0),
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-          );
-        },
-      );
-    } else {
-      return true;
-    }
-  }
-
   cekNilaiAkhir() async {
     if (keyForm.currentState!.validate()) {
       saveNilaiAkhir();
@@ -177,5 +111,72 @@ class NilaiAkhirNotifier extends ChangeNotifier {
       isLoading = false;
       notifyListeners();
     }
+  }
+
+  Future<bool> backConfirmDialog(BuildContext context) async {
+    bool shouldClose = false;
+    if (isDataChanged) {
+      await showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            backgroundColor: Theme.of(context).cardColor,
+            content: Container(
+              height: 200,
+              width: 400,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Simpan Perubahan',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    'Apakah Anda ingin menyimpan perubahan yang Anda lakukan?',
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  SizedBox(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      FilledButton(
+                        onPressed: () {
+                          shouldClose = true;
+                          Navigator.of(context).pop(false);
+                        },
+                        child: Text(
+                          'Batal',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        style: FilledButton.styleFrom(
+                          backgroundColor: Colors.grey,
+                        ),
+                      ),
+                      FilledButton(
+                        onPressed: () async {
+                          await cekNilaiAkhir();
+                          shouldClose = true;
+                        },
+                        child: Text(
+                          'Simpan',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        style: FilledButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(76, 105, 176, 1.0),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          );
+        },
+      );
+    }
+    return shouldClose;
   }
 }

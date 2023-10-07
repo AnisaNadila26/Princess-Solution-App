@@ -37,7 +37,7 @@ class LoginPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     SizedBox(
-                      height: 350,
+                      height: 410,
                       child: Container(
                         decoration: BoxDecoration(
                           color: Theme.of(context).cardColor,
@@ -54,7 +54,7 @@ class LoginPage extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
                           child: Transform.translate(
-                            offset: Offset(0, -80),
+                            offset: Offset(0, -60),
                             child: Form(
                                 key: value.keyForm,
                                 child: Column(

@@ -175,28 +175,25 @@ class ProfilPageInstruktur extends StatelessWidget {
                                           MainAxisAlignment.start,
                                       children: [
                                         Icon(MdiIcons.account),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 15),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Nama',
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyLarge,
-                                              ),
-                                              SizedBox(height: 3),
-                                              Text(
-                                                value.ins!.nama!,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyMedium,
-                                              ),
-                                            ],
-                                          ),
+                                        SizedBox(width: 15),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Nama',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge,
+                                            ),
+                                            SizedBox(height: 3),
+                                            Text(
+                                              value.ins!.nama!,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium,
+                                            ),
+                                          ],
                                         )
                                       ],
                                     ),
@@ -220,28 +217,25 @@ class ProfilPageInstruktur extends StatelessWidget {
                                           MainAxisAlignment.start,
                                       children: [
                                         Icon(MdiIcons.emailCheck),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 15),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Email',
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyLarge,
-                                              ),
-                                              SizedBox(height: 3),
-                                              Text(
-                                                value.ins!.email!,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyMedium,
-                                              ),
-                                            ],
-                                          ),
+                                        SizedBox(width: 15),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Email',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge,
+                                            ),
+                                            SizedBox(height: 3),
+                                            Text(
+                                              value.ins!.email!,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium,
+                                            ),
+                                          ],
                                         )
                                       ],
                                     ),
@@ -265,28 +259,25 @@ class ProfilPageInstruktur extends StatelessWidget {
                                           MainAxisAlignment.start,
                                       children: [
                                         Icon(MdiIcons.phone),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 15),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Nomor Telepon',
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyLarge,
-                                              ),
-                                              SizedBox(height: 3),
-                                              Text(
-                                                value.ins!.telpon!,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyMedium,
-                                              ),
-                                            ],
-                                          ),
+                                        SizedBox(width: 15),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Nomor Telepon',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge,
+                                            ),
+                                            SizedBox(height: 3),
+                                            Text(
+                                              value.ins!.telpon!,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium,
+                                            ),
+                                          ],
                                         )
                                       ],
                                     ),
@@ -310,28 +301,25 @@ class ProfilPageInstruktur extends StatelessWidget {
                                           MainAxisAlignment.start,
                                       children: [
                                         Icon(MdiIcons.briefcase),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 15),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Usia',
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyLarge,
-                                              ),
-                                              SizedBox(height: 3),
-                                              Text(
-                                                value.ins!.usia!,
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyMedium,
-                                              ),
-                                            ],
-                                          ),
+                                        SizedBox(width: 15),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Usia',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge,
+                                            ),
+                                            SizedBox(height: 3),
+                                            Text(
+                                              value.ins!.usia!,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium,
+                                            ),
+                                          ],
                                         )
                                       ],
                                     ),

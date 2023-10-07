@@ -23,6 +23,18 @@ class NetworkURL {
     return '$url/hari';
   }
 
+  static String getInstrumen() {
+    return '$url/instrumenMobil';
+  }
+
+  static String saveNilaiInstrumen() {
+    return '$url/kirimInstrumen';
+  }
+
+  static String getNilaiInstrumen() {
+    return '$url/getNilaiInstrumen';
+  }
+
   static String getMateri() {
     return '$url/materi';
   }
@@ -64,11 +76,11 @@ class NetworkURL {
   }
 
   static String ubahProfilSiswa() {
-    return '$url/ubahprofilsiswa';
+    return '$url/ubahProfilSiswa';
   }
 
   static String ubahProfilInstruktur() {
-    return '$url/ubahprofilins';
+    return '$url/ubahProfilIns';
   }
 
   static String rating() {

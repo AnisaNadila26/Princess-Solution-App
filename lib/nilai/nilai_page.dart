@@ -70,8 +70,8 @@ class NilaiPage extends StatelessWidget {
               children: [
                 value.tabButton(),
                 SizedBox(height: 10),
-                Align(
-                  alignment: Alignment.topRight,
+                Padding(
+                  padding: const EdgeInsets.only(right: 15.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -103,7 +103,6 @@ class NilaiPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      // SizedBox(width: 10),
                     ],
                   ),
                 ),
