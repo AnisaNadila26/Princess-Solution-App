@@ -51,17 +51,17 @@ class SiswaRepository {
     }
   }
 
-  static Future<dynamic> kirimInstrumen(String url, int noRegistrasi,
-      int idInstruktur, String nilaiInstrumen) async {
+  static Future<dynamic> kirimInstrumen(
+      String url, int id, String nilaiInstrumen) async {
     print(url);
-    print(noRegistrasi);
-    print(idInstruktur);
+    print(id);
+    // print(idInstruktur);
     print(nilaiInstrumen);
 
     Dio dio = Dio();
     FormData formData = FormData.fromMap({
-      "no_registrasi": noRegistrasi,
-      "id_instruktur": idInstruktur,
+      "id": id,
+      // "id_instruktur": idInstruktur,
       "nilai_instrumen": nilaiInstrumen,
     });
 
@@ -80,11 +80,11 @@ class SiswaRepository {
   }
 
   static Future<Map<String, int>> getNilaiInstrumen(
-      String url, String noRegistrasi, String idInstruktur) async {
+      String url, String id) async {
     try {
       FormData formData = FormData.fromMap({
-        "no_registrasi": noRegistrasi,
-        "id_instruktur": idInstruktur,
+        "id": id,
+        // "id_instruktur": idInstruktur,
       });
       Dio dio = Dio();
       final response = await dio.post(url, data: formData);
@@ -141,19 +141,19 @@ class SiswaRepository {
     }
   }
 
-  static Future<dynamic> kirimNilai(String url, int noRegistrasi,
-      int idInstruktur, String nilaiJson, String catatan, int idHari) async {
+  static Future<dynamic> kirimNilai(
+      String url, int id, String nilaiJson, String catatan, int idHari) async {
     print(url);
-    print(noRegistrasi);
-    print(idInstruktur);
+    print(id);
+    // print(idInstruktur);
     print(nilaiJson);
     print(catatan);
     print(idHari);
 
     Dio dio = Dio();
     FormData formData = FormData.fromMap({
-      "no_registrasi": noRegistrasi,
-      "id_instruktur": idInstruktur,
+      "id": id,
+      // "id_instruktur": idInstruktur,
       "nilai": nilaiJson,
       "catatan": catatan,
       "id_hari": idHari,
@@ -173,12 +173,12 @@ class SiswaRepository {
     }
   }
 
-  static Future<Map<String, dynamic>> getNilai(String url, String noRegistrasi,
-      String idInstruktur, String idHari) async {
+  static Future<Map<String, dynamic>> getNilai(
+      String url, String id, String idHari) async {
     try {
       FormData formData = FormData.fromMap({
-        "no_registrasi": noRegistrasi,
-        "id_instruktur": idInstruktur,
+        "id": id,
+        // "id_instruktur": idInstruktur,
         "id_hari": idHari,
       });
       Dio dio = Dio();
@@ -207,13 +207,18 @@ class SiswaRepository {
               final Map<String, int> nilaiMapJson = {};
 
               dataNilai.forEach((idMateri, nilai) {
-                nilaiMapJson[idMateri] = nilai as int;
+                if (nilai != null) {
+                  nilaiMapJson[idMateri] = nilai as int;
+                }
               });
 
               nilaiMap[idKategori] = nilaiMapJson;
             }
             if (nilaiData.containsKey('catatan')) {
               catatan = nilaiData['catatan'];
+              // catatan = catatanValue != null
+              //     ? catatanValue
+              //     : '';
             }
           }
           return {'nilaiMap': nilaiMap, 'catatan': catatan};
@@ -233,15 +238,15 @@ class SiswaRepository {
 
   static Future<dynamic> kirimNilaiAkhir(
       String url,
-      int noRegistrasi,
-      int idInstruktur,
+      int id,
+      // int idInstruktur,
       String penilaian,
       String emotional,
       String kenyamanan,
       String penguasaan) async {
     print(url);
-    print(noRegistrasi);
-    print(idInstruktur);
+    print(id);
+    // print(idInstruktur);
     print(penilaian);
     print(emotional);
     print(kenyamanan);
@@ -249,8 +254,8 @@ class SiswaRepository {
 
     Dio dio = Dio();
     FormData formData = FormData.fromMap({
-      "no_registrasi": noRegistrasi,
-      "id_instruktur": idInstruktur,
+      "id": id,
+      // "id_instruktur": idInstruktur,
       "penilaian": penilaian,
       "emotional": emotional,
       "kenyamanan": kenyamanan,
@@ -271,11 +276,10 @@ class SiswaRepository {
     }
   }
 
-  static Future<dynamic> getNilaiAkhir(
-      String url, String noRegistrasi, String idInstruktur) async {
+  static Future<dynamic> getNilaiAkhir(String url, String id) async {
     FormData formData = FormData.fromMap({
-      "no_registrasi": noRegistrasi,
-      "id_instruktur": idInstruktur,
+      "id": id,
+      // "id_instruktur": idInstruktur,
     });
     Dio dio = Dio();
     final response = await dio.post(url, data: formData);
@@ -285,7 +289,7 @@ class SiswaRepository {
     }
     if (response.statusCode == 200) {
       if (kDebugMode) {
-        print("RESPONSE DATA NILAI AKHIR : ${response.data}");
+        print("RESPONSE DATA AMBIL NILAI AKHIR : ${response.data}");
       }
       return response.data;
     } else {

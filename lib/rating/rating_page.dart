@@ -50,25 +50,26 @@ class RatingPage extends StatelessWidget {
                           children: [
                             Padding(
                               padding: const EdgeInsets.all(10),
-                              child: SizedBox(
-                                height: 250,
-                                child: value.users!.rating! == ''
-                                    ? Card(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20)),
-                                        elevation: 2.0,
-                                        child: Center(
-                                          child: Text(
-                                            'Anda belum memberikan ulasan',
-                                            style: Theme.of(context).textTheme.bodyMedium,
-                                          ),
-                                        ))
-                                    : Card(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(20)
+                              child: value.users!.rating! == ''
+                                  ? Card(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      elevation: 2.0,
+                                      child: Center(
+                                        child: Text(
+                                          'Anda belum memberikan ulasan',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
                                         ),
-                                        elevation: 2.0,
+                                      ))
+                                  : Card(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      elevation: 2.0,
+                                      child: SingleChildScrollView(
                                         child: Column(
                                           children: [
                                             Padding(
@@ -98,80 +99,104 @@ class RatingPage extends StatelessWidget {
                                                       ),
                                                     ),
                                                   ),
-                                                  Padding(
-                                                    padding: const EdgeInsets.only(left: 20),
-                                                    child: Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        Text(
-                                                          value.users!.nama!,
-                                                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                                            fontWeight: FontWeight.bold
+                                                  Expanded(
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 20),
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            value.users!.nama!,
+                                                            style: Theme.of(
+                                                                    context)
+                                                                .textTheme
+                                                                .bodyMedium!
+                                                                .copyWith(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
                                                           ),
-                                                        ),
-                                                        SizedBox(height: 5),
-                                                        RichText(
-                                                          text: TextSpan(
-                                                            text: 'Instruktur: ',
-                                                            style: TextStyle(
-                                                              color: Colors.white,
-                                                            ),
-                                                            children: <TextSpan>[
-                                                              TextSpan(
-                                                                text: value.users!.namaInstruktur!,
-                                                                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                                                  fontWeight: FontWeight.bold
+                                                          SizedBox(height: 5),
+                                                          RichText(
+                                                            text: TextSpan(
+                                                              text: 'Instruktur: ',
+                                                              style: Theme.of(context).textTheme.bodyMedium,
+                                                              children: <
+                                                                  TextSpan>[
+                                                                TextSpan(
+                                                                  text: value
+                                                                      .users!
+                                                                      .namaInstruktur!,
+                                                                  style: Theme.of(
+                                                                          context)
+                                                                      .textTheme
+                                                                      .bodyMedium!
+                                                                      .copyWith(
+                                                                          fontWeight:
+                                                                              FontWeight.bold),
                                                                 ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        SizedBox(height: 5),
-                                                        RichText(
-                                                          text: TextSpan(
-                                                            text: 'Kendaraan: ',
-                                                            style: TextStyle(
-                                                              color: Colors.white
+                                                              ],
                                                             ),
-                                                            children: <TextSpan>[
-                                                              TextSpan(
-                                                                text: value.users!.kodeKendaraan!,
-                                                                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                                                  fontWeight: FontWeight.bold
-                                                                ),
-                                                              ),
-                                                            ],
                                                           ),
-                                                        ),
-                                                      ],
+                                                          SizedBox(height: 5),
+                                                          RichText(
+                                                            text: TextSpan(
+                                                              text: 'Kendaraan: ',
+                                                              style: Theme.of(context).textTheme.bodyMedium,
+                                                              children: <
+                                                                  TextSpan>[
+                                                                TextSpan(
+                                                                  text: value
+                                                                      .users!
+                                                                      .kodeKendaraan!,
+                                                                  style: Theme.of(
+                                                                          context)
+                                                                      .textTheme
+                                                                      .bodyMedium!
+                                                                      .copyWith(
+                                                                          fontWeight:
+                                                                              FontWeight.bold),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                   Expanded(
                                                     child: Padding(
-                                                      padding: const EdgeInsets.only(
-                                                        left: 20, right: 15
-                                                      ),
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 20,
+                                                              right: 15),
                                                       child: Column(
-                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
                                                         children: [
                                                           Row(
                                                             children: [
-                                                              RatingBar.builder(
-                                                                ignoreGestures: true,
-                                                                initialRating: double.parse(value.users!.rating!),
-                                                                minRating: 1,
-                                                                direction: Axis.horizontal,
-                                                                allowHalfRating: true,
-                                                                itemCount: 5,
-                                                                itemSize: 20,
-                                                                itemPadding: EdgeInsets.symmetric(
-                                                                  horizontal: 4
-                                                                ),
-                                                                itemBuilder: (context, index) {
-                                                                  return value.emoticonForIndex(index);
-                                                                },
-                                                                onRatingUpdate:(rating) {}),
-                                                              SizedBox(width: 10),
+                                                              // RatingBar.builder(
+                                                              //   ignoreGestures: true,
+                                                              //   initialRating: double.parse(value.users!.rating!),
+                                                              //   minRating: 1,
+                                                              //   direction: Axis.horizontal,
+                                                              //   allowHalfRating: true,
+                                                              //   itemCount: 5,
+                                                              //   itemSize: 20,
+                                                              //   itemPadding: EdgeInsets.symmetric(
+                                                              //     horizontal: 4
+                                                              //   ),
+                                                              //   itemBuilder: (context, index) {
+                                                              //     return value.emoticonForIndex(index);
+                                                              //   },
+                                                              //   onRatingUpdate:(rating) {}),
+                                                              // SizedBox(width: 10),
                                                               Text(
                                                                 value.users!.rating!,
                                                                 style: Theme.of(context).textTheme.bodyMedium,
@@ -194,77 +219,81 @@ class RatingPage extends StatelessWidget {
                                           ],
                                         ),
                                       ),
-                              ),
+                                    ),
                             ),
-                            SizedBox(
-                              height: 250,
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20)
-                                  ),
-                                  color: Colors.transparent,
-                                  elevation: 0,
-                                  child: Form(
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Card(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)),
+                                color: Colors.transparent,
+                                elevation: 0,
+                                child: Form(
                                     key: value.keyForm,
                                     child: Center(
                                       child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            RatingBar.builder(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          RatingBar.builder(
                                               initialRating: value.rating,
                                               minRating: 1,
                                               direction: Axis.horizontal,
                                               allowHalfRating: true,
                                               itemCount: 5,
-                                              itemPadding: EdgeInsets.symmetric(horizontal: 4),
+                                              itemPadding: EdgeInsets.symmetric(
+                                                  horizontal: 4),
                                               itemBuilder: (context, index) {
-                                                return value.emoticonForIndex(index);
+                                                return value
+                                                    .emoticonForIndex(index);
                                               },
                                               onRatingUpdate: (rating) {
                                                 value.setRating(rating);
-                                              }
-                                            ),
-                                            SizedBox(height: 10),
-                                            Text(
-                                              'Rating: ${value.rating}',
-                                              style: Theme.of(context).textTheme.bodyMedium,
-                                            ),
-                                            SizedBox(height: 20),
-                                            Padding(
-                                              padding: EdgeInsets.symmetric(horizontal: 20),
-                                              child: TextFormField(
-                                                controller: value.review,
-                                                validator: (value) {
-                                                  if (value!.isEmpty) {
-                                                    return "Ulasan tidak boleh kosong";
-                                                  } else {
-                                                    return null;
-                                                  }
-                                                },
-                                                maxLength: 255,
-                                                maxLines: null,
-                                                decoration: InputDecoration(
-                                                  hintText: 'Berikan ulasan Anda...',
-                                                  border: OutlineInputBorder(),
-                                                ),
-                                              ),
-                                            ),
-                                            SizedBox(height: 20),
-                                            FilledButton(
-                                              onPressed: () {
-                                                value.cekRating();
+                                              }),
+                                          SizedBox(height: 10),
+                                          Text(
+                                            'Rating: ${value.rating}',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium,
+                                          ),
+                                          SizedBox(height: 20),
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 20),
+                                            child: TextFormField(
+                                              controller: value.review,
+                                              validator: (value) {
+                                                if (value!.isEmpty) {
+                                                  return "Ulasan tidak boleh kosong";
+                                                } else {
+                                                  return null;
+                                                }
                                               },
-                                              child: Text(
-                                                'Kirim Penilaian',
-                                                style: Theme.of(context).textTheme.bodyMedium,
+                                              maxLength: 255,
+                                              maxLines: null,
+                                              decoration: InputDecoration(
+                                                hintText:
+                                                    'Berikan ulasan Anda...',
+                                                border: OutlineInputBorder(),
                                               ),
                                             ),
-                                          ],
-                                        ),
-                                      )),
-                                ),
+                                          ),
+                                          SizedBox(height: 20),
+                                          FilledButton(
+                                            onPressed: () {
+                                              value.cekRating();
+                                            },
+                                            child: Text(
+                                              'Kirim Penilaian',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )),
                               ),
                             )
                           ],

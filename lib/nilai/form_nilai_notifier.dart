@@ -8,13 +8,15 @@ import 'package:princess_solution/repository/siswa_repository.dart';
 
 class FormNilaiNotifier extends ChangeNotifier {
   final BuildContext context;
-  final int noRegistrasi;
+  final int id;
   final int idHari;
 
-  FormNilaiNotifier(this.context, this.noRegistrasi, this.idHari) {
-    getInstruktur();
-    getMateri();
-    getNilai();
+  FormNilaiNotifier(this.context, this.id, this.idHari) {
+    isLoading = true;
+    // getInstruktur();
+    // getNilai();
+    // getMateri();
+    fetchData();
     notifyListeners();
   }
 
@@ -23,7 +25,7 @@ class FormNilaiNotifier extends ChangeNotifier {
   bool isNilaiDirty = false;
   bool isCatatanDirty = false;
 
-  // int noRegistrasi = 0;
+  // int id = 0;
   int idInstruktur = 0;
   // int idHari = 0;
   Map<String, Map<String, int?>> nilaiMap = {};
@@ -31,6 +33,14 @@ class FormNilaiNotifier extends ChangeNotifier {
   String catatanValue = '';
 
   GlobalKey<FormState> keyForm = GlobalKey<FormState>();
+
+  Future fetchData() async {
+    await getInstruktur();
+    await getNilai();
+    await getMateri();
+    isLoading = false;
+    notifyListeners();
+  }
 
   getInstruktur() async {
     isLoading = true;
@@ -41,27 +51,45 @@ class FormNilaiNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+  // List<Materi> listMateri = [];
+  // Future getMateri() async {
+  //   if (!isLoading) {
+  //     return;
+  //   }
+  //   try {
+  //     var response = await SiswaRepository.getMateri(
+  //         NetworkURL.getMateri(), idHari.toString());
+  //     if (response['code'] == 200) {
+  //       listMateri.clear();
+  //       for (Map<String, dynamic> i in response['data']) {
+  //         listMateri.add(Materi.fromJson(i));
+  //       }
+  //     }
+  //     isLoading = false;
+  //     notifyListeners();
+  //   } catch (error) {
+  //     print("Error: $error");
+  //     isLoading = false;
+  //     notifyListeners();
+  //   }
+  // }
+
   List<Materi> listMateri = [];
   Future getMateri() async {
-    if (!isLoading) {
-      return;
-    }
-    try {
-      var response =
-          await SiswaRepository.getMateri(NetworkURL.getMateri(), idHari.toString());
-      if (response['code'] == 200) {
+    isLoading = true;
+    SiswaRepository.getMateri(NetworkURL.getMateri(), idHari.toString()).then((value) {
+      if (value['code'] == 200) {
         listMateri.clear();
-        for (Map<String, dynamic> i in response['data']) {
+        for (Map<String, dynamic> i in value['data']) {
           listMateri.add(Materi.fromJson(i));
         }
+        isLoading = false;
+        notifyListeners();
+      } else {
+        isLoading = false;
+        notifyListeners();
       }
-      isLoading = false;
-      notifyListeners();
-    } catch (error) {
-      print("Error: $error");
-      isLoading = false;
-      notifyListeners();
-    }
+    });
   }
 
   void updateNilai(String idMateri, int? nilai, String idKategori) {
@@ -109,8 +137,8 @@ class FormNilaiNotifier extends ChangeNotifier {
 
       var response = await SiswaRepository.kirimNilai(
           NetworkURL.saveNilai(),
-          noRegistrasi,
-          idInstruktur,
+          id,
+          // idInstruktur,
           nilaiJson,
           catatanController.text.trim(),
           idHari);
@@ -153,14 +181,14 @@ class FormNilaiNotifier extends ChangeNotifier {
 
   Future getNilai() async {
     try {
-      ins = await PreferenceInstruktur().getInstruktur();
-      idInstruktur = int.parse(ins!.idInstruktur!);
+      // ins = await PreferenceInstruktur().getInstruktur();
+      // idInstruktur = int.parse(ins!.idInstruktur!);
 
       if (nilaiMap.isEmpty) {
         final Map<String, dynamic>? result = await SiswaRepository.getNilai(
             NetworkURL.getNilai(),
-            noRegistrasi.toString(),
-            idInstruktur.toString(),
+            id.toString(),
+            // idInstruktur.toString(),
             idHari.toString());
 
         Map<String, Map<String, int>> tempNilaiMap = {};
@@ -171,7 +199,7 @@ class FormNilaiNotifier extends ChangeNotifier {
             tempNilaiMap = result['nilaiMap'];
           }
           if (result.containsKey('catatan')) {
-            catatan = result['catatan'];
+            catatan = result['catatan'] ?? '';
           }
 
           if (tempNilaiMap.isNotEmpty) {

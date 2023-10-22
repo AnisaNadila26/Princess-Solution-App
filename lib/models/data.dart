@@ -1,5 +1,5 @@
 class Data {
-  String? noRegistrasi;
+  String? id;
   String? nama;
   String? ttl;
   String? telpon;
@@ -11,7 +11,7 @@ class Data {
   String? kodeKendaraan;
 
   Data({
-    this.noRegistrasi,
+    this.id,
     this.nama,
     this.ttl,
     this.telpon,
@@ -24,27 +24,27 @@ class Data {
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        noRegistrasi: json["no_registrasi"],
+        id: json["id"],
         nama: json["nama"],
         ttl: json["ttl"],
         telpon: json["telpon"],
         pekerjaan: json["pekerjaan"],
         alamat: json["alamat"],
         fotoProfil: json["foto_profil"],
-        paket: json["paket"],
+        paket: json["kode_paket"],
         jenisKendaraan: json["jenis_kendaraan"],
         kodeKendaraan: json["kode_kendaraan"],
       );
 
   Map<String, dynamic> toJson() => {
-        "no_registrasi": noRegistrasi,
+        "id": id,
         "nama": nama,
         "ttl": ttl,
         "telpon": telpon,
         "pekerjaan": pekerjaan,
         "alamat": alamat,
         "foto_profil": fotoProfil,
-        "paket": paket,
+        "kode_paket": paket,
         "jenis_kendaraan": jenisKendaraan,
         "kode_kendaraan": kodeKendaraan,
       };

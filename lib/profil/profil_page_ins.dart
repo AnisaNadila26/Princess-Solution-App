@@ -176,24 +176,24 @@ class ProfilPageInstruktur extends StatelessWidget {
                                       children: [
                                         Icon(MdiIcons.account),
                                         SizedBox(width: 15),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Nama',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyLarge,
-                                            ),
-                                            SizedBox(height: 3),
-                                            Text(
-                                              value.ins!.nama!,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyMedium,
-                                            ),
-                                          ],
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Nama',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
+                                              ),
+                                              SizedBox(height: 3),
+                                              Text(
+                                                value.ins!.nama!,
+                                                style: Theme.of(context).textTheme.bodyMedium,
+                                              ),
+                                            ],
+                                          ),
                                         )
                                       ],
                                     ),
@@ -218,71 +218,71 @@ class ProfilPageInstruktur extends StatelessWidget {
                                       children: [
                                         Icon(MdiIcons.emailCheck),
                                         SizedBox(width: 15),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Email',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyLarge,
-                                            ),
-                                            SizedBox(height: 3),
-                                            Text(
-                                              value.ins!.email!,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyMedium,
-                                            ),
-                                          ],
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Email',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
+                                              ),
+                                              SizedBox(height: 3),
+                                              Text(
+                                                value.ins!.email!,
+                                                style: Theme.of(context).textTheme.bodyMedium,
+                                              ),
+                                            ],
+                                          ),
                                         )
                                       ],
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 10),
-                                Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                    side: BorderSide(
-                                      color: Color.fromRGBO(226, 235, 245, 1.0),
-                                      width: 3.0,
-                                    ),
-                                  ),
-                                  elevation: 2.0,
-                                  color: Theme.of(context).cardColor,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Icon(MdiIcons.phone),
-                                        SizedBox(width: 15),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Nomor Telepon',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyLarge,
-                                            ),
-                                            SizedBox(height: 3),
-                                            Text(
-                                              value.ins!.telpon!,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyMedium,
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
+                                // SizedBox(height: 10),
+                                // Card(
+                                //   shape: RoundedRectangleBorder(
+                                //     borderRadius: BorderRadius.circular(20.0),
+                                //     side: BorderSide(
+                                //       color: Color.fromRGBO(226, 235, 245, 1.0),
+                                //       width: 3.0,
+                                //     ),
+                                //   ),
+                                //   elevation: 2.0,
+                                //   color: Theme.of(context).cardColor,
+                                //   child: Padding(
+                                //     padding: const EdgeInsets.all(10),
+                                //     child: Row(
+                                //       mainAxisAlignment:
+                                //           MainAxisAlignment.start,
+                                //       children: [
+                                //         Icon(MdiIcons.phone),
+                                //         SizedBox(width: 15),
+                                //         Expanded(
+                                //           child: Column(
+                                //             crossAxisAlignment:
+                                //                 CrossAxisAlignment.start,
+                                //             children: [
+                                //               Text(
+                                //                 'Nomor Telepon',
+                                //                 style: Theme.of(context)
+                                //                     .textTheme
+                                //                     .bodyLarge,
+                                //               ),
+                                //               SizedBox(height: 3),
+                                //               Text(
+                                //                 value.ins!.telpon!,
+                                //                 style: Theme.of(context).textTheme.bodyMedium,
+                                //               ),
+                                //             ],
+                                //           ),
+                                //         )
+                                //       ],
+                                //     ),
+                                //   ),
+                                // ),
                                 SizedBox(height: 10),
                                 Card(
                                   shape: RoundedRectangleBorder(
@@ -302,24 +302,22 @@ class ProfilPageInstruktur extends StatelessWidget {
                                       children: [
                                         Icon(MdiIcons.briefcase),
                                         SizedBox(width: 15),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Usia',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyLarge,
-                                            ),
-                                            SizedBox(height: 3),
-                                            Text(
-                                              value.ins!.usia!,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyMedium,
-                                            ),
-                                          ],
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Usia',
+                                                style: Theme.of(context).textTheme.bodyLarge,
+                                              ),
+                                              SizedBox(height: 3),
+                                              Text(
+                                                value.ins!.usia!.toString(),
+                                                style: Theme.of(context).textTheme.bodyMedium,
+                                              ),
+                                            ],
+                                          ),
                                         )
                                       ],
                                     ),

@@ -1,7 +1,7 @@
-const url = 'http://localhost/kp/public/api';
-const url_imagesProfilSiswa = 'http://localhost/kp/public/assets/images/profil';
-const url_imagesProfilInstruktur = 'http://localhost/kp/public/assets/images/instruktur';
-const url_imagesBerita = 'http://localhost/kp/public/assets/images/berita';
+const url = 'http://localhost/skripsi/public/api';
+const url_imagesProfilSiswa = 'http://localhost/skripsi/public/assets/profilSiswa';
+const url_imagesProfilInstruktur = 'http://localhost/skripsi/public/assets/profilInstruktur';
+const url_imagesBerita = 'http://localhost/skripsi/public/assets/pengumuman';
 var numPhone = '6281279572555';
 // var whatsapp = 'whatsapp://send?phone=$numPhone&text=hello';
 var whatsapp = 'https://wa.me/$numPhone';

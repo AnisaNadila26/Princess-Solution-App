@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:princess_solution/dasbor/dasbor_notifier_ins.dart';
 import 'package:princess_solution/berita/berita_item.dart';
+import 'package:princess_solution/pengaturan/pengaturan_page.dart';
 import 'package:provider/provider.dart';
 
 class DasborPageInstruktur extends StatelessWidget {
@@ -35,7 +36,14 @@ class DasborPageInstruktur extends StatelessWidget {
                         centerTitle: true,
                         actions: [
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return PengaturanPage();
+                                  }),
+                                );
+                              },
                               icon: Icon(
                                 MdiIcons.cog,
                                 color: Colors.white,
@@ -104,11 +112,19 @@ class DasborPageInstruktur extends StatelessWidget {
                                                 style: Theme.of(context).textTheme.headlineSmall,
                                               ),
                                               IconButton(
-                                                  onPressed: () {},
-                                                  icon: Icon(
-                                                    MdiIcons.cog,
-                                                    color: Colors.white,
-                                                  )),
+                                                onPressed: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(builder: (context) {
+                                                      return PengaturanPage();
+                                                    }),
+                                                  );
+                                                },
+                                                icon: Icon(
+                                                  MdiIcons.cog,
+                                                  color: Colors.white,
+                                                )
+                                              ),
                                             ]),
                                       ),
                                     ),
@@ -119,7 +135,7 @@ class DasborPageInstruktur extends StatelessWidget {
                                       right: 50,
                                       child: Container(
                                           height: 100,
-                                          width: 200,
+                                          width: 300,
                                           decoration: BoxDecoration(
                                             color: Theme.of(context).cardColor,
                                             borderRadius:
@@ -139,8 +155,8 @@ class DasborPageInstruktur extends StatelessWidget {
                                                     CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
-                                                    height: 50,
-                                                    width: 50,
+                                                    height: 40,
+                                                    width: 40,
                                                     child: Center(
                                                       child: Icon(MdiIcons.accountGroup),
                                                     ),
@@ -186,8 +202,8 @@ class DasborPageInstruktur extends StatelessWidget {
                                                     CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
-                                                    height: 50,
-                                                    width: 50,
+                                                    height: 40,
+                                                    width: 40,
                                                     child: Center(
                                                       child:
                                                           Icon(MdiIcons.star),
@@ -265,11 +281,13 @@ class DasborPageInstruktur extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text(
-                                              '15 Februari 2023',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyLarge,
+                                            Expanded(
+                                              child: Text(
+                                                '15 Februari 2023',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
+                                              ),
                                             ),
                                             Icon(MdiIcons.chevronRight),
                                           ],
@@ -300,9 +318,11 @@ class DasborPageInstruktur extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text(
-                                              'Berita Terbaru',
-                                              style: Theme.of(context).textTheme.titleLarge,
+                                            Expanded(
+                                              child: Text(
+                                                'Berita Terbaru',
+                                                style: Theme.of(context).textTheme.titleLarge,
+                                              ),
                                             ),
                                             InkWell(
                                               onTap: () {

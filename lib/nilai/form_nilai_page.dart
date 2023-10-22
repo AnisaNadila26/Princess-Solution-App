@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:princess_solution/models/data.dart';
 import 'package:princess_solution/nilai/form_nilai_notifier.dart';
-import 'package:princess_solution/nilai/materi_item.dart';
 import 'package:provider/provider.dart';
 
 class FormNilaiPage extends StatelessWidget {
@@ -14,12 +13,12 @@ class FormNilaiPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (_) => FormNilaiNotifier(context, int.parse(item.noRegistrasi!), int.parse(hari)),
+        create: (_) => FormNilaiNotifier(context, int.parse(item.id!), int.parse(hari)),
         child: Consumer<FormNilaiNotifier>(builder: (context, value, child) {
-          // value.noRegistrasi = int.parse(item.noRegistrasi!);
+          // value.id = int.parse(item.id!);
           // value.idHari = int.parse(hari);
           // value.setInitialValues(item);
-          // value.getNilai(item.noRegistrasi.toString(), value.idHari.toString());
+          // value.getNilai(item.id.toString(), value.idHari.toString());
           // if (value.isLoading) {
           //   value.getMateri(hari);
           // }
@@ -129,12 +128,10 @@ class FormNilaiPage extends StatelessWidget {
                                         alignment: Alignment.topRight,
                                         child: Text(
                                           'Hari $hari',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleLarge,
+                                          style: Theme.of(context).textTheme.titleLarge,
                                         ),
                                       ),
-                                      SizedBox(height: 20),
+                                      SizedBox(height: 30),
                                       Card(
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
@@ -158,9 +155,9 @@ class FormNilaiPage extends StatelessWidget {
                                                     .bodyLarge,
                                               ),
                                               SizedBox(height: 10),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.spaceEvenly,
+                                              Wrap(
+                                                alignment:
+                                                    WrapAlignment.spaceEvenly,
                                                 children: [
                                                   Row(
                                                     children: [
@@ -250,116 +247,142 @@ class FormNilaiPage extends StatelessWidget {
                                       ),
                                       SizedBox(height: 30),
                                       Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
                                         children: [
                                           Expanded(
-                                            child: Text(
-                                              'Kategori',
-                                              style: Theme.of(context).textTheme.bodyLarge,
-                                          )),
-                                          Expanded(
-                                            child: Text(
-                                              'Materi',
-                                              style: Theme.of(context).textTheme.bodyLarge,
-                                          )),
-                                          Expanded(
-                                              child: Column(
-                                            children: [
-                                              Text(
-                                                'Poin',
+                                              flex: 2,
+                                              child: Text(
+                                                'Kategori',
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .bodyLarge,
-                                              ),
-                                              SizedBox(height: 5),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.spaceAround,
-                                                children: [
-                                                  Text(
-                                                    '1',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .bodyLarge,
-                                                  ),
-                                                  Text(
-                                                    '2',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .bodyLarge,
-                                                  ),
-                                                  Text(
-                                                    '3',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .bodyLarge,
-                                                  ),
-                                                  Text(
-                                                    '4',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .bodyLarge,
-                                                  ),
-                                                  Text(
-                                                    '5',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .bodyLarge,
-                                                  ),
-                                                ],
-                                              )
-                                            ],
-                                          )),
+                                              )),
+                                          Expanded(
+                                              flex: 2,
+                                              child: Text(
+                                                'Materi',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
+                                              )),
+                                          Expanded(
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  'Poin',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyLarge,
+                                                ),
+                                                // SizedBox(height: 5),
+                                                // Row(
+                                                //   mainAxisAlignment:
+                                                //       MainAxisAlignment
+                                                //           .spaceAround,
+                                                //   children: [
+                                                //     Text(
+                                                //       '1',
+                                                //       style: Theme.of(context)
+                                                //           .textTheme
+                                                //           .bodyLarge,
+                                                //     ),
+                                                //     Text(
+                                                //       '2',
+                                                //       style: Theme.of(context)
+                                                //           .textTheme
+                                                //           .bodyLarge,
+                                                //     ),
+                                                //     Text(
+                                                //       '3',
+                                                //       style: Theme.of(context)
+                                                //           .textTheme
+                                                //           .bodyLarge,
+                                                //     ),
+                                                //     Text(
+                                                //       '4',
+                                                //       style: Theme.of(context)
+                                                //           .textTheme
+                                                //           .bodyLarge,
+                                                //     ),
+                                                //     Text(
+                                                //       '5',
+                                                //       style: Theme.of(context)
+                                                //           .textTheme
+                                                //           .bodyLarge,
+                                                //     ),
+                                                //   ],
+                                                // )
+                                              ],
+                                            ),
+                                          ),
                                         ],
                                       ),
+                                      SizedBox(height: 10,),
                                       Column(
                                         children: value.listMateri.isNotEmpty
                                             ? value.listMateri.map((materi) {
-                                                Map<String, int?>? nilaiData =
-                                                    value.nilaiMap.containsKey(
-                                                            materi.idKategori)
-                                                        ? value.nilaiMap[
-                                                            materi.idKategori]
-                                                        : null;
-                                                int? selectedValue = nilaiData !=
-                                                            null &&
-                                                        nilaiData.containsKey(
-                                                            materi.idMateri)
-                                                    ? nilaiData[materi.idMateri]!
-                                                    : null;
+                                              Map<String, int?>? nilaiData = value.nilaiMap.containsKey(materi.idKategori)
+                                              ? value.nilaiMap[materi.idKategori]
+                                              : null;
+                                                int? selectedValue = nilaiData != null && nilaiData.containsKey(materi.idMateri)
+                                                ? nilaiData[materi.idMateri]!
+                                                : null;
                                                 return Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
+                                                  // crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: <Widget>[
                                                     Row(
+                                                      mainAxisAlignment: MainAxisAlignment.start,
                                                       children: [
-                                                        Flexible(
-                                                          child: MateriItem(
-                                                            materi: materi,
+                                                        Expanded(
+                                                          flex: 2,
+                                                          child: Text(
+                                                            '${materi.namaKategori ?? "Tidak ada kategori"}',
+                                                            style: Theme.of(context).textTheme.bodyMedium,
                                                           ),
                                                         ),
-                                                        SizedBox(width: 10),
+                                                        Expanded(
+                                                          flex: 2,
+                                                          child: Text(
+                                                            '${materi.namaMateri ?? "Tidak ada materi"}',
+                                                            style: Theme.of(context).textTheme.bodyMedium,
+                                                          ),
+                                                        ),
+                                                        // SizedBox(width: 10),
                                                         for (int i = 1;
                                                             i <= 5;
                                                             i++)
-                                                          Radio<int>(
-                                                            value: i,
-                                                            groupValue:
-                                                                selectedValue,
-                                                            onChanged:
-                                                                (int? nilai) {
-                                                              if (nilai != null) {
-                                                                value.updateNilai(
-                                                                  materi.idMateri!,
-                                                                  nilai,
-                                                                  materi.idKategori!,
-                                                                );
-                                                              }
-                                                            },
+                                                          Column(
+                                                            children: [
+                                                              Text(
+                                                                i.toString(),
+                                                                style: Theme.of(context).textTheme.bodyMedium,
+                                                              ),
+                                                              Radio<int>(
+                                                                value: i,
+                                                                groupValue:
+                                                                    selectedValue,
+                                                                onChanged:
+                                                                    (int? nilai) {
+                                                                  if (nilai !=
+                                                                      null) {
+                                                                    value
+                                                                        .updateNilai(
+                                                                      materi
+                                                                          .idMateri!,
+                                                                      nilai,
+                                                                      materi
+                                                                          .idKategori!,
+                                                                    );
+                                                                  }
+                                                                },
+                                                              ),
+                                                            ],
                                                           )
                                                       ],
                                                     ),
                                                     Divider(
-                                                      color: Theme.of(context).dividerColor,
+                                                      color: Theme.of(context)
+                                                          .dividerColor,
                                                       thickness: 0.2,
                                                     ),
                                                   ],
@@ -370,7 +393,9 @@ class FormNilaiPage extends StatelessWidget {
                                       SizedBox(height: 20),
                                       Text(
                                         'Catatan',
-                                        style: Theme.of(context).textTheme.bodyLarge,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge,
                                       ),
                                       SizedBox(height: 10),
                                       TextFormField(

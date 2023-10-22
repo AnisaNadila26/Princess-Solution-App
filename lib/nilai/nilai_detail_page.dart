@@ -168,42 +168,42 @@ class NilaiDetailPage extends StatelessWidget {
                                           height: 10,
                                         ),
                                         Text(
-                                          isi.noRegistrasi!,
+                                          isi.id!,
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyMedium,
                                         ),
                                       ],
                                     ),
-                                    Column(
-                                      children: [
-                                        Container(
-                                          height: 50,
-                                          width: 50,
-                                          child: Center(
-                                            child: Icon(MdiIcons.cakeVariant),
-                                          ),
-                                          decoration: BoxDecoration(
-                                            border: Border.all(
-                                              color: Color.fromRGBO(
-                                                  226, 235, 245, 1.0),
-                                              width: 3.0,
-                                            ),
-                                            shape: BoxShape.circle,
-                                            color: Theme.of(context).cardColor,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          isi.ttl!,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium,
-                                        ),
-                                      ],
-                                    ),
+                                    // Column(
+                                    //   children: [
+                                    //     Container(
+                                    //       height: 50,
+                                    //       width: 50,
+                                    //       child: Center(
+                                    //         child: Icon(MdiIcons.cakeVariant),
+                                    //       ),
+                                    //       decoration: BoxDecoration(
+                                    //         border: Border.all(
+                                    //           color: Color.fromRGBO(
+                                    //               226, 235, 245, 1.0),
+                                    //           width: 3.0,
+                                    //         ),
+                                    //         shape: BoxShape.circle,
+                                    //         color: Theme.of(context).cardColor,
+                                    //       ),
+                                    //     ),
+                                    //     SizedBox(
+                                    //       height: 10,
+                                    //     ),
+                                    //     Text(
+                                    //       isi.ttl!,
+                                    //       style: Theme.of(context)
+                                    //           .textTheme
+                                    //           .bodyMedium,
+                                    //     ),
+                                    //   ],
+                                    // ),
                                     Column(
                                       children: [
                                         Container(

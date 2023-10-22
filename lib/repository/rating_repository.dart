@@ -5,7 +5,7 @@ class RatingRepository {
   static Future<dynamic> rating
   (
     String url, 
-    int noRegistrasi, 
+    int id, 
     int idInstruktur,
     double rating,
     String review
@@ -13,13 +13,13 @@ class RatingRepository {
   async {
 
     print(url);
-    print(noRegistrasi);
+    print(id);
     print(idInstruktur);
     print(rating);
     print(review);
 
       FormData formData = FormData.fromMap({
-      "no_registrasi": noRegistrasi,
+      "id": id,
       "id_instruktur": idInstruktur,
       "rating": rating,
       "review": review,

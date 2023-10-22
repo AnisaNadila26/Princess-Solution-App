@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:princess_solution/data/preference_ins.dart';
 import 'package:princess_solution/menu/menu_page_ins.dart';
 import 'package:princess_solution/models/instruktur.dart';
@@ -24,12 +25,12 @@ class UbahProfilInsNotifier extends ChangeNotifier {
   List<PlatformFile>? paths;
   List<int>? file;
   Uint8List? fileToDisplay;
+  DateTime selectedDate = DateTime.now();
 
   GlobalKey<FormState> keyForm = GlobalKey<FormState>();
   TextEditingController nama = TextEditingController();
   TextEditingController email = TextEditingController();
-  TextEditingController telpon = TextEditingController();
-  TextEditingController usia = TextEditingController();
+  TextEditingController tanggalLahir = TextEditingController();
 
   Future<bool> backConfirmDialog(BuildContext context) async {
     if (isDataChanged) {
@@ -103,8 +104,7 @@ class UbahProfilInsNotifier extends ChangeNotifier {
       idInstruktur = int.parse(ins!.idInstruktur!);
       nama = TextEditingController(text: ins!.nama);
       email = TextEditingController(text: ins!.email);
-      telpon = TextEditingController(text: ins!.telpon);
-      usia = TextEditingController(text: ins!.usia);
+      tanggalLahir = TextEditingController(text: ins!.tanggalLahir);
       fotoProfil = ins!.fotoProfil!;
       notifyListeners();
       isLoading = false;
@@ -121,7 +121,7 @@ class UbahProfilInsNotifier extends ChangeNotifier {
         ?.files;
 
     if (paths != null) {
-      final int maxSize = 1000 * 1024;
+      final int maxSize = 2000 * 1024;
       final int fileSize = paths!.first.size;
 
       if (fileSize > maxSize) {
@@ -156,6 +156,31 @@ class UbahProfilInsNotifier extends ChangeNotifier {
     }
   }
 
+  Future<void> selectDate(BuildContext context) async {
+    DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: selectedDate.subtract(Duration(days: 365 * 50)),
+      lastDate: selectedDate,
+      // builder: (BuildContext context, Widget? child) {
+      //   return Theme(
+      //     data: ThemeData.light().copyWith(
+      //       primaryColor: Colors.black, // Warna kepala tanggal yang dipilih
+      //       accentColor:Colors.pink, // Warna tanggal yang dipilih dan tanggal hari ini
+      //       buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
+      //       dialogBackgroundColor: Colors.white, // Warna latar belakang dialog
+      //     ),
+      //     child: child!,
+      //   );
+      // },
+    );
+
+    if (picked != null && picked != selectedDate) {
+      tanggalLahir.text = DateFormat('yyyy-MM-dd').format(picked);
+      notifyListeners();
+    }
+  }
+
   cekUpdate() {
     if (keyForm.currentState!.validate()) {
       ubahProfilIns();
@@ -169,8 +194,7 @@ class UbahProfilInsNotifier extends ChangeNotifier {
         idInstruktur,
         nama.text.trim(),
         email.text.trim(),
-        telpon.text.trim(),
-        usia.text.trim(),
+        tanggalLahir.text.trim(),
         file == null ? [] : file,
         fotoProfil == '' ? 'default' : fotoProfil,
       );

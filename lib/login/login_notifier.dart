@@ -1,3 +1,4 @@
+// import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:princess_solution/models/user.dart';
 import 'package:princess_solution/models/instruktur.dart';
@@ -41,6 +42,8 @@ class LoginNotifier extends ChangeNotifier {
       ).then((value) {
         Navigator.pop(context);
         if (value['code'] == 200) {
+          // print("RESPONSE JSON: ${jsonEncode(value)}");
+          // print("Data Role: ${value['data']['role']}");
           if (value['data']['role'] == 'siswa') {
             User users = User.fromJson(value['data']);
             Preference().setUsers(users);
@@ -52,6 +55,12 @@ class LoginNotifier extends ChangeNotifier {
           } else if (value['data']['role'] == 'instruktur') {
             Instruktur ins = Instruktur.fromJson(value['data']);
             PreferenceInstruktur().setInstruktur(ins);
+            // try {
+            //   Instruktur ins = Instruktur.fromJson(value['data']);
+            //   print("Instruktur Model: ${jsonEncode(ins)}");
+            // } catch (e) {
+            //   print("Error parsing JSON to Instruktur Model: $e");
+            // }
             Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(

@@ -3,11 +3,11 @@ import 'package:princess_solution/models/instruktur.dart';
 
 class PreferenceInstruktur {
   static String idInstruktur = "id_instruktur";
-  static String nama = "nama";
-  static String email = "email";
-  static String telpon = "telpon";
+  static String nama = "nama_instruktur";
+  static String email = "email_instruktur";
+  static String tanggalLahir = "tgl_lahir";
   static String usia = "usia";
-  static String fotoProfil = "foto_profil";
+  static String fotoProfil = "foto_ins";
   static String jumlahSiswa = "jumlah_siswa";
   static String rating = "rating";
   static String createdAt = "created_at";
@@ -20,10 +20,10 @@ class PreferenceInstruktur {
     pref.setString(PreferenceInstruktur.idInstruktur, ins.idInstruktur!);
     pref.setString(PreferenceInstruktur.nama, ins.nama!);
     pref.setString(PreferenceInstruktur.email, ins.email!);
-    pref.setString(PreferenceInstruktur.telpon, ins.telpon!);
-    pref.setString(PreferenceInstruktur.usia, ins.usia!);
+    pref.setString(PreferenceInstruktur.tanggalLahir, ins.tanggalLahir!);
+    pref.setInt(PreferenceInstruktur.usia, ins.usia!);
     pref.setString(PreferenceInstruktur.fotoProfil, ins.fotoProfil!);
-    pref.setInt(PreferenceInstruktur.jumlahSiswa, ins.jumlahSiswa!);
+    pref.setString(PreferenceInstruktur.jumlahSiswa, ins.jumlahSiswa!);
     pref.setDouble(PreferenceInstruktur.rating, ins.rating!);
     pref.setString(PreferenceInstruktur.createdAt, ins.createdAt!);
     pref.setString(PreferenceInstruktur.updatedAt, ins.updatedAt!);
@@ -35,8 +35,8 @@ class PreferenceInstruktur {
     pref.setString(PreferenceInstruktur.idInstruktur, ins.idInstruktur!);
     pref.setString(PreferenceInstruktur.nama, ins.nama!);
     pref.setString(PreferenceInstruktur.email, ins.email!);
-    pref.setString(PreferenceInstruktur.telpon, ins.telpon!);
-    pref.setString(PreferenceInstruktur.usia, ins.usia!);
+    pref.setString(PreferenceInstruktur.tanggalLahir, ins.tanggalLahir!);
+    pref.setInt(PreferenceInstruktur.usia, ins.usia!);
     pref.setString(PreferenceInstruktur.fotoProfil, ins.fotoProfil!);
     pref.setString(PreferenceInstruktur.createdAt, ins.createdAt!);
     pref.setString(PreferenceInstruktur.updatedAt, ins.updatedAt!);
@@ -58,10 +58,10 @@ class PreferenceInstruktur {
       idInstruktur: pref.getString(PreferenceInstruktur.idInstruktur) ?? "zero",
       nama: pref.getString(PreferenceInstruktur.nama) ?? "",
       email: pref.getString(PreferenceInstruktur.email) ?? "",
-      telpon: pref.getString(PreferenceInstruktur.telpon) ?? "",
-      usia: pref.getString(PreferenceInstruktur.usia) ?? "",
+      tanggalLahir: pref.getString(PreferenceInstruktur.tanggalLahir) ?? "",
+      usia: pref.getInt(PreferenceInstruktur.usia) ?? 0,
       fotoProfil: pref.getString(PreferenceInstruktur.fotoProfil) ?? "",
-      jumlahSiswa: pref.getInt(PreferenceInstruktur.jumlahSiswa) ?? 0,
+      jumlahSiswa: pref.getString(PreferenceInstruktur.jumlahSiswa) ?? "",
       rating: pref.getDouble(PreferenceInstruktur.rating) ?? 0,
       createdAt: pref.getString(PreferenceInstruktur.createdAt) ?? "",
       updatedAt: pref.getString(PreferenceInstruktur.updatedAt) ?? "",
@@ -93,7 +93,7 @@ class PreferenceInstruktur {
     pref.remove(PreferenceInstruktur.idInstruktur);
     pref.remove(PreferenceInstruktur.nama);
     pref.remove(PreferenceInstruktur.email);
-    pref.remove(PreferenceInstruktur.telpon);
+    pref.remove(PreferenceInstruktur.tanggalLahir);
     pref.remove(PreferenceInstruktur.usia);
     pref.remove(PreferenceInstruktur.fotoProfil);
     pref.remove(PreferenceInstruktur.jumlahSiswa);

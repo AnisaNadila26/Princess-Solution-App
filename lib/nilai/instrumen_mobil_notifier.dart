@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:princess_solution/data/preference_ins.dart';
 import 'package:princess_solution/models/instruktur.dart';
@@ -9,9 +8,9 @@ import 'package:princess_solution/network/network.dart';
 
 class InstrumenMobilNotifier extends ChangeNotifier {
   final BuildContext context;
-  final int noRegistrasi;
+  final int id;
 
-  InstrumenMobilNotifier(this.context, this.noRegistrasi) {
+  InstrumenMobilNotifier(this.context, this.id) {
     getInstruktur();
     fetchData();
     notifyListeners();
@@ -21,8 +20,8 @@ class InstrumenMobilNotifier extends ChangeNotifier {
   bool isLoading = true;
   bool isInstrumenDirty = false;
 
-  // int noRegistrasi = 0;
-  int idInstruktur = 0;
+  // int id = 0;
+  // int idInstruktur = 0;
 
   GlobalKey<FormState> keyForm = GlobalKey<FormState>();
 
@@ -40,7 +39,7 @@ class InstrumenMobilNotifier extends ChangeNotifier {
   getInstruktur() async {
     isLoading = true;
     ins = await PreferenceInstruktur().getInstruktur();
-    idInstruktur = int.parse(ins!.idInstruktur!);
+    // idInstruktur = int.parse(ins!.idInstruktur!);
     isLoading = false;
     notifyListeners();
   }
@@ -77,8 +76,7 @@ class InstrumenMobilNotifier extends ChangeNotifier {
       String nilaiInstrumen = jsonEncode(isCheckedMap);
       var response = await SiswaRepository.kirimInstrumen(
         NetworkURL.saveNilaiInstrumen(),
-        noRegistrasi,
-        idInstruktur,
+        id,
         nilaiInstrumen,
       );
 
@@ -121,13 +119,12 @@ class InstrumenMobilNotifier extends ChangeNotifier {
 
   Future getNilaiInstrumen() async {
     try {
-      ins = await PreferenceInstruktur().getInstruktur();
-      idInstruktur = int.parse(ins!.idInstruktur!);
+      // ins = await PreferenceInstruktur().getInstruktur();
+      // idInstruktur = int.parse(ins!.idInstruktur!);
       if (isCheckedMap.isEmpty) {
         isCheckedMap = await SiswaRepository.getNilaiInstrumen(
             NetworkURL.getNilaiInstrumen(),
-            noRegistrasi.toString(),
-            idInstruktur.toString());
+            id.toString());
 
         listInstrumen.forEach((instrumen) {
           if (!isCheckedMap.containsKey(instrumen.idInstrumen)) {

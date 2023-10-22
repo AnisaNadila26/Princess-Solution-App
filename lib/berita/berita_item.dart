@@ -26,6 +26,7 @@ class BeritaItem extends StatelessWidget {
           child: Row(
             children: [
               Expanded(
+                flex: 4,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,11 +54,14 @@ class BeritaItem extends StatelessWidget {
                   ],
                 ),
               ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  NetworkURL.gambarBerita(berita.image!),
-                  width: 100,
+              Expanded(
+                flex: 1,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network(
+                    NetworkURL.gambarBerita(berita.image!),
+                    width: 100,
+                  ),
                 ),
               ),
             ],

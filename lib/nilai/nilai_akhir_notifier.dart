@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:princess_solution/data/preference_ins.dart';
 import 'package:princess_solution/models/instruktur.dart';
 import 'package:princess_solution/models/nilaiAkhir.dart';
 import 'package:princess_solution/network/network.dart';
@@ -7,13 +6,16 @@ import 'package:princess_solution/repository/siswa_repository.dart';
 
 class NilaiAkhirNotifier extends ChangeNotifier {
   final BuildContext context;
+  final int id;
 
-  NilaiAkhirNotifier(this.context);
+  NilaiAkhirNotifier(this.context, this.id) {
+    getNilaiAkhir();
+  }
 
   Instruktur? ins;
   NilaiAkhir? na;
-  int noRegistrasi = 0;
-  int idInstruktur = 0;
+  // int id = 0;
+  // int idInstruktur = 0;
   bool isLoading = true;
   bool isDataChanged = false;
 
@@ -33,8 +35,8 @@ class NilaiAkhirNotifier extends ChangeNotifier {
     try {
       var response = await SiswaRepository.kirimNilaiAkhir(
         NetworkURL.saveNilaiAkhir(),
-        noRegistrasi,
-        idInstruktur,
+        id,
+        // idInstruktur,
         penilaian.text.trim(),
         emotional.text.trim(),
         kenyamanan.text.trim(),
@@ -42,7 +44,8 @@ class NilaiAkhirNotifier extends ChangeNotifier {
       );
 
       if (response['code'] == 200) {
-        na = NilaiAkhir.fromJson(response['data']);
+        var data = response['data'][0];
+        na = NilaiAkhir.fromJson(data);
         Navigator.pop(context);
         final snackBar = SnackBar(
           content: Text(
@@ -79,15 +82,15 @@ class NilaiAkhirNotifier extends ChangeNotifier {
     }
   }
 
-  Future getNilaiAkhir(String noRegistrasi) async {
+  Future getNilaiAkhir() async {
     try {
-      ins = await PreferenceInstruktur().getInstruktur();
-      idInstruktur = int.parse(ins!.idInstruktur!);
+      // ins = await PreferenceInstruktur().getInstruktur();
+      // idInstruktur = int.parse(ins!.idInstruktur!);
 
       var response = await SiswaRepository.getNilaiAkhir(
         NetworkURL.getNilaiAkhir(),
-        noRegistrasi,
-        idInstruktur.toString(),
+        id.toString(),
+        // idInstruktur.toString(),
       );
 
       if (response['code'] == 200) {

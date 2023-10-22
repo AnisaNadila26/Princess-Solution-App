@@ -8,6 +8,7 @@ class PengaturanNotifier extends ChangeNotifier {
 
   bool cameraPermission = false;
   bool folderPermission = false;
+  bool isShow = false;
 
   Future<void> toggleCameraPermission(bool newValue) async {
     final status = await Permission.camera.request();
@@ -23,5 +24,10 @@ class PengaturanNotifier extends ChangeNotifier {
 
   Future<void> openDeviceSettings() async {
     await openAppSettings();
+  }
+
+  void toggleAbout() {
+    isShow = !isShow;
+    notifyListeners();
   }
 }

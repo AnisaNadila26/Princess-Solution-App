@@ -1,6 +1,6 @@
 class Nilai {
   String? idNilai;
-  String? noRegistrasi;
+  String? id;
   String? idInstruktur;
   String? nilai;
   String? catatan;
@@ -8,7 +8,7 @@ class Nilai {
 
   Nilai({
     required this.idNilai,
-    required this.noRegistrasi,
+    required this.id,
     required this.idInstruktur,
     required this.nilai,
     required this.catatan,
@@ -18,7 +18,7 @@ class Nilai {
   factory Nilai.fromJson(Map<String, dynamic> json) {
     return Nilai(
       idNilai: json['id_nilai'],
-      noRegistrasi: json['no_registrasi'],
+      id: json['id'],
       idInstruktur: json['id_instruktur'],
       nilai: json['nilai'],
       catatan: json['catatan'],
@@ -29,7 +29,7 @@ class Nilai {
   Map<String, dynamic> toJson() {
     return {
       'id_nilai': idNilai,
-      'no_registrasi': noRegistrasi,
+      'id': id,
       'id_instruktur': idInstruktur,
       'nilai': nilai,
       'catatan': catatan,

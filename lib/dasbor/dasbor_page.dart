@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-// import 'package:princess_solution/dasbor/komponen_dasbor/content.dart';
-// import 'package:princess_solution/dasbor/komponen_dasbor/top.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:princess_solution/dasbor/dasbor_notifier.dart';
 import 'package:princess_solution/berita/berita_item.dart';
 import 'package:princess_solution/pengaturan/pengaturan_page.dart';
 import 'package:provider/provider.dart';
-// import 'package:go_router/go_router.dart';
 
 class DasborPage extends StatelessWidget {
   final Function? gantiPage;
@@ -201,7 +198,7 @@ class DasborPage extends StatelessWidget {
                                                   size: 20),
                                               SizedBox(width: 5),
                                               Text(
-                                                value.users!.paket!,
+                                                value.users!.kodePaket!,
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .bodyLarge,
@@ -257,11 +254,13 @@ class DasborPage extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text(
-                                              '15 Februari 2023',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyLarge,
+                                            Expanded(
+                                              child: Text(
+                                                '15 Februari 2023',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
+                                              ),
                                             ),
                                             Icon(MdiIcons.chevronRight),
                                           ],
@@ -281,8 +280,7 @@ class DasborPage extends StatelessWidget {
                                 SizedBox(height: 10),
                                 Container(
                                   child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.all(10),
@@ -290,11 +288,13 @@ class DasborPage extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text(
-                                              'Berita Terbaru',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .titleLarge,
+                                            Expanded(
+                                              child: Text(
+                                                'Berita Terbaru',
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleLarge,
+                                              ),
                                             ),
                                             InkWell(
                                               onTap: () {

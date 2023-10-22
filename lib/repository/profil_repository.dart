@@ -4,9 +4,9 @@ import 'package:flutter/foundation.dart';
 class ProfilRepository {
   static Future<dynamic> ubahProfilSiswa(
     String url,
-    int noRegistrasi,
+    int id,
     String nama,
-    String tanggalLahir,
+    String ttl,
     String email,
     String telpon,
     String pekerjaan,
@@ -15,9 +15,9 @@ class ProfilRepository {
     String? namaFoto,
   ) async {
     print(url);
-    print(noRegistrasi);
+    print(id);
     print(nama);
-    print(tanggalLahir);
+    print(ttl);
     print(email);
     print(telpon);
     print(pekerjaan);
@@ -26,9 +26,9 @@ class ProfilRepository {
 
     Dio dio = Dio();
     FormData formData = FormData.fromMap({
-      "no_registrasi": noRegistrasi,
+      "id": id,
       "nama": nama,
-      "ttl": tanggalLahir,
+      "ttl": ttl,
       "email": email,
       "telpon": telpon,
       "pekerjaan": pekerjaan,
@@ -57,8 +57,7 @@ class ProfilRepository {
     int idInstruktur,
     String nama,
     String email,
-    String telpon,
-    String usia,
+    String tanggalLahir,
     List<int>? fotoProfil,
     String? namaFoto,
   ) async {
@@ -66,18 +65,16 @@ class ProfilRepository {
     print(idInstruktur);
     print(nama);
     print(email);
-    print(telpon);
-    print(usia);
+    print(tanggalLahir);
     print(namaFoto);
 
     Dio dio = Dio();
     FormData formData = FormData.fromMap({
       "id_instruktur": idInstruktur,
-      "nama": nama,
-      "email": email,
-      "telpon": telpon,
-      "usia": usia,
-      "foto_profil": namaFoto == ""
+      "nama_instruktur": nama,
+      "email_instruktur": email,
+      "tgl_lahir": tanggalLahir,
+      "foto_ins": namaFoto == ""
           ? ""
           : MultipartFile.fromBytes(fotoProfil!, filename: namaFoto),
     });

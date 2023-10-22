@@ -11,10 +11,10 @@ class InstrumenMobilPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (_) => InstrumenMobilNotifier(context, int.parse(item.noRegistrasi!)),
+        create: (_) => InstrumenMobilNotifier(context, int.parse(item.id!)),
         child: Consumer<InstrumenMobilNotifier>(builder: (context, value, child) {
-          // value.noRegistrasi = int.parse(item.noRegistrasi!);
-          // value.getNilaiInstrumen(item.noRegistrasi.toString());
+          // value.id = int.parse(item.id!);
+          // value.getNilaiInstrumen(item.id.toString());
           return WillPopScope(
             onWillPop: () async {
               if (value.isFormDirty()) {

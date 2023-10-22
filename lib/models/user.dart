@@ -1,9 +1,8 @@
 class User {
-  String? noRegistrasi;
+  String? id;
   String? nama;
-  String? idAkun;
-  String? ttl;
   String? email;
+  String? ttl;
   String? telpon;
   String? pekerjaan;
   String? alamat;
@@ -12,26 +11,22 @@ class User {
   String? kodeKendaraan;
   String? idInstruktur;
   String? namaInstruktur;
-  String? paket;
+  String? kodePaket;
   String? jadwal;
   String? status;
-  String? jenisPembayaran;
-  String? jumlahPembayaran;
-  String? sisaPembayaran;
+  String? pembayaran;
+  String? harga;
+  String? sisa;
   String? kehadiran;
-  String? qr;
-  String? createdAt;
-  String? updatedAt;
   String? rating;
   String? review;
   String? role;
 
   User({
-    this.noRegistrasi,
+    this.id,
     this.nama,
-    this.idAkun,
-    this.ttl,
     this.email,
+    this.ttl,
     this.telpon,
     this.pekerjaan,
     this.alamat,
@@ -40,27 +35,23 @@ class User {
     this.kodeKendaraan,
     this.idInstruktur,
     this.namaInstruktur,
-    this.paket,
+    this.kodePaket,
     this.jadwal,
     this.status,
-    this.jenisPembayaran,
-    this.jumlahPembayaran,
-    this.sisaPembayaran,
+    this.pembayaran,
+    this.harga,
+    this.sisa,
     this.kehadiran,
-    this.qr,
-    this.createdAt,
-    this.updatedAt,
     this.rating,
     this.review,
     this.role,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        noRegistrasi: json["no_registrasi"],
-        nama: json["nama"],
-        idAkun: json["id_akun"],
-        ttl: json["ttl"],
+        id: json["id"],
         email: json["email"],
+        nama: json["nama"],
+        ttl: json["ttl"],
         telpon: json["telpon"],
         pekerjaan: json["pekerjaan"],
         alamat: json["alamat"],
@@ -69,27 +60,23 @@ class User {
         kodeKendaraan: json["kode_kendaraan"],
         idInstruktur: json["id_instruktur"],
         namaInstruktur: json["nama_instruktur"],
-        paket: json["paket"],
+        kodePaket: json["kode_paket"],
         jadwal: json["jadwal"],
         status: json["status"],
-        jenisPembayaran: json["jenis_pembayaran"],
-        jumlahPembayaran: json["jumlah_pembayaran"],
-        sisaPembayaran: json["sisa_pembayaran"],
+        pembayaran: json["pembayaran"],
+        harga: json["harga"],
+        sisa: json["sisa"],
         kehadiran: json["kehadiran"],
-        qr: json["qr"],
-        createdAt: json["created_at"],
-        updatedAt: json["updated_at"],
         rating: json["rating"],
         review: json["review"],
         role: json["role"],
       );
 
   Map<String, dynamic> toJson() => {
-        "no_registrasi": noRegistrasi,
+        "id": id,
         "nama": nama,
-        "id_akun": idAkun,
-        "ttl": ttl,
         "email": email,
+        "ttl": ttl,
         "telpon": telpon,
         "pekerjaan": pekerjaan,
         "alamat": alamat,
@@ -98,16 +85,13 @@ class User {
         "kode_kendaraan": kodeKendaraan,
         "id_instruktur": idInstruktur,
         "nama_instruktur": namaInstruktur,
-        "paket": paket,
+        "kode_paket": kodePaket,
         "jadwal": jadwal,
         "status": status,
-        "jenis_pembayaran": jenisPembayaran,
-        "jumlah_pembayaran": jumlahPembayaran,
-        "sisa_pembayaran": sisaPembayaran,
+        "pembayaran": pembayaran,
+        "harga": harga,
+        "sisa": sisa,
         "kehadiran": kehadiran,
-        "qr": qr,
-        "created_at": createdAt,
-        "updated_at": updatedAt,
         "rating": rating,
         "review": review,
         "role": role,

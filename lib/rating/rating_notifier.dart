@@ -15,7 +15,7 @@ class RatingNotifier extends ChangeNotifier {
   }
 
   User? users;
-  int noRegistrasi = 0;
+  int id = 0;
   int idInstruktur = 0;
   double rating = 0;
   TextEditingController review = TextEditingController();
@@ -69,7 +69,7 @@ class RatingNotifier extends ChangeNotifier {
     try {
       var response = await RatingRepository.rating(
         NetworkURL.rating(),
-        noRegistrasi,
+        id,
         idInstruktur,
         rating,
         review.text.trim(),
@@ -121,7 +121,7 @@ class RatingNotifier extends ChangeNotifier {
     isLoading = true;
     Preference().getUsers().then((value) {
       users = value;
-      noRegistrasi = int.parse(users!.noRegistrasi!);
+      id = int.parse(users!.id!);
       idInstruktur = int.parse(users!.idInstruktur!);
       notifyListeners();
       isLoading = false;

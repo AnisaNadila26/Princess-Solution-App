@@ -11,12 +11,12 @@ class NilaiAkhirPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => NilaiAkhirNotifier(context),
+      create: (_) => NilaiAkhirNotifier(context, int.parse(item.id!)),
       child: Consumer<NilaiAkhirNotifier>(builder: (context, value, child) {
-        value.noRegistrasi = int.parse(item.noRegistrasi!);
-        if (value.isLoading) {
-          value.getNilaiAkhir(item.noRegistrasi.toString());
-        }
+        // value.id = int.parse(item.id!);
+        // if (value.isLoading) {
+        //   value.getNilaiAkhir(item.id.toString());
+        // }
         return WillPopScope(
           onWillPop: () async {
             bool shouldExit = await value.backConfirmDialog(context);

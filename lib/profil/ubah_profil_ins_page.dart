@@ -313,45 +313,54 @@ class UbahProfilInsPage extends StatelessWidget {
                                   height: 10,
                                 ),
                                 TextFormField(
-                                  controller: value.telpon,
+                                  controller: value.tanggalLahir,
                                   onChanged: (text) {
                                     value.isDataChanged = true;
                                   },
                                   validator: (value) {
                                     if (value!.isEmpty) {
-                                      return "Nomor telepon tidak boleh kosong";
+                                      return "Tanggal lahir tidak boleh kosong";
                                     } else {
                                       return null;
                                     }
                                   },
                                   decoration: InputDecoration(
-                                    labelText: "Nomor Telepon",
-                                    border: InputBorder.none,
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color.fromRGBO(226, 235, 245, 1.0),
-                                        width: 2.0,
+                                      labelText: "Tanggal Lahir",
+                                      border: InputBorder.none,
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color.fromRGBO(
+                                              226, 235, 245, 1.0),
+                                          width: 2.0,
+                                        ),
                                       ),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color.fromRGBO(76, 105, 176, 1.0),
-                                        width: 2.0,
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color:
+                                              Color.fromRGBO(76, 105, 176, 1.0),
+                                          width: 2.0,
+                                        ),
                                       ),
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color.fromRGBO(226, 235, 245, 1.0),
-                                        width: 2.0,
+                                      errorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color.fromRGBO(
+                                              226, 235, 245, 1.0),
+                                          width: 2.0,
+                                        ),
                                       ),
-                                    ),
-                                    focusedErrorBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color.fromRGBO(76, 105, 176, 1.0),
-                                        width: 2.0,
+                                      focusedErrorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color:
+                                              Color.fromRGBO(76, 105, 176, 1.0),
+                                          width: 2.0,
+                                        ),
                                       ),
-                                    ),
-                                  ),
+                                      suffixIcon: IconButton(
+                                        icon: Icon(MdiIcons.calendarMonth),
+                                        onPressed: () {
+                                          value.selectDate(context);
+                                        },
+                                      )),
                                 ),
                                 SizedBox(height: 30),
                               ],

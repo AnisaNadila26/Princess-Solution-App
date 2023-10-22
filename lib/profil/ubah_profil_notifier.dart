@@ -16,7 +16,7 @@ class UbahProfilNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  int noRegistrasi = 0;
+  int id = 0;
   bool isLoading = true;
   bool isDataChanged = false;
 
@@ -105,7 +105,7 @@ class UbahProfilNotifier extends ChangeNotifier {
     isLoading = true;
     Preference().getUsers().then((value) {
       users = value;
-      noRegistrasi = int.parse(users!.noRegistrasi!);
+      id = int.parse(users!.id!);
       nama = TextEditingController(text: users!.nama);
       tanggalLahir = TextEditingController(text: users!.ttl.toString());
       email = TextEditingController(text: users!.email);
@@ -128,7 +128,7 @@ class UbahProfilNotifier extends ChangeNotifier {
         ?.files;
 
     if (paths != null) {
-      final int maxSize = 1000 * 1024;
+      final int maxSize = 2000 * 1024;
       final int fileSize = paths!.first.size;
 
       if (fileSize > maxSize) {
@@ -199,7 +199,7 @@ class UbahProfilNotifier extends ChangeNotifier {
     try {
       var response = await ProfilRepository.ubahProfilSiswa(
         NetworkURL.ubahProfilSiswa(),
-        noRegistrasi,
+        id,
         nama.text.trim(),
         tanggalLahir.text.trim(),
         email.text.trim(),

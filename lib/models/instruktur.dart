@@ -2,10 +2,10 @@ class Instruktur {
   String? idInstruktur;
   String? nama;
   String? email;
-  String? telpon;
-  String? usia;
+  String? tanggalLahir;
+  int? usia;
   String? fotoProfil;
-  int? jumlahSiswa;
+  String? jumlahSiswa;
   // List<Data>? siswaListManual;
   // List<Data>? siswaListMatic;
   double? rating;
@@ -17,7 +17,7 @@ class Instruktur {
     this.idInstruktur,
     this.nama,
     this.email,
-    this.telpon,
+    this.tanggalLahir,
     this.usia,
     this.fotoProfil,
     this.jumlahSiswa,
@@ -31,11 +31,11 @@ class Instruktur {
 
   factory Instruktur.fromJson(Map<String, dynamic> json) => Instruktur(
         idInstruktur: json["id_instruktur"],
-        nama: json["nama"],
-        email: json["email"],
-        telpon: json["telpon"],
+        nama: json["nama_instruktur"],
+        email: json["email_instruktur"],
+        tanggalLahir: json["tgl_lahir"],
         usia: json["usia"],
-        fotoProfil: json["foto_profil"],
+        fotoProfil: json["foto_ins"],
         jumlahSiswa: json["jumlah_siswa"],
         // siswaListManual: json["siswa_list_manual"],
         // siswaListMatic: json["siswa_list_matic"],
@@ -47,11 +47,11 @@ class Instruktur {
 
   Map<String, dynamic> toJson() => {
         "id_instruktur": idInstruktur,
-        "nama": nama,
-        "email": email,
-        "telpon": telpon,
+        "nama_instruktur": nama,
+        "email_instruktur": email,
+        "tgl_lahir": tanggalLahir,
         "usia": usia,
-        "foto_profil": fotoProfil,
+        "foto_ins": fotoProfil,
         "jumlah_siswa": jumlahSiswa,
         // "siswa_list_manual": siswaListManual,
         // "siswa_list_matic": siswaListMatic,

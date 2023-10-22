@@ -62,7 +62,7 @@ class PembayaranPage extends StatelessWidget {
                                   Row(
                                     children: [
                                       Text('No. Registrasi '),
-                                      Text(value.users!.noRegistrasi!),
+                                      Text(value.users!.id!),
                                     ],
                                   ),
                                   SizedBox(
@@ -72,7 +72,7 @@ class PembayaranPage extends StatelessWidget {
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  Text('Paket ${value.users!.paket!}'),
+                                  Text('Paket ${value.users!.kodePaket!}'),
                                   SizedBox(
                                     height: 10,
                                   ),
@@ -87,7 +87,7 @@ class PembayaranPage extends StatelessWidget {
                                     children: [
                                       Text('Sisa Tagihan'),
                                       Text(
-                                        'Rp ${value.users!.sisaPembayaran!}',
+                                        'Rp ${value.users!.sisa!}',
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),

@@ -33,7 +33,8 @@ class PengaturanPage extends StatelessWidget {
               centerTitle: true,
             ),
             body: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
               child: ListView(
                 children: [
                   Text(
@@ -92,26 +93,74 @@ class PengaturanPage extends StatelessWidget {
                         children: [
                           Icon(MdiIcons.star),
                           SizedBox(width: 15),
-                          Text('Rate on PlayStrore'),
+                          Expanded(child: Text('Rate on PlayStore')),
                         ],
                       ),
                     ),
                   ),
-                  Card(
-                    elevation: 0,
-                    color: Colors.transparent,
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Icon(MdiIcons.information),
-                          SizedBox(width: 15),
-                          Text('About'),
-                        ],
+                  InkWell(
+                    onTap: () {
+                      value.toggleAbout();
+                    },
+                    child: Card(
+                      elevation: 0,
+                      color: Colors.transparent,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Icon(MdiIcons.information),
+                            SizedBox(width: 15),
+                            Expanded(child: Text('About')),
+                            Icon(value.isShow
+                                ? MdiIcons.chevronUp
+                                : MdiIcons.chevronDown),
+                          ],
+                        ),
                       ),
                     ),
-                  )
+                  ),
+                  Visibility(
+                    visible: value.isShow,
+                    child: Column(
+                      children: [
+                        Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Color.fromRGBO(226, 235, 245, 1.0),
+                              width: 3.0,
+                            ),
+                          ),
+                          child: Icon(
+                            MdiIcons.information,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        Text(
+                          'About',
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        SizedBox(height: 20),
+                        Text(
+                          'Aplikasi ini berperan sebagai alat bantu bagi Siswa dalam melakukan presensi dan memungkinkan Instruktur untuk mencatat nilai siswa. Pembangunan aplikasi ini dimulai pada tahun 2023 oleh sekelompok Mahasiswa dari Universitas Lampung sebagai bagian dari tugas skripsi.',
+                          textAlign: TextAlign.justify,
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          'Harapan kami adalah bahwa aplikasi ini akan memberikan kontribusi positif dalam mempermudah proses kursus mengemudi bagi Siswa dan Instruktur. Jika Anda memiliki saran atau masukan terkait dengan aplikasi ini, kami sangat menghargai ulasan Anda di Play Store. Terima kasih atas partisipasi Anda.',
+                          textAlign: TextAlign.justify,
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
