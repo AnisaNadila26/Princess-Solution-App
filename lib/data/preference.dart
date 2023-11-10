@@ -47,7 +47,7 @@ class Preference {
     pref.setString(Preference.harga, users.harga!);
     pref.setString(Preference.sisa, users.sisa!);
     pref.setString(Preference.kehadiran, users.kehadiran!);
-    pref.setDouble(Preference.rating, users.rating!);
+    pref.setString(Preference.rating, users.rating!);
     pref.setString(Preference.review, users.review!);
     pref.setString(Preference.role, users.role!);
   }
@@ -78,7 +78,7 @@ class Preference {
     // pref.setInt(Preference.id, users.id);
     pref.setString(Preference.id, users.id!);
     pref.setString(Preference.idInstruktur, users.idInstruktur!);
-    pref.setDouble(Preference.rating, users.rating!);
+    pref.setString(Preference.rating, users.rating!);
     pref.setString(Preference.review, users.review!);
   }
 
@@ -105,7 +105,7 @@ class Preference {
       harga: pref.getString(Preference.harga) ?? "",
       sisa: pref.getString(Preference.sisa) ?? "",
       kehadiran: pref.getString(Preference.kehadiran) ?? "",
-      rating: pref.getDouble(Preference.rating) ?? 0.0,
+      rating: pref.getString(Preference.rating) ?? "",
       review: pref.getString(Preference.review) ?? "",
       role: pref.getString(Preference.role) ?? "",
     );

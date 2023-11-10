@@ -18,7 +18,7 @@ class User {
   String? harga;
   String? sisa;
   String? kehadiran;
-  double? rating;
+  String? rating;
   String? review;
   String? role;
 
