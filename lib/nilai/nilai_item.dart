@@ -81,14 +81,19 @@ class NilaiItem extends StatelessWidget {
                           ),
                           ClipRRect(
                             borderRadius: BorderRadius.circular(10),
-                            child: Image.network(
-                              item.fotoProfil!.isNotEmpty
-                                  ? NetworkURL.getProfilSiswa(item.fotoProfil!)
-                                  : 'assets/defaultProfile.png',
+                            child: item.fotoProfil!.isNotEmpty
+                            ? Image.network(
+                              NetworkURL.getProfilInstruktur(item.fotoProfil!),
                               width: 80,
                               height: 80,
                               fit: BoxFit.cover,
-                            ),
+                              )
+                              : Image.asset(
+                                'assets/defaultProfile.png',
+                                width: 80,
+                                height: 80,
+                                fit: BoxFit.cover,
+                                )
                           ),
                         ],
                       ),

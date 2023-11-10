@@ -138,16 +138,20 @@ class ProfilPageInstruktur extends StatelessWidget {
                                         radius: 60,
                                         backgroundColor: Colors.grey.shade800,
                                         child: ClipOval(
-                                          child: Image.network(
-                                            value.ins!.fotoProfil!.isNotEmpty
-                                                ? NetworkURL
-                                                    .getProfilInstruktur(
-                                                        value.ins!.fotoProfil!)
-                                                : 'assets/defaultProfile.png',
-                                            width: 120,
-                                            height: 120,
-                                            fit: BoxFit.cover,
-                                          ),
+                                          child: value.ins!.fotoProfil!.isNotEmpty
+                                          ? Image.network(
+                                                NetworkURL.getProfilInstruktur(
+                                                    value.ins!.fotoProfil!),
+                                                width: 120,
+                                                height: 120,
+                                                fit: BoxFit.cover,
+                                              )
+                                              : Image.asset(
+                                                'assets/defaultProfile.png',
+                                                width: 120,
+                                                height: 120,
+                                                fit: BoxFit.cover,
+                                              )
                                         ),
                                       ))
                                 ],

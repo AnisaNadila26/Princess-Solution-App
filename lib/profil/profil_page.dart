@@ -140,15 +140,20 @@ class ProfilPage extends StatelessWidget {
                                         radius: 60,
                                         backgroundColor: Colors.grey.shade800,
                                         child: ClipOval(
-                                          child: Image.network(
-                                            value.users!.fotoProfil!.isNotEmpty
-                                                ? NetworkURL.getProfilSiswa(
-                                                    value.users!.fotoProfil!)
-                                                : 'assets/defaultProfile.png',
-                                            width: 120,
-                                            height: 120,
-                                            fit: BoxFit.cover,
-                                          ),
+                                          child: value.users!.fotoProfil!.isNotEmpty
+                                          ? Image.network(
+                                                NetworkURL.getProfilInstruktur(
+                                                    value.users!.fotoProfil!),
+                                                width: 120,
+                                                height: 120,
+                                                fit: BoxFit.cover,
+                                              )
+                                              : Image.asset(
+                                                'assets/defaultProfile.png',
+                                                width: 120,
+                                                height: 120,
+                                                fit: BoxFit.cover,
+                                              )
                                         ),
                                         // backgroundImage:
                                         //     NetworkImage('assets/coba.jpg'),
