@@ -2,23 +2,15 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
 class RatingRepository {
-  static Future<dynamic> rating
-  (
-    String url, 
-    int id, 
-    int idInstruktur,
-    double rating,
-    String review
-  ) 
-  async {
-
+  static Future<dynamic> rating(String url, int id, int idInstruktur,
+      double rating, String review) async {
     print(url);
     print(id);
     print(idInstruktur);
     print(rating);
     print(review);
 
-      FormData formData = FormData.fromMap({
+    FormData formData = FormData.fromMap({
       "id": id,
       "id_instruktur": idInstruktur,
       "rating": rating,
@@ -26,7 +18,7 @@ class RatingRepository {
     });
     Dio dio = Dio();
     final response = await dio.post(url, data: formData);
-    
+
     if (kDebugMode) {
       print("RESPONSE STATUS CODE : ${response.statusCode}");
     }

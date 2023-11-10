@@ -34,24 +34,22 @@ class OnboardingModel extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 45.0),
               child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  title, 
-                  textAlign: TextAlign.left, 
-                  style: Theme.of(context).textTheme.titleLarge,
-                )
-              ),
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    title,
+                    textAlign: TextAlign.left,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  )),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 45.0, vertical: 10.0),
               child: Align(
-                alignment: Alignment.centerLeft, 
-                child: Text(
-                  description, 
-                  textAlign: TextAlign.left, 
-                  style: Theme.of(context).textTheme.bodyLarge,
-                )
-              ),
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    description,
+                    textAlign: TextAlign.left,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  )),
             ),
           ],
         ),

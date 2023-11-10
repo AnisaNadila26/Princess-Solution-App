@@ -17,22 +17,22 @@ class OnboardingPage extends StatelessWidget {
           title: 'PRESENSI',
           description: 'Scan QR untuk lakukan presensi dengan mudah dan cepat',
           image: Image.asset(
-            'onboarding1.png',
-            width: 270,
+            'assets/onboarding1.png',
+            height: MediaQuery.of(context).size.height * 0.3,
           )),
       OnboardingModel(
           title: 'PENGUMUMAN',
           description: 'Cek pengumuman untuk mengetahui berita terbaru',
           image: Image.asset(
-            'onboarding2.png',
-            width: 180,
+            'assets/onboarding2.png',
+            height: MediaQuery.of(context).size.height * 0.3,
           )),
       OnboardingModel(
           title: 'KONSULTASI',
           description: 'Konsultasikan dengan Admin, jika mengalami kendala',
           image: Image.asset(
-            'onboarding3.png',
-            width: 180,
+            'assets/onboarding3.png',
+            height: MediaQuery.of(context).size.height * 0.3,
           )),
     ];
     return ChangeNotifierProvider(
@@ -68,7 +68,10 @@ class OnboardingPage extends StatelessWidget {
                                 },
                                 child: Text(
                                   'Skip',
-                                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.grey),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(color: Colors.grey),
                                 ),
                               )
                             : SizedBox(
@@ -78,19 +81,22 @@ class OnboardingPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  height: 400,
+                Expanded(
+                  // height: 400,
                   child: GestureDetector(
                     onHorizontalDragEnd: (details) {
                       if (details.primaryVelocity! > 0) {
                         value.previousPage();
+                        value.isSwipe = true;
                       } else if (details.primaryVelocity! < 0) {
                         value.nextPage();
+                        value.isSwipe = true;
                       }
                     },
                     child: PageView.builder(
                       itemCount: onboardingPagesList.length,
                       controller: value.pageController,
+                      physics: BouncingScrollPhysics(),
                       onPageChanged: (int index) {
                         value.currentPageIndex = index;
                       },
@@ -104,17 +110,21 @@ class OnboardingPage extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Column(
                     children: [
-                      DotsIndicator(
-                        dotsCount: onboardingPagesList.length,
-                        position: value.currentPageIndex,
-                        decorator: DotsDecorator(
-                          color: Color.fromRGBO(226, 235, 245, 1.0),
-                          activeColor: Color.fromRGBO(76, 105, 176, 1.0),
-                          size: const Size.square(9.0),
-                          activeSize: const Size(18.0, 9.0),
-                          spacing: const EdgeInsets.symmetric(horizontal: 4.0),
-                          activeShape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0),
+                      FractionallySizedBox(
+                        widthFactor: 0.6,
+                        child: DotsIndicator(
+                          dotsCount: onboardingPagesList.length,
+                          position: value.currentPageIndex,
+                          decorator: DotsDecorator(
+                            color: Color.fromRGBO(226, 235, 245, 1.0),
+                            activeColor: Color.fromRGBO(76, 105, 176, 1.0),
+                            size: const Size.square(9.0),
+                            activeSize: const Size(18.0, 9.0),
+                            spacing:
+                                const EdgeInsets.symmetric(horizontal: 4.0),
+                            activeShape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
                           ),
                         ),
                       ),
@@ -123,23 +133,39 @@ class OnboardingPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           if (value.currentPageIndex > 0)
-                            InkWell(
-                              onTap: () {
+                            IconButton(
+                              onPressed: () {
                                 value.previousPage();
-                              },
-                              child: Icon(MdiIcons.arrowLeftCircleOutline),
+                                value.isSwipe = false;
+                              }, 
+                              icon: Icon(MdiIcons.arrowLeftCircleOutline)
                             ),
+                            // InkWell(
+                            //   onTap: () {
+                            //     value.previousPage();
+                            //   },
+                            //   child: Icon(MdiIcons.arrowLeftCircleOutline),
+                            // ),
+                          if (value.currentPageIndex == 0)
+                            SizedBox(width: 30),
                           if (value.currentPageIndex < onboardingPagesList.length - 1)
-                            InkWell(
-                              onTap: () {
-                                value.nextPage();
-                              },
-                              child: Icon(MdiIcons.arrowRightCircleOutline),
-                            ),
+                            IconButton(
+                                onPressed: () {
+                                  value.nextPage();
+                                  value.isSwipe = false;
+                                },
+                                icon: Icon(MdiIcons.arrowRightCircleOutline)),
+                            // InkWell(
+                            //   onTap: () {
+                            //     value.nextPage();
+                            //   },
+                            //   child: Icon(MdiIcons.arrowRightCircleOutline),
+                            // ),
                           if (value.currentPageIndex == onboardingPagesList.length - 1)
                             FilledButton(
                               onPressed: () {
-                                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                Navigator.of(context)
+                                    .pushReplacement(MaterialPageRoute(
                                   builder: (context) => LoginPage(),
                                 ));
                               },
@@ -148,7 +174,8 @@ class OnboardingPage extends StatelessWidget {
                                 style: Theme.of(context).textTheme.bodyMedium,
                               ),
                               style: FilledButton.styleFrom(
-                                backgroundColor: Color.fromRGBO(76, 105, 176, 1.0),
+                                backgroundColor:
+                                    Color.fromRGBO(76, 105, 176, 1.0),
                               ),
                             ),
                         ],

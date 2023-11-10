@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -23,6 +24,7 @@ class UbahProfilInsNotifier extends ChangeNotifier {
   Instruktur? ins;
   String fotoProfil = '';
   List<PlatformFile>? paths;
+  String filePaths = '';
   List<int>? file;
   Uint8List? fileToDisplay;
   DateTime selectedDate = DateTime.now();
@@ -110,6 +112,50 @@ class UbahProfilInsNotifier extends ChangeNotifier {
       isLoading = false;
       notifyListeners();
     });
+  }
+
+  Future<void> pickFile() async {
+    // await _requestStoragePermission();
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowMultiple: false,
+      allowedExtensions: ['png', 'jpg', 'jpeg'],
+    );
+
+    if (result != null) {
+      final int maxSize = 3000 * 1024;
+      final int fileSize = result.files.single.size;
+
+      if (fileSize > maxSize) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            title: Text('Peringatan'),
+            content: Text('Ukuran foto melebihi batas maksimum 3000 KB.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('Tutup'),
+              ),
+            ],
+          ),
+        );
+      } else {
+        filePaths = result.files.single.path!;
+        file = await File(filePaths).readAsBytes();
+        fotoProfil = result.files.single.name;
+        Navigator.pop(context);
+        notifyListeners();
+      }
+    } else {
+      if (kDebugMode) {
+        print('No image selected.');
+      }
+    }
   }
 
   filepick() async {

@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:princess_solution/profil/ubah_profil_ins_notifier.dart';
 import 'package:provider/provider.dart';
@@ -76,9 +77,9 @@ class UbahProfilInsPage extends StatelessWidget {
                                 radius: 60,
                                 backgroundColor: Colors.grey.shade800,
                                 child: ClipOval(
-                                    child: value.file != null
-                                        ? Image.memory(
-                                            value.fileToDisplay!,
+                                    child: value.filePaths.isNotEmpty
+                                        ? Image.file(
+                                            File(value.filePaths),
                                             width: 120,
                                             height: 120,
                                             fit: BoxFit.cover,
@@ -153,7 +154,7 @@ class UbahProfilInsPage extends StatelessWidget {
                                                       children: [
                                                         InkWell(
                                                           onTap: () {
-                                                            value.filepick();
+                                                            value.pickFile();
                                                           },
                                                           child: Column(
                                                             children: [

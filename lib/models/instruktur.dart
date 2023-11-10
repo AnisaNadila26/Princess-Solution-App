@@ -8,7 +8,7 @@ class Instruktur {
   String? jumlahSiswa;
   // List<Data>? siswaListManual;
   // List<Data>? siswaListMatic;
-  double? rating;
+  String? rating;
   String? createdAt;
   String? updatedAt;
   String? role;

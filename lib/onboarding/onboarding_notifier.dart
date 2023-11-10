@@ -5,22 +5,26 @@ class OnboardingNotifier extends ChangeNotifier {
 
   OnboardingNotifier(this.context);
 
-  late PageController pageController; // Tambahkan ini
+  late PageController pageController;
 
   int currentPageIndex = 0;
+  bool isSwipe = false;
 
   void initPageController() {
     pageController = PageController(initialPage: currentPageIndex);
+    pageController.addListener(() {
+      currentPageIndex = pageController.page?.round() ?? 0;
+      notifyListeners();
+    });
   }
-
-  // ...
 
   void nextPage() {
     if (currentPageIndex < 2) {
       currentPageIndex++;
-      pageController.animateToPage(currentPageIndex,
-          duration: Duration(milliseconds: 500),
-          curve: Curves.ease); // Gunakan PageController untuk berpindah halaman
+      isSwipe
+          ? pageController.animateToPage(currentPageIndex,
+              duration: Duration(milliseconds: 500), curve: Curves.ease)
+          : pageController.jumpToPage(currentPageIndex);
       notifyListeners();
     }
   }
@@ -28,18 +32,20 @@ class OnboardingNotifier extends ChangeNotifier {
   void previousPage() {
     if (currentPageIndex > 0) {
       currentPageIndex--;
-      pageController.animateToPage(currentPageIndex,
-          duration: Duration(milliseconds: 500),
-          curve: Curves.ease); // Gunakan PageController untuk berpindah halaman
+      isSwipe
+          ? pageController.animateToPage(currentPageIndex,
+              duration: Duration(milliseconds: 500), curve: Curves.ease)
+          : pageController.jumpToPage(currentPageIndex);
       notifyListeners();
     }
   }
 
   void skipToLastPage() {
     currentPageIndex = 2;
-    pageController.animateToPage(currentPageIndex,
-        duration: Duration(milliseconds: 500),
-        curve: Curves.ease); // Gunakan PageController untuk berpindah halaman
+    isSwipe
+        ? pageController.animateToPage(currentPageIndex,
+            duration: Duration(milliseconds: 500), curve: Curves.ease)
+        : pageController.jumpToPage(currentPageIndex);
     notifyListeners();
   }
 }

@@ -16,13 +16,14 @@ class SplashScreenPage extends StatelessWidget {
           body: Stack(
             children: [
               Image.asset(
-                'background.jpg',
+                'assets/background.jpg',
                 fit: BoxFit.cover,
                 width: double.infinity,
                 height: double.infinity,
               ),
               Container(
-                color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.7),
+                color:
+                    Theme.of(context).scaffoldBackgroundColor.withOpacity(0.7),
                 width: double.infinity,
                 height: double.infinity,
               ),
@@ -35,7 +36,7 @@ class SplashScreenPage extends StatelessWidget {
                     child: BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
                       child: Image.asset(
-                        'logo.png',
+                        'assets/logo.png',
                         height: 200,
                         width: 200,
                       ),

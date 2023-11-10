@@ -1,6 +1,8 @@
+import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:princess_solution/data/preference.dart';
 import 'package:princess_solution/menu/menu_page.dart';
 import 'package:princess_solution/models/user.dart';
@@ -23,6 +25,8 @@ class UbahProfilNotifier extends ChangeNotifier {
   User? users;
   String fotoProfil = '';
   List<PlatformFile>? paths;
+  String filePaths = '';
+  bool fileAccess = false;
   List<int>? file;
   Uint8List? fileToDisplay;
   // bool hapusFoto = false;
@@ -119,17 +123,17 @@ class UbahProfilNotifier extends ChangeNotifier {
     });
   }
 
-  filepick() async {
-    paths = (await FilePicker.platform.pickFiles(
+  Future<void> pickFile() async {
+    // await _requestStoragePermission();
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowMultiple: false,
       allowedExtensions: ['png', 'jpg', 'jpeg'],
-    ))
-        ?.files;
+    );
 
-    if (paths != null) {
-      final int maxSize = 2000 * 1024;
-      final int fileSize = paths!.first.size;
+    if (result != null) {
+      final int maxSize = 3000 * 1024;
+      final int fileSize = result.files.single.size;
 
       if (fileSize > maxSize) {
         showDialog(
@@ -138,7 +142,7 @@ class UbahProfilNotifier extends ChangeNotifier {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             title: Text('Peringatan'),
-            content: Text('Ukuran foto melebihi batas maksimum 2000 KB.'),
+            content: Text('Ukuran foto melebihi batas maksimum 3000 KB.'),
             actions: [
               TextButton(
                 onPressed: () {
@@ -150,7 +154,63 @@ class UbahProfilNotifier extends ChangeNotifier {
           ),
         );
       } else {
-        file = paths!.first.bytes!;
+        filePaths = result.files.single.path!;
+        file = await File(filePaths).readAsBytes();
+        fotoProfil = result.files.single.name;
+        Navigator.pop(context);
+        notifyListeners();
+      }
+    } else {
+      if (kDebugMode) {
+        print('No image selected.');
+      }
+    }
+  }
+
+  // Future<void> _requestStoragePermission() async {
+  //   final status = await Permission.storage.request();
+  //   if (status.isPermanentlyDenied) {
+  //     openAppSettings();
+  //   }
+  //   if (status.isGranted) {
+  //     fileAccess = status.isGranted;
+  //   }
+  //   notifyListeners();
+  // }
+
+  filepick() async {
+    paths = (await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowMultiple: false,
+      allowedExtensions: ['png', 'jpg', 'jpeg'],
+    ))
+        ?.files;
+
+    if (paths != null && paths!.isNotEmpty) {
+      final int maxSize = 3000 * 1024;
+      final int fileSize = paths!.first.size;
+
+      if (fileSize > maxSize) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            title: Text('Peringatan'),
+            content: Text('Ukuran foto melebihi batas maksimum 3000 KB.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('Tutup'),
+              ),
+            ],
+          ),
+        );
+      } else {
+        file = paths!.first.bytes;
+        print('File bytes: ${file!.length}');
         fileToDisplay = Uint8List.fromList(file!);
         fotoProfil = paths!.first.name;
         // hapusFoto = false;
@@ -265,7 +325,7 @@ class UbahProfilNotifier extends ChangeNotifier {
   void deleteFotoProfil() async {
     // hapusFoto = true;
     // await Preference().removeFotoProfil();
-    paths = null;
+    // paths = null;
     file = null;
     fotoProfil = '';
     isLoading = true;

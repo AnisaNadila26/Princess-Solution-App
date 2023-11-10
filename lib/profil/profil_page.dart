@@ -37,19 +37,18 @@ class ProfilPage extends StatelessWidget {
                         centerTitle: true,
                         actions: [
                           IconButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) {
-                                  return UbahProfilPage();
-                                }),
-                              );
-                            },
-                            icon: Icon(
-                              MdiIcons.accountEdit,
-                              color: Colors.white,
-                            )
-                          ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return UbahProfilPage();
+                                  }),
+                                );
+                              },
+                              icon: Icon(
+                                MdiIcons.accountEdit,
+                                color: Colors.white,
+                              )),
                           SizedBox(
                             width: 10,
                           )
@@ -63,9 +62,9 @@ class ProfilPage extends StatelessWidget {
                     final metrics = scrollStart.metrics;
                     if (metrics.hasPixels) {
                       bool isTop = metrics.pixels > 50;
-                      if (isTop) {
+                      if (isTop && !value.onAppBar) {
                         value.showAppBar();
-                      } else {
+                      } else if (!isTop && value.onAppBar) {
                         value.hideAppBar();
                       }
                     }
@@ -110,7 +109,9 @@ class ProfilPage extends StatelessWidget {
                                             ),
                                             Text(
                                               "Profil",
-                                              style: Theme.of(context).textTheme.headlineSmall,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .headlineSmall,
                                             ),
                                             IconButton(
                                                 onPressed: () {
@@ -185,12 +186,16 @@ class ProfilPage extends StatelessWidget {
                                             children: [
                                               Text(
                                                 'Nama',
-                                                style: Theme.of(context).textTheme.bodyLarge,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
                                               ),
                                               SizedBox(height: 3),
                                               Text(
                                                 value.users!.nama!,
-                                                style: Theme.of(context).textTheme.bodyMedium,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium,
                                               ),
                                             ],
                                           ),
@@ -225,12 +230,16 @@ class ProfilPage extends StatelessWidget {
                                             children: [
                                               Text(
                                                 'Tanggal Lahir',
-                                                style: Theme.of(context).textTheme.bodyLarge,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
                                               ),
                                               SizedBox(height: 3),
                                               Text(
                                                 value.users!.ttl.toString(),
-                                                style: Theme.of(context).textTheme.bodyMedium,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium,
                                               ),
                                             ],
                                           ),
@@ -265,12 +274,16 @@ class ProfilPage extends StatelessWidget {
                                             children: [
                                               Text(
                                                 'Email',
-                                                style: Theme.of(context).textTheme.bodyLarge,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
                                               ),
                                               SizedBox(height: 3),
                                               Text(
                                                 value.users!.email!,
-                                                style: Theme.of(context).textTheme.bodyMedium,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium,
                                               ),
                                             ],
                                           ),
@@ -305,12 +318,16 @@ class ProfilPage extends StatelessWidget {
                                             children: [
                                               Text(
                                                 'Nomor Telepon',
-                                                style: Theme.of(context).textTheme.bodyLarge,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
                                               ),
                                               SizedBox(height: 3),
                                               Text(
                                                 value.users!.telpon!,
-                                                style: Theme.of(context).textTheme.bodyMedium,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium,
                                               ),
                                             ],
                                           ),
@@ -345,12 +362,16 @@ class ProfilPage extends StatelessWidget {
                                             children: [
                                               Text(
                                                 'Pekerjaan',
-                                                style: Theme.of(context).textTheme.bodyLarge,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
                                               ),
                                               SizedBox(height: 3),
                                               Text(
                                                 value.users!.pekerjaan!,
-                                                style: Theme.of(context).textTheme.bodyMedium,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium,
                                               ),
                                             ],
                                           ),
@@ -385,12 +406,16 @@ class ProfilPage extends StatelessWidget {
                                             children: [
                                               Text(
                                                 'Alamat',
-                                                style: Theme.of(context).textTheme.bodyLarge,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
                                               ),
                                               SizedBox(height: 3),
                                               Text(
                                                 value.users!.alamat!,
-                                                style: Theme.of(context).textTheme.bodyMedium,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium,
                                               ),
                                             ],
                                           ),
@@ -425,12 +450,16 @@ class ProfilPage extends StatelessWidget {
                                             children: [
                                               Text(
                                                 'Status',
-                                                style: Theme.of(context).textTheme.bodyLarge,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
                                               ),
                                               SizedBox(height: 3),
                                               Text(
                                                 value.users!.status!,
-                                                style: Theme.of(context).textTheme.bodyMedium,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium,
                                               ),
                                             ],
                                           ),
@@ -441,7 +470,7 @@ class ProfilPage extends StatelessWidget {
                                 ),
                                 SizedBox(height: 10),
                                 Card(
-                                 shape: RoundedRectangleBorder(
+                                  shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20.0),
                                     side: BorderSide(
                                       color: Color.fromRGBO(226, 235, 245, 1.0),
@@ -465,12 +494,16 @@ class ProfilPage extends StatelessWidget {
                                             children: [
                                               Text(
                                                 'Jumlah Kehadiran',
-                                                style: Theme.of(context).textTheme.bodyLarge,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge,
                                               ),
                                               SizedBox(height: 3),
                                               Text(
                                                 value.users!.kehadiran!,
-                                                style: Theme.of(context).textTheme.bodyMedium,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium,
                                               ),
                                             ],
                                           ),
@@ -516,12 +549,16 @@ class ProfilPage extends StatelessWidget {
                                                 children: [
                                                   Text(
                                                     'Tagihan',
-                                                    style: Theme.of(context).textTheme.bodyLarge,
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodyLarge,
                                                   ),
                                                   SizedBox(height: 3),
                                                   Text(
                                                     value.users!.sisa!,
-                                                    style: Theme.of(context).textTheme.bodyMedium,
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodyMedium,
                                                   ),
                                                 ],
                                               )
@@ -570,12 +607,16 @@ class ProfilPage extends StatelessWidget {
                                                 children: [
                                                   Text(
                                                     'Penilaian Kursus',
-                                                    style: Theme.of(context).textTheme.bodyLarge,
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodyLarge,
                                                   ),
                                                   SizedBox(height: 3),
                                                   Text(
                                                     'Berikan penilaian anda',
-                                                    style: Theme.of(context).textTheme.bodyMedium,
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .bodyMedium,
                                                   ),
                                                 ],
                                               ),
@@ -598,9 +639,11 @@ class ProfilPage extends StatelessWidget {
                                             builder: (context) {
                                               return AlertDialog(
                                                 shape: RoundedRectangleBorder(
-                                                  borderRadius:BorderRadius.circular(20)
-                                                ),
-                                                backgroundColor: Theme.of(context).cardColor,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20)),
+                                                backgroundColor:
+                                                    Theme.of(context).cardColor,
                                                 content: Container(
                                                   height: 200,
                                                   width: 200,
@@ -608,21 +651,32 @@ class ProfilPage extends StatelessWidget {
                                                     offset: Offset(0, -50),
                                                     child: Column(
                                                       mainAxisAlignment:
-                                                          MainAxisAlignment.center,
+                                                          MainAxisAlignment
+                                                              .center,
                                                       children: [
                                                         Container(
                                                           width: 60,
                                                           height: 60,
-                                                          decoration: BoxDecoration(
-                                                            color: Theme.of(context).cardColor,
-                                                            shape: BoxShape.circle,
-                                                            border: Border.all(
-                                                              color: Color.fromRGBO(226, 235, 245, 1.0),
-                                                              width: 3.0,
-                                                            )
-                                                          ),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                                  color: Theme.of(
+                                                                          context)
+                                                                      .cardColor,
+                                                                  shape: BoxShape
+                                                                      .circle,
+                                                                  border: Border
+                                                                      .all(
+                                                                    color: Color
+                                                                        .fromRGBO(
+                                                                            226,
+                                                                            235,
+                                                                            245,
+                                                                            1.0),
+                                                                    width: 3.0,
+                                                                  )),
                                                           child: Icon(
-                                                            MdiIcons.logoutVariant,
+                                                            MdiIcons
+                                                                .logoutVariant,
                                                             color: Colors.white,
                                                           ),
                                                         ),
@@ -630,42 +684,63 @@ class ProfilPage extends StatelessWidget {
                                                         SizedBox(height: 20),
                                                         Text(
                                                           'Keluar',
-                                                           style: Theme.of(context).textTheme.titleLarge,
+                                                          style:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .titleLarge,
                                                         ),
                                                         SizedBox(height: 20),
                                                         Text(
                                                           'Apakah anda yakin ingin keluar?',
-                                                           style: Theme.of(context).textTheme.bodyLarge,
+                                                          style:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .bodyLarge,
                                                         ),
                                                         SizedBox(height: 20),
                                                         Row(
-                                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceEvenly,
                                                           children: [
                                                             FilledButton(
                                                               onPressed: () {
-                                                                Navigator.pop(context);
+                                                                Navigator.pop(
+                                                                    context);
                                                               },
-                                                              child:
-                                                                Text(
-                                                                  'Batal',
-                                                                   style: Theme.of(context).textTheme.bodyMedium,
-                                                                ),
-                                                              style: FilledButton.styleFrom(
-                                                                backgroundColor: Colors.grey,
+                                                              child: Text(
+                                                                'Batal',
+                                                                style: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .bodyMedium,
+                                                              ),
+                                                              style: FilledButton
+                                                                  .styleFrom(
+                                                                backgroundColor:
+                                                                    Colors.grey,
                                                               ),
                                                             ),
                                                             FilledButton(
                                                               onPressed: () {
                                                                 value.logout();
                                                               },
-                                                              child:
-                                                                Text(
-                                                                  'Keluar',
-                                                                   style: Theme.of(context).textTheme.bodyMedium,
-                                                                ),
-                                                            style: FilledButton.styleFrom(
-                                                              backgroundColor: Color.fromRGBO(76, 105, 176, 1.0),
-                                                            ),
+                                                              child: Text(
+                                                                'Keluar',
+                                                                style: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .bodyMedium,
+                                                              ),
+                                                              style: FilledButton
+                                                                  .styleFrom(
+                                                                backgroundColor:
+                                                                    Color.fromRGBO(
+                                                                        76,
+                                                                        105,
+                                                                        176,
+                                                                        1.0),
+                                                              ),
                                                             ),
                                                           ],
                                                         )
@@ -677,15 +752,19 @@ class ProfilPage extends StatelessWidget {
                                             });
                                       },
                                       child: Container(
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                          color: Color.fromRGBO(76, 105, 176, 1.0),
-                                          borderRadius: BorderRadius.circular(20),
-                                        ),
-                                        child: Text(
-                                          'Keluar',
-                                          style: Theme.of(context).textTheme.bodyMedium,
-                                        ))),
+                                          alignment: Alignment.center,
+                                          decoration: BoxDecoration(
+                                            color: Color.fromRGBO(
+                                                76, 105, 176, 1.0),
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                          ),
+                                          child: Text(
+                                            'Keluar',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium,
+                                          ))),
                                 ),
                                 SizedBox(height: 30),
                               ],

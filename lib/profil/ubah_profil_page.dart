@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:princess_solution/profil/ubah_profil_notifier.dart';
 import 'package:provider/provider.dart';
@@ -76,9 +77,9 @@ class UbahProfilPage extends StatelessWidget {
                                 radius: 60,
                                 backgroundColor: Colors.grey.shade800,
                                 child: ClipOval(
-                                    child: value.file != null
-                                        ? Image.memory(
-                                            value.fileToDisplay!,
+                                    child: value.filePaths.isNotEmpty
+                                        ? Image.file(
+                                            File(value.filePaths),
                                             width: 120,
                                             height: 120,
                                             fit: BoxFit.cover,
@@ -123,7 +124,8 @@ class UbahProfilPage extends StatelessWidget {
                                         showModalBottomSheet(
                                             context: context,
                                             shape: const RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.vertical(
+                                              borderRadius:
+                                                  BorderRadius.vertical(
                                                 top: Radius.circular(20),
                                               ),
                                             ),
@@ -133,7 +135,8 @@ class UbahProfilPage extends StatelessWidget {
                                               return SizedBox(
                                                 height: 200,
                                                 child: Column(
-                                                  mainAxisSize: MainAxisSize.min,
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.end,
                                                   children: [
@@ -148,10 +151,10 @@ class UbahProfilPage extends StatelessWidget {
                                                           },
                                                           child: Text(
                                                             'Batal',
-                                                            style:
-                                                                Theme.of(context)
-                                                                    .textTheme
-                                                                    .bodyMedium,
+                                                            style: Theme.of(
+                                                                    context)
+                                                                .textTheme
+                                                                .bodyMedium,
                                                           )),
                                                     ),
                                                     Row(
@@ -161,7 +164,7 @@ class UbahProfilPage extends StatelessWidget {
                                                       children: [
                                                         InkWell(
                                                           onTap: () {
-                                                            value.filepick();
+                                                            value.pickFile();
                                                           },
                                                           child: Column(
                                                             children: [
@@ -170,14 +173,12 @@ class UbahProfilPage extends StatelessWidget {
                                                                 height: 50,
                                                                 decoration:
                                                                     BoxDecoration(
-                                                                        color: Theme.of(
-                                                                                context)
+                                                                        color: Theme.of(context)
                                                                             .cardColor,
                                                                         shape: BoxShape
                                                                             .circle,
                                                                         border:
-                                                                            Border
-                                                                                .all(
+                                                                            Border.all(
                                                                           color: Color.fromRGBO(
                                                                               226,
                                                                               235,
@@ -187,7 +188,8 @@ class UbahProfilPage extends StatelessWidget {
                                                                               3.0,
                                                                         )),
                                                                 child: Icon(
-                                                                  MdiIcons.image,
+                                                                  MdiIcons
+                                                                      .image,
                                                                   color: Colors
                                                                       .white,
                                                                 ),
@@ -216,14 +218,12 @@ class UbahProfilPage extends StatelessWidget {
                                                                 height: 50,
                                                                 decoration:
                                                                     BoxDecoration(
-                                                                        color: Theme.of(
-                                                                                context)
+                                                                        color: Theme.of(context)
                                                                             .cardColor,
                                                                         shape: BoxShape
                                                                             .circle,
                                                                         border:
-                                                                            Border
-                                                                                .all(
+                                                                            Border.all(
                                                                           color: Color.fromRGBO(
                                                                               226,
                                                                               235,
@@ -283,25 +283,29 @@ class UbahProfilPage extends StatelessWidget {
                                     border: InputBorder.none,
                                     enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(226, 235, 245, 1.0),
+                                        color:
+                                            Color.fromRGBO(226, 235, 245, 1.0),
                                         width: 2.0,
                                       ),
                                     ),
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(76, 105, 176, 1.0),
+                                        color:
+                                            Color.fromRGBO(76, 105, 176, 1.0),
                                         width: 2.0,
                                       ),
                                     ),
                                     errorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(226, 235, 245, 1.0),
+                                        color:
+                                            Color.fromRGBO(226, 235, 245, 1.0),
                                         width: 2.0,
                                       ),
                                     ),
                                     focusedErrorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(76, 105, 176, 1.0),
+                                        color:
+                                            Color.fromRGBO(76, 105, 176, 1.0),
                                         width: 2.0,
                                       ),
                                     ),
@@ -327,8 +331,8 @@ class UbahProfilPage extends StatelessWidget {
                                       border: InputBorder.none,
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
-                                          color:
-                                              Color.fromRGBO(226, 235, 245, 1.0),
+                                          color: Color.fromRGBO(
+                                              226, 235, 245, 1.0),
                                           width: 2.0,
                                         ),
                                       ),
@@ -341,8 +345,8 @@ class UbahProfilPage extends StatelessWidget {
                                       ),
                                       errorBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
-                                          color:
-                                              Color.fromRGBO(226, 235, 245, 1.0),
+                                          color: Color.fromRGBO(
+                                              226, 235, 245, 1.0),
                                           width: 2.0,
                                         ),
                                       ),
@@ -380,25 +384,29 @@ class UbahProfilPage extends StatelessWidget {
                                     border: InputBorder.none,
                                     enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(226, 235, 245, 1.0),
+                                        color:
+                                            Color.fromRGBO(226, 235, 245, 1.0),
                                         width: 2.0,
                                       ),
                                     ),
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(76, 105, 176, 1.0),
+                                        color:
+                                            Color.fromRGBO(76, 105, 176, 1.0),
                                         width: 2.0,
                                       ),
                                     ),
                                     errorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(226, 235, 245, 1.0),
+                                        color:
+                                            Color.fromRGBO(226, 235, 245, 1.0),
                                         width: 2.0,
                                       ),
                                     ),
                                     focusedErrorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(76, 105, 176, 1.0),
+                                        color:
+                                            Color.fromRGBO(76, 105, 176, 1.0),
                                         width: 2.0,
                                       ),
                                     ),
@@ -424,25 +432,29 @@ class UbahProfilPage extends StatelessWidget {
                                     border: InputBorder.none,
                                     enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(226, 235, 245, 1.0),
+                                        color:
+                                            Color.fromRGBO(226, 235, 245, 1.0),
                                         width: 2.0,
                                       ),
                                     ),
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(76, 105, 176, 1.0),
+                                        color:
+                                            Color.fromRGBO(76, 105, 176, 1.0),
                                         width: 2.0,
                                       ),
                                     ),
                                     errorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(226, 235, 245, 1.0),
+                                        color:
+                                            Color.fromRGBO(226, 235, 245, 1.0),
                                         width: 2.0,
                                       ),
                                     ),
                                     focusedErrorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(76, 105, 176, 1.0),
+                                        color:
+                                            Color.fromRGBO(76, 105, 176, 1.0),
                                         width: 2.0,
                                       ),
                                     ),
@@ -468,25 +480,29 @@ class UbahProfilPage extends StatelessWidget {
                                     border: InputBorder.none,
                                     enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(226, 235, 245, 1.0),
+                                        color:
+                                            Color.fromRGBO(226, 235, 245, 1.0),
                                         width: 2.0,
                                       ),
                                     ),
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(76, 105, 176, 1.0),
+                                        color:
+                                            Color.fromRGBO(76, 105, 176, 1.0),
                                         width: 2.0,
                                       ),
                                     ),
                                     errorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(226, 235, 245, 1.0),
+                                        color:
+                                            Color.fromRGBO(226, 235, 245, 1.0),
                                         width: 2.0,
                                       ),
                                     ),
                                     focusedErrorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(76, 105, 176, 1.0),
+                                        color:
+                                            Color.fromRGBO(76, 105, 176, 1.0),
                                         width: 2.0,
                                       ),
                                     ),
@@ -512,25 +528,29 @@ class UbahProfilPage extends StatelessWidget {
                                     border: InputBorder.none,
                                     enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(226, 235, 245, 1.0),
+                                        color:
+                                            Color.fromRGBO(226, 235, 245, 1.0),
                                         width: 2.0,
                                       ),
                                     ),
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(76, 105, 176, 1.0),
+                                        color:
+                                            Color.fromRGBO(76, 105, 176, 1.0),
                                         width: 2.0,
                                       ),
                                     ),
                                     errorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(226, 235, 245, 1.0),
+                                        color:
+                                            Color.fromRGBO(226, 235, 245, 1.0),
                                         width: 2.0,
                                       ),
                                     ),
                                     focusedErrorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color.fromRGBO(76, 105, 176, 1.0),
+                                        color:
+                                            Color.fromRGBO(76, 105, 176, 1.0),
                                         width: 2.0,
                                       ),
                                     ),

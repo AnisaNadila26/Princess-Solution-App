@@ -36,19 +36,18 @@ class DasborPage extends StatelessWidget {
                         centerTitle: true,
                         actions: [
                           IconButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) {
-                                  return PengaturanPage();
-                                }),
-                              );
-                            },
-                            icon: Icon(
-                              MdiIcons.cog,
-                              color: Colors.white,
-                            )
-                          ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return PengaturanPage();
+                                  }),
+                                );
+                              },
+                              icon: Icon(
+                                MdiIcons.cog,
+                                color: Colors.white,
+                              )),
                           SizedBox(
                             width: 10,
                           )
@@ -62,9 +61,9 @@ class DasborPage extends StatelessWidget {
                     final metrics = scrollStart.metrics;
                     if (metrics.hasPixels) {
                       bool isTop = metrics.pixels > 50;
-                      if (isTop) {
+                      if (isTop && !value.onAppBar) {
                         value.showAppBar();
-                      } else {
+                      } else if (!isTop && value.onAppBar) {
                         value.hideAppBar();
                       }
                     }
@@ -114,19 +113,19 @@ class DasborPage extends StatelessWidget {
                                                     .headlineSmall,
                                               ),
                                               IconButton(
-                                                onPressed: () {
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) {
-                                                      return PengaturanPage();
-                                                    }),
-                                                  );
-                                                },
-                                                icon: Icon(
-                                                  MdiIcons.cog,
-                                                  color: Colors.white,
-                                                )),
+                                                  onPressed: () {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) {
+                                                        return PengaturanPage();
+                                                      }),
+                                                    );
+                                                  },
+                                                  icon: Icon(
+                                                    MdiIcons.cog,
+                                                    color: Colors.white,
+                                                  )),
                                             ]),
                                       ),
                                     ),
@@ -150,7 +149,7 @@ class DasborPage extends StatelessWidget {
                                         ),
                                         child: Column(children: [
                                           Image.asset(
-                                            'mobil.png',
+                                            'assets/mobil.png',
                                             width: 250,
                                             fit: BoxFit.cover,
                                           ),
@@ -231,7 +230,8 @@ class DasborPage extends StatelessWidget {
                                   padding: const EdgeInsets.all(10.0),
                                   child: Text(
                                     'Jadwal',
-                                    style: Theme.of(context).textTheme.titleLarge,
+                                    style:
+                                        Theme.of(context).textTheme.titleLarge,
                                   ),
                                 ),
                                 Card(
@@ -271,7 +271,9 @@ class DasborPage extends StatelessWidget {
                                         ),
                                         Text(
                                           'Tidak ada Jadwal',
-                                          style: Theme.of(context).textTheme.bodyMedium,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium,
                                         ),
                                       ],
                                     ),
@@ -280,7 +282,8 @@ class DasborPage extends StatelessWidget {
                                 SizedBox(height: 10),
                                 Container(
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.all(10),

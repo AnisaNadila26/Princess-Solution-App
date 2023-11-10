@@ -38,14 +38,16 @@ class KonsultasiPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.5,
                       child: Image(
-                        image: AssetImage('konsultasi.png'),
-                        width: 300,
+                        image: AssetImage('assets/konsultasi.png'),
+                        fit: BoxFit.contain,
                       ),
                     ),
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: 20),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
                             'Ingin bertanya terkait kursus mengemudi?',

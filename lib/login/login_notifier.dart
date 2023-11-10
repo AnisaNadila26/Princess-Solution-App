@@ -89,6 +89,4 @@ class LoginNotifier extends ChangeNotifier {
       print(error);
     }
   }
-
-  getProfile() async {}
 }

@@ -24,7 +24,7 @@ class PreferenceInstruktur {
     pref.setInt(PreferenceInstruktur.usia, ins.usia!);
     pref.setString(PreferenceInstruktur.fotoProfil, ins.fotoProfil!);
     pref.setString(PreferenceInstruktur.jumlahSiswa, ins.jumlahSiswa!);
-    pref.setDouble(PreferenceInstruktur.rating, ins.rating!);
+    pref.setString(PreferenceInstruktur.rating, ins.rating!);
     pref.setString(PreferenceInstruktur.createdAt, ins.createdAt!);
     pref.setString(PreferenceInstruktur.updatedAt, ins.updatedAt!);
     pref.setString(PreferenceInstruktur.role, ins.role!);
@@ -62,7 +62,7 @@ class PreferenceInstruktur {
       usia: pref.getInt(PreferenceInstruktur.usia) ?? 0,
       fotoProfil: pref.getString(PreferenceInstruktur.fotoProfil) ?? "",
       jumlahSiswa: pref.getString(PreferenceInstruktur.jumlahSiswa) ?? "",
-      rating: pref.getDouble(PreferenceInstruktur.rating) ?? 0,
+      rating: pref.getString(PreferenceInstruktur.rating) ?? "",
       createdAt: pref.getString(PreferenceInstruktur.createdAt) ?? "",
       updatedAt: pref.getString(PreferenceInstruktur.updatedAt) ?? "",
       role: pref.getString(PreferenceInstruktur.role) ?? "",

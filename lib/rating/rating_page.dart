@@ -85,19 +85,27 @@ class RatingPage extends StatelessWidget {
                                                     backgroundColor:
                                                         Colors.grey.shade800,
                                                     child: ClipOval(
-                                                      child: Image.network(
-                                                        value.users!.fotoProfil!
-                                                                .isNotEmpty
-                                                            ? NetworkURL
-                                                                .getProfilSiswa(
-                                                                    value.users!
-                                                                        .fotoProfil!)
-                                                            : 'assets/defaultProfile.png',
-                                                        width: 50,
-                                                        height: 50,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
+                                                        child:
+                                                            value
+                                                                    .users!
+                                                                    .fotoProfil!
+                                                                    .isNotEmpty
+                                                                ? Image.network(
+                                                                    NetworkURL.getProfilSiswa(value
+                                                                        .users!
+                                                                        .fotoProfil!),
+                                                                    width: 50,
+                                                                    height: 50,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  )
+                                                                : Image.asset(
+                                                                    'assets/defaultProfile.png',
+                                                                    width: 50,
+                                                                    height: 50,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  )),
                                                   ),
                                                   Expanded(
                                                     child: Padding(
@@ -123,8 +131,12 @@ class RatingPage extends StatelessWidget {
                                                           SizedBox(height: 5),
                                                           RichText(
                                                             text: TextSpan(
-                                                              text: 'Instruktur: ',
-                                                              style: Theme.of(context).textTheme.bodyMedium,
+                                                              text:
+                                                                  'Instruktur: ',
+                                                              style: Theme.of(
+                                                                      context)
+                                                                  .textTheme
+                                                                  .bodyMedium,
                                                               children: <
                                                                   TextSpan>[
                                                                 TextSpan(
@@ -145,8 +157,12 @@ class RatingPage extends StatelessWidget {
                                                           SizedBox(height: 5),
                                                           RichText(
                                                             text: TextSpan(
-                                                              text: 'Kendaraan: ',
-                                                              style: Theme.of(context).textTheme.bodyMedium,
+                                                              text:
+                                                                  'Kendaraan: ',
+                                                              style: Theme.of(
+                                                                      context)
+                                                                  .textTheme
+                                                                  .bodyMedium,
                                                               children: <
                                                                   TextSpan>[
                                                                 TextSpan(
@@ -198,16 +214,25 @@ class RatingPage extends StatelessWidget {
                                                               //   onRatingUpdate:(rating) {}),
                                                               // SizedBox(width: 10),
                                                               Text(
-                                                                value.users!.rating!,
-                                                                style: Theme.of(context).textTheme.bodyMedium,
+                                                                value.users!
+                                                                    .rating!,
+                                                                style: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .bodyMedium,
                                                               ),
                                                             ],
                                                           ),
                                                           SizedBox(height: 5),
                                                           Text(
-                                                            value.users!.review!,
-                                                            textAlign: TextAlign.justify,
-                                                            style: Theme.of(context).textTheme.bodyMedium,
+                                                            value
+                                                                .users!.review!,
+                                                            textAlign: TextAlign
+                                                                .justify,
+                                                            style: Theme.of(
+                                                                    context)
+                                                                .textTheme
+                                                                .bodyMedium,
                                                           ),
                                                         ],
                                                       ),

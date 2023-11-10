@@ -13,6 +13,7 @@ class LoginPage extends StatelessWidget {
       create: (_) => LoginNotifier(context),
       child: Consumer<LoginNotifier>(
         builder: (context, value, child) => Scaffold(
+            resizeToAvoidBottomInset: true,
             appBar: AppBar(
               backgroundColor: Colors.transparent,
               elevation: 0,
@@ -26,118 +27,117 @@ class LoginPage extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('road_login.png'),
+                    image: AssetImage('assets/road_login.png'),
                     fit: BoxFit.fill,
                   ),
                 ),
               ),
               SafeArea(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.end,
+                child: ListView(
+                  reverse: true,
                   children: [
-                    SizedBox(
-                      height: 410,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).cardColor,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20),
-                          ),
-                          // border: Border.all(
-                          //   color: Color.fromRGBO(226, 235, 245, 1.0),
-                          //   width: 3.0,
-                          // ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).cardColor,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
                         ),
-                        // margin: EdgeInsets.symmetric(horizontal: 20),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Transform.translate(
-                            offset: Offset(0, -60),
-                            child: Form(
-                                key: value.keyForm,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Image(
-                                      image: AssetImage('car_login.png'),
-                                      height: 150,
+                        // border: Border.all(
+                        //   color: Color.fromRGBO(226, 235, 245, 1.0),
+                        //   width: 3.0,
+                        // ),
+                      ),
+                      // margin: EdgeInsets.symmetric(horizontal: 20),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: Transform.translate(
+                          offset: Offset(0, -60),
+                          child: Form(
+                              key: value.keyForm,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Image(
+                                    image: AssetImage('assets/car_login.png'),
+                                    height: MediaQuery.of(context).size.height *
+                                        0.2,
+                                  ),
+                                  SizedBox(
+                                    height: 16,
+                                  ),
+                                  TextFormField(
+                                    controller: value.email,
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return "Wajib diisi";
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    keyboardType: TextInputType.emailAddress,
+                                    decoration: InputDecoration(
+                                      icon: Icon(MdiIcons.account),
+                                      labelText: 'Email',
                                     ),
-                                    SizedBox(
-                                      height: 16,
-                                    ),
-                                    TextFormField(
-                                      controller: value.email,
-                                      validator: (value) {
-                                        if (value!.isEmpty) {
-                                          return "Wajib diisi";
-                                        } else {
-                                          return null;
-                                        }
-                                      },
-                                      keyboardType: TextInputType.emailAddress,
-                                      decoration: InputDecoration(
-                                        icon: Icon(MdiIcons.account),
-                                        labelText: 'Email',
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 16,
-                                    ),
-                                    TextFormField(
-                                      controller: value.password,
-                                      validator: (value) {
-                                        if (value!.isEmpty) {
-                                          return "Wajib diisi";
-                                        } else {
-                                          return null;
-                                        }
-                                      },
-                                      obscureText: !value.passwordVisible,
-                                      decoration: InputDecoration(
-                                          icon: Icon(MdiIcons.lock),
-                                          labelText: 'Password',
-                                          suffixIcon: GestureDetector(
-                                            onTap: () {
-                                              value.passwordVisibility();
-                                            },
-                                            child: Icon(value.passwordVisible
-                                                ? MdiIcons.eye
-                                                : MdiIcons.eyeOff),
-                                          )),
-                                    ),
-                                    SizedBox(
-                                      height: 16,
-                                    ),
-                                    SizedBox(
-                                      height: 50,
-                                      width: 100,
-                                      child: InkWell(
+                                  ),
+                                  SizedBox(
+                                    height: 16,
+                                  ),
+                                  TextFormField(
+                                    controller: value.password,
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return "Wajib diisi";
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    obscureText: !value.passwordVisible,
+                                    decoration: InputDecoration(
+                                        icon: Icon(MdiIcons.lock),
+                                        labelText: 'Password',
+                                        suffixIcon: GestureDetector(
                                           onTap: () {
-                                            value.cekLogin();
+                                            value.passwordVisibility();
                                           },
-                                          child: Container(
-                                              alignment: Alignment.center,
-                                              decoration: BoxDecoration(
-                                                color: Color.fromRGBO(
-                                                    76, 105, 176, 1.0),
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                              ),
-                                              child: Text(
-                                                'Masuk',
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyMedium,
-                                              ))),
-                                    ),
-                                  ],
-                                )),
-                          ),
+                                          child: Icon(value.passwordVisible
+                                              ? MdiIcons.eye
+                                              : MdiIcons.eyeOff),
+                                        )),
+                                  ),
+                                  SizedBox(
+                                    height: 16,
+                                  ),
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.06,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.3,
+                                    child: InkWell(
+                                        onTap: () {
+                                          value.cekLogin();
+                                        },
+                                        child: Container(
+                                            alignment: Alignment.center,
+                                            decoration: BoxDecoration(
+                                              color: Color.fromRGBO(
+                                                  76, 105, 176, 1.0),
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                            ),
+                                            child: Text(
+                                              'Masuk',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium,
+                                            ))),
+                                  ),
+                                ],
+                              )),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
