@@ -83,7 +83,7 @@ class NilaiItem extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             child: item.fotoProfil!.isNotEmpty
                             ? Image.network(
-                              NetworkURL.getProfilInstruktur(item.fotoProfil!),
+                              NetworkURL.getProfilSiswa(item.fotoProfil!),
                               width: 80,
                               height: 80,
                               fit: BoxFit.cover,

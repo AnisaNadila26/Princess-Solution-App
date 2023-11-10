@@ -215,7 +215,8 @@ class RatingPage extends StatelessWidget {
                                                               // SizedBox(width: 10),
                                                               Text(
                                                                 value.users!
-                                                                    .rating!,
+                                                                    .rating!
+                                                                    .toString(),
                                                                 style: Theme.of(
                                                                         context)
                                                                     .textTheme
